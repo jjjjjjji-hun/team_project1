@@ -74,7 +74,8 @@ private DataSource ds = null;
 	
 	
 	// DB에 책 정보 삭제
-		public void deleteBookData(int bNum) {
+	// sBnum 세션입니다.
+		public void deleteBookData(int sBnum) {
 			
 			// 수업때는 유저 정보를 삭제하는 로직으로 세션아이디를 받아왔는데..
 			// 책 정보도 세션을 줘야할지 그냥 갈지..
@@ -88,7 +89,7 @@ private DataSource ds = null;
 				String sql = "DELETE FROM book WHERE bnum = ?";
 				pstmt = con.prepareStatement(sql);
 				
-				pstmt.setInt(1, bNum);
+				pstmt.setInt(1, sBnum);
 				
 				pstmt.executeUpdate();
 				
@@ -112,7 +113,7 @@ private DataSource ds = null;
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			// try블럭 진입 전에 ArrayList 선언
+
 			List<BookVO> BookList = new ArrayList<>();
 			try {
 				con = ds.getConnection();
@@ -146,5 +147,45 @@ private DataSource ds = null;
 				}
 			}
 			return BookList;
+		}
+		
+		
+	// DB 내 특정 책 정보 조회
+	// sBnum 세션입니다.
+		public BookVO getBookData(String sBnum) {
+
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			BookVO book = null;
+			try {
+
+				con = ds.getConnection();
+				String sql = "SELECT * FROM bookinfo WHERE bnum = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, sBnum);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getString("bname");
+					String bWriter = rs.getString("bwriter");
+					String bPub = rs.getString("bpub");
+					String bCategory = rs.getString("bcategory");
+					boolean checkOut = rs.getBoolean("check_out");
+					book = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();	
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return book;
 		}
 }
