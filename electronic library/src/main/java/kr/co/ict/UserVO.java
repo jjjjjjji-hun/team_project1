@@ -14,7 +14,7 @@ public class UserVO {
 	
 	
 	// 생성자
-	public UserVO(String uId, String uName, String uPw, String uPnum, String uEmail) {
+	public UserVO(String uId, String uName, String uPw, String uPnum, String uEmail, Boolean utype, int counting) {
 		super();
 		this.uId = uId;
 		this.uPw = uPw;
@@ -26,6 +26,7 @@ public class UserVO {
 	}
 
 
+	
 	
 	// getter / setter
 
