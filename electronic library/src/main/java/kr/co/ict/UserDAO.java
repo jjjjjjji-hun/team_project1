@@ -35,7 +35,7 @@ public class UserDAO {
 	
 	
 	// DB에 유저 정보 적재
-	public void insertUserData(String fId, String fPw, String fName, String fEmail) {
+	public void insertUserData(String fId, String fPw, String fName, String fPnum, String fEmail) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -44,13 +44,14 @@ public class UserDAO {
 			
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO userinfo VALUES(?, ?, ?, ?)";
+			String sql = "INSERT INTO userinfo VALUES(?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, fId);
-			pstmt.setString(2, fPw);
-			pstmt.setString(3, fName);
-			pstmt.setString(4, fEmail);
+			pstmt.setString(2, fName);
+			pstmt.setString(3, fPw);
+			pstmt.setString(4, fPnum);
+			pstmt.setString(5, fEmail);
 			
 			pstmt.executeUpdate();
 			

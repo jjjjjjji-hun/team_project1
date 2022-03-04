@@ -14,17 +14,21 @@
 </head>
 <body>
 	
+	<h1>확인</h1>
 	아이디 : ${fId }
 	비밀번호 : ${fPW }
 	이름 : ${fName }
+	핸드폰 : ${fPnum }
 	이메일 : ${fEmail }
 
+	
 
 	<% 
 	
 	UserDAO dao = UserDAO.getInstance();
 	// 이걸 어떤식으로 넣어야 할지?
-	// 변수를 또 만들어서 넣어주면 서블릿 거쳐오는 의미가 있을지
+	// <c:set>으로 변수 만들어서 넣기?
+	
 	// dao.insertUserData(${fId}, ${fPw}, ${fName}, ${fEmail});
 	
 	%>

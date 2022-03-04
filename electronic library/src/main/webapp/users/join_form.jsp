@@ -13,6 +13,7 @@
 		아이디 : <input type="text" name="fid" required/><br/>
 		비밀번호 : <input type="password" name="fpw" required/><br/>
 		이름 : <input type="text" name="fname" required/><br/>
+		전화번호 : <input type="text" name="fpnum" requeired/><br/>
 		이메일 : <input type="email" name="femail"/><br/>
 		<input type="submit" value="회원가입"/>&nbsp;&nbsp;&nbsp;
 		<input type="reset" value="초기화"/>
