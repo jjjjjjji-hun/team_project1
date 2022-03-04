@@ -6,7 +6,7 @@ upw VARCHAR(20) NOT NULL,
 upnum VARCHAR(20) NOT NULL,
 uemail VARCHAR(20) NOT NULL,
 utype BOOL,
-counting INT
+counting INT DEFAULT 0
 );
 
 SELECT * FROM userinfo;
@@ -27,8 +27,8 @@ SELECT * FROM book;
 
 -- 대여 테이블
 CREATE TABLE rent(
-rentnum INT PRIMARY KEY,
-returnschedule DATE,
+rentnum INT PRIMARY KEY AUTO_INCREMENT,
+returnschedule DATETIME DEFAULT now(),
 bnum INT NOT NULL,
 uid VARCHAR(20) NOT NULL,
 overdue BOOL
@@ -39,9 +39,9 @@ SELECT * FROM rent;
 
 -- 반납 테이블
 CREATE TABLE returnb(
-returnnum INT PRIMARY KEY,
-rentdate DATE,
-returndate DATE,
+returnnum INT PRIMARY KEY AUTO_INCREMENT,
+rentdate DATETIME DEFAULT now(),
+returndate DATETIME DEFAULT now(),
 bnum INT NOT NULL,
 uid VARCHAR(20) NOT NULL
 );
@@ -51,12 +51,15 @@ SELECT * FROM returnb;
 
 -- 리뷰 테이블
 CREATE TABLE review(
-revnum INT PRIMARY KEY,
+revnum INT PRIMARY KEY AUTO_INCREMENT,
 bnum INT NOT NULL,
 uid VARCHAR(20) NOT NULL,
-revtitle VARCHAR(20) NOT NULL,
-revcontent VARCHAR(100) NOT NULL,
-revdate DATE
+revtitle VARCHAR(50) NOT NULL,
+revcontent VARCHAR(1000) NOT NULL,
+revdate DATETIME DEFAULT now()
 );
 
 SELECT * FROM review;
+
+
+-- 수정 : 대여 반납 리뷰 테이블 PK에 auto_increment 추가,  DATE -> DATETIME DEFAULT now() 변경
