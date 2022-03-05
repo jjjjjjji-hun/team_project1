@@ -5,7 +5,7 @@
 	
     request.setCharacterEncoding("utf-8");
     // form에서 보낸 정보 변수로 저장.
-    String bNum = request.getParameter("bnum");
+    int bNum = Integer.parseInt(request.getParameter("bnum"));
     String bName = request.getParameter("bname");
     String bWriter = request.getParameter("bwriter");
     String bPub = request.getParameter("bpub");
