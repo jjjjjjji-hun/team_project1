@@ -118,7 +118,7 @@ private DataSource ds = null;
 			try {
 				con = ds.getConnection();
 				
-				String sql = "SELECT * FROM bookinfo";
+				String sql = "SELECT * FROM book";
 				pstmt = con.prepareStatement(sql);
 			
 				rs = pstmt.executeQuery();

@@ -35,7 +35,7 @@ public class ServletJoin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("post 방식으로 접속");
+		System.out.println("join_form.jsp에서 post 방식으로 접속");
 		
 		request.setCharacterEncoding("utf-8");
 		
