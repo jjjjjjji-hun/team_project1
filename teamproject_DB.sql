@@ -1,3 +1,7 @@
+/* 1. 데이터베이스 생성 명령
+DB생성시 한글을 쓸 수 있도록 -> default character set utf8;  아직 실행안함*/
+create database project default character set utf8;
+
 -- 유저 테이블
 CREATE TABLE userinfo(
 uid VARCHAR(20) PRIMARY KEY,
@@ -5,7 +9,7 @@ uname VARCHAR(10) NOT NULL,
 upw VARCHAR(20) NOT NULL,
 upnum VARCHAR(20) NOT NULL,
 uemail VARCHAR(20) NOT NULL,
-utype BOOL,
+utype BOOL DEFAULT FALSE,
 counting INT DEFAULT 0
 );
 
@@ -14,7 +18,7 @@ SELECT * FROM userinfo;
 
 -- 책 테이블
 CREATE TABLE book(
-bnum INT PRIMARY KEY,
+bnum INT PRIMARY KEY AUTO_INCREMENT,
 bname VARCHAR(20) NOT NULL,
 bwriter VARCHAR(20) NOT NULL,
 bpub VARCHAR(20) NOT NULL,
@@ -63,3 +67,4 @@ SELECT * FROM review;
 
 
 -- 수정 : 대여 반납 리뷰 테이블 PK에 auto_increment 추가,  DATE -> DATETIME DEFAULT now() 변경
+-- 수정 : 책 테이블 bnum auto_increment 추가

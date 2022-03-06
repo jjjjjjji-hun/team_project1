@@ -3,63 +3,64 @@ package kr.co.ict;
 public class BookVO {
 
 	// 책 변수
-	private int bnum;
-	private String bname;
-	private String bwriter;
-	private String bpub;
-	private String bcategory;
+	private int bNum;
+	private String bName;
+	private String bWriter;
+	private String bPub;
+	private String bCategory;
 	private boolean check_out;
 	
 	// 책 생성자
-	public BookVO(int bnum, String bname, String bwriter, String bpub, String bcategory, boolean check_out) {
+	public BookVO(int bNum, String bName, String bWriter, String bPub, String bCategory, boolean check_out) {
 		super();
-		this.bnum = bnum;
-		this.bname = bname;
-		this.bwriter = bwriter;
-		this.bpub = bpub;
-		this.bcategory = bcategory;
+		this.bNum = bNum;
+		this.bName = bName;
+		this.bWriter = bWriter;
+		this.bPub = bPub;
+		this.bCategory = bCategory;
 		this.check_out = check_out;
 	}
 
+	
 	// getter / setter
-	public int getBnum() {
-		return bnum;
+	public int getbNum() {
+		return bNum;
 	}
 
-	public void setBnum(int bnum) {
-		this.bnum = bnum;
+	public void setbNum(int bNum) {
+		this.bNum = bNum;
 	}
 
-	public String getBname() {
-		return bname;
+	public String getbName() {
+		return bName;
 	}
 
-	public void setBname(String bname) {
-		this.bname = bname;
+	public void setbName(String bName) {
+		this.bName = bName;
 	}
 
-	public String getBwriter() {
-		return bwriter;
+	public String getbWriter() {
+		return bWriter;
 	}
 
-	public void setBwriter(String bwriter) {
-		this.bwriter = bwriter;
+	public void setbWriter(String bWriter) {
+		this.bWriter = bWriter;
 	}
 
-	public String getBpub() {
-		return bpub;
+	public String getbPub() {
+		return bPub;
 	}
 
-	public void setBpub(String bpub) {
-		this.bpub = bpub;
+	public void setbPub(String bPub) {
+		this.bPub = bPub;
 	}
 
-	public String getBcategory() {
-		return bcategory;
+	public String getbCategory() {
+		return bCategory;
 	}
 
-	public void setBcategory(String bcategory) {
-		this.bcategory = bcategory;
+	public void setbCategory(String bCategory) {
+		this.bCategory = bCategory;
 	}
 
 	public boolean isCheck_out() {
@@ -70,14 +71,13 @@ public class BookVO {
 		this.check_out = check_out;
 	}
 
-	// toString
+
 	@Override
 	public String toString() {
-		return "BookVO [bnum=" + bnum + ", bname=" + bname + ", bwriter=" + bwriter + ", bpub=" + bpub + ", bcategory="
-				+ bcategory + ", check_out=" + check_out + "]";
+		return "BookVO [bNum=" + bNum + ", bName=" + bName + ", bWriter=" + bWriter + ", bPub=" + bPub + ", bCategory="
+				+ bCategory + ", check_out=" + check_out + "]";
 	}
 	
-	
-	
+
 	
 }
