@@ -1,3 +1,4 @@
+<%@page import="kr.co.ict.UserVO"%>
 <%@page import="kr.co.ict.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -21,17 +22,7 @@
 	핸드폰 : ${fPnum }
 	이메일 : ${fEmail }
 
-	
 
-	<% 
-	
-	UserDAO dao = UserDAO.getInstance();
-	// 이걸 어떤식으로 넣어야 할지?
-	// <c:set>으로 변수 만들어서 넣기?
-	
-	// dao.insertUserData(${fId}, ${fPw}, ${fName}, ${fEmail});
-	
-	%>
 	
 	
 	

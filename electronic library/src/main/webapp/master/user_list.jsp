@@ -2,6 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +19,9 @@
 				<th>전화번호</th>
 				<th>이메일</th>
 				<th>유저 타입</th>
-				<th>도서 대여 수</th>
+				<th>대여한 도서 수</th>
 			</thead>
-			<tbody>
+			<tbody> <!-- end값 조정해야 함. length 쓸 수 있게 -->
 				<c:forEach begin="0" end="2" var="i">
 					<tr>
 						<td>${allUserList[i].uId}</td>
