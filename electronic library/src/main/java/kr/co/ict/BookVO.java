@@ -23,61 +23,70 @@ public class BookVO {
 
 	
 	// getter / setter
+
 	public int getbNum() {
 		return bNum;
 	}
+
 
 	public void setbNum(int bNum) {
 		this.bNum = bNum;
 	}
 
+
 	public String getbName() {
 		return bName;
 	}
+
 
 	public void setbName(String bName) {
 		this.bName = bName;
 	}
 
+
 	public String getbWriter() {
 		return bWriter;
 	}
+
 
 	public void setbWriter(String bWriter) {
 		this.bWriter = bWriter;
 	}
 
+
 	public String getbPub() {
 		return bPub;
 	}
+
 
 	public void setbPub(String bPub) {
 		this.bPub = bPub;
 	}
 
+
 	public String getbCategory() {
 		return bCategory;
 	}
+
 
 	public void setbCategory(String bCategory) {
 		this.bCategory = bCategory;
 	}
 
+
 	public boolean isCheck_out() {
 		return check_out;
 	}
 
+
 	public void setCheck_out(boolean check_out) {
 		this.check_out = check_out;
 	}
-
-
+	
 	@Override
 	public String toString() {
 		return "BookVO [bNum=" + bNum + ", bName=" + bName + ", bWriter=" + bWriter + ", bPub=" + bPub + ", bCategory="
 				+ bCategory + ", check_out=" + check_out + "]";
 	}
-	
-
 	
 }
