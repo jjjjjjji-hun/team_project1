@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% request.setCharacterEncoding("utf-8"); %>
+<% request.setCharacterEncoding("utf-8");%>
 
 <!DOCTYPE html>
 <html>
@@ -24,13 +24,11 @@
 			</thead>
 			<tbody>
 			<!-- 사용자가 검색한 단어를 포함하는 책 리스트 보여주기 코드 찾는중 -->
-				<c:forEach var="bookList" items="${allBookList }">
 					<tr>
-						<td>${bookList.bnum}</td>
-						<td><a href="./book/book_detail.jsp">${bookList.bname}</a></td>
-						<td>${bookList.bcategory}</td>
+						<td>${allBookList.bNum}</td>
+						<td><a href="./book/book_detail.jsp">${allBookList.bName}</a></td>
+						<td>${allBookList.bCategory}</td>
 					</tr>
-				</c:forEach>
 			</tbody>
 		
 			</table>

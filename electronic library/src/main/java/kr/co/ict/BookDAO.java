@@ -76,45 +76,32 @@ public class BookDAO {
 	
 	// DB에 책 정보 삭제
 	// sBnum 세션입니다.
-<<<<<<< HEAD
-		public void deleteBookData(int sBname) {
-=======
-	public void deleteBookData(String bName) {
->>>>>>> 13ae9103b41653ac080358bd79b9fc182c79003e
-			
+	public void deleteBookData(String sBname) {
+		
 		// 수업때는 유저 정보를 삭제하는 로직으로 세션아이디를 받아왔는데..
 		// 책 정보도 세션을 줘야할지 그냥 갈지..
 		Connection con = null;
 		PreparedStatement pstmt = null;
-			
+		
 		try {
+			
 			con = ds.getConnection();
 			
 			String sql = "DELETE FROM book WHERE bname = ?";
 			pstmt = con.prepareStatement(sql);
-				
-			pstmt.setString(1, bName);
-				
+			
+			pstmt.setString(1, sBname);
+			
 			pstmt.executeUpdate();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-<<<<<<< HEAD
 				
-				con = ds.getConnection();
-				
-				String sql = "DELETE FROM book WHERE bname = ?";
-				pstmt = con.prepareStatement(sql);
-				
-				pstmt.setInt(1, sBname);
-				
-				pstmt.executeUpdate();
-				
-=======
 				con.close();
 				pstmt.close();
->>>>>>> 13ae9103b41653ac080358bd79b9fc182c79003e
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -202,14 +189,5 @@ public class BookDAO {
 			}
 			return book;
 		}
-<<<<<<< HEAD
-		
-		
-		
-		
-		
-		
-=======
 
->>>>>>> 13ae9103b41653ac080358bd79b9fc182c79003e
 }

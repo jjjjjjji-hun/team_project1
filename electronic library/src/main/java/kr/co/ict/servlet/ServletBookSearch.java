@@ -49,20 +49,19 @@ public class ServletBookSearch extends HttpServlet {
 		// book_search.jsp 에서 post 방식으로 접속
 		// 다오 생성
 		BookDAO dao = BookDAO.getInstance();
-		System.out.println("다오 생성");
+		
 		request.setCharacterEncoding("utf-8");
-		
+		// 폼에서 날린 데이터 자바 변수로 받기
 		String fBname = request.getParameter("fbname");
-		
+		// 확인하기(디버깅)
 		System.out.println("post로 들어온 데이터 : " + fBname );
-		
+		// VO 생성
 		BookVO book1 = dao.getBookData(fBname);
-		//response.sendRedirect("http://localhost:8181/electronic_library/book/search_check.jsp");
+		// 바인딩
 		request.setAttribute("allBookList", book1);
-
-		
+		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher("/book/search_check.jsp");
-		
+		//dp = request.getRequestDispatcher("/book/book_detail.jsp");
 		dp.forward(request, response);
 	}
 
