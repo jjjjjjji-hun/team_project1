@@ -32,6 +32,7 @@ SELECT * FROM book;
 -- 대여 테이블
 CREATE TABLE rent(
 rentnum INT PRIMARY KEY AUTO_INCREMENT,
+rentdate DATETIME DEFAULT now(),
 returnschedule DATETIME DEFAULT now(),
 bnum INT NOT NULL,
 uid VARCHAR(20) NOT NULL,
