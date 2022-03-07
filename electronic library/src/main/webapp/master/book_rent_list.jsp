@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,16 @@
 			<th>연체 여부</th>
 		</theader>
 		<tbody>
-		
+			<c:forEach var="list" items="${allRentBookList}">
+				<tr>
+					<td>${list.rentNum }</td>
+					<td>${list.rentDate}</td>
+					<td>${list.returnSchedule}</td>
+					<td>${list.bNum}</td>
+					<td>${list.uId}</td>
+					<td>${list.overdue}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	
 	</table>
