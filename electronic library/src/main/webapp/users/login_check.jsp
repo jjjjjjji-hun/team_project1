@@ -3,14 +3,32 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="kr.co.ict.UserVO" %>
 <%@ page import="kr.co.ict.UserDAO"%>
-
-    <c:if test = "${ == 1 }">
-       <script>alert('로그인이 완료되었습니다.');</script>
-    </c:if>
-    <c:if test = "${ == 0 }">
-       <script>alert('없는 아이디입니다.');</script>
-    </c:if>
+<% 
+    String fId = request.getParameter("fid");
+    String fPw = request.getParameter("fpw");  
     
+    UserDAO dao = UserDAO.getInstance();
+	UserVO user = dao.getUserData(fId);
+	
+	if(user.getuId() != null){
+		
+		String uId = user.getuId();
+		String uPw = user.getuPw();
+		
+		if(fId.equals(uId) && fPw.equals(uPw)){
+			
+			session.setAttribute("session_id", uId);
+			session.setAttribute("session_pw", uPw);
+			
+			response.sendRedirect("main.jsp");
+			
+		}else{
+			out.println("<script>alert('비밀번호가 없습니다 . 다시 확인해 주세요.'); </script>");
+		}
+	}else{
+		out.println("<script>alert('아이디가 없습니다. 입력 아이디를 확인해주세요.'); </script>");
+	}
+	%>
 <!DOCTYPE html>
 <html>
 <head>
