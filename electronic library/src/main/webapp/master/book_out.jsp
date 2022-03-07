@@ -9,7 +9,8 @@
 </head>
 <body>
 <%
-	String bName = request.getParameter(bname);
+	// 폼에서 전송한 데이터
+	String bName = request.getParameter("bname");
 	// 다오생성
 	BookDAO dao = BookDAO.getInstance();
 	// DELETE 로직 호출
