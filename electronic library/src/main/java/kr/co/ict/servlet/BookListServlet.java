@@ -43,6 +43,8 @@ public class BookListServlet extends HttpServlet {
 		// 여러 UserVO 받아올 리스트 생성
 		List<BookVO> allBookList = dao.getAllBookList();
 		
+		System.out.println(allBookList);
+		
 		// 바인딩
 		request.setAttribute("allBookList", allBookList);
 		
