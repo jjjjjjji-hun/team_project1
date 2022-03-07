@@ -22,15 +22,17 @@
 				
 			</thead>
 			<tbody>
+				<c:forEach var="bookList" items="${allBookList }">
 					<tr>
-						<td>${allBookList[i].bnum}</td>
-						<td>${allBookList[i].bname}</td>
-						<td>${allBookList[i].bwriter}</td>
-						<td>${allBookList[i].bpub}</td>
-						<td>${allBookList[i].bcategory}</td>
-						<td>${allBookList[i].check_out}</td>
+						<td>${bookList.bnum}</td>
+						<td>${bookList.bname}</td>
+						<td>${bookList.bwriter}</td>
+						<td>${bookList.bpub}</td>
+						<td>${bookList.bcategory}</td>
+						<td>${bookList.check_out}</td>
 						
 					</tr>
+				</c:forEach>
 			</tbody>
 		
 			</table>

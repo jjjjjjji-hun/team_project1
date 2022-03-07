@@ -76,7 +76,7 @@ private DataSource ds = null;
 	
 	// DB에 책 정보 삭제
 	// sBnum 세션입니다.
-		public void deleteBookData(int sBnum) {
+		public void deleteBookData(int sBname) {
 			
 			// 수업때는 유저 정보를 삭제하는 로직으로 세션아이디를 받아왔는데..
 			// 책 정보도 세션을 줘야할지 그냥 갈지..
@@ -87,10 +87,10 @@ private DataSource ds = null;
 				
 				con = ds.getConnection();
 				
-				String sql = "DELETE FROM book WHERE bnum = ?";
+				String sql = "DELETE FROM book WHERE bname = ?";
 				pstmt = con.prepareStatement(sql);
 				
-				pstmt.setInt(1, sBnum);
+				pstmt.setInt(1, sBname);
 				
 				pstmt.executeUpdate();
 				
@@ -153,7 +153,7 @@ private DataSource ds = null;
 		
 	// DB 내 특정 책 정보 조회
 	// sBnum 세션입니다.
-		public BookVO getBookData(String sBnum) {
+		public BookVO getBookData(String sBname) {
 
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -162,9 +162,9 @@ private DataSource ds = null;
 			try {
 
 				con = ds.getConnection();
-				String sql = "SELECT * FROM bookinfo WHERE bnum = ?";
+				String sql = "SELECT * FROM book WHERE bname = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, sBnum);
+				pstmt.setString(1, sBname);
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					int bNum = rs.getInt("bnum");

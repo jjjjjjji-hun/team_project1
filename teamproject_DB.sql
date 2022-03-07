@@ -23,9 +23,10 @@ bname VARCHAR(20) NOT NULL,
 bwriter VARCHAR(20) NOT NULL,
 bpub VARCHAR(20) NOT NULL,
 bcategory VARCHAR(10) NOT NULL,
-check_out BOOL
+check_out BOOL DEFAULT TRUE
 );
-
+INSERT INTO book values(1, '자바', '김자바', '이클립스', 'java', true);
+INSERT INTO book values(2, '파이썬', '김파이', '파이썬', 'python', true);
 SELECT * FROM book;
 
 
@@ -36,7 +37,7 @@ rentdate DATETIME DEFAULT now(),
 returnschedule DATETIME DEFAULT now(),
 bnum INT NOT NULL,
 uid VARCHAR(20) NOT NULL,
-overdue BOOL
+overdue BOOL DEFAULT FALSE
 );
 
 SELECT * FROM rent;

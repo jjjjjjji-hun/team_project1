@@ -73,6 +73,8 @@ public class BookListServlet extends HttpServlet {
 		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher("/master/book_list.jsp");
 		dp.forward(request, response);
+		
+		
 	}
 
 }
