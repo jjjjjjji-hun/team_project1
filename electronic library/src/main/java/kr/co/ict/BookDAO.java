@@ -75,7 +75,6 @@ public class BookDAO {
 	
 	
 	// DB에 책 정보 삭제
-	// sBnum 세션입니다.
 	public void deleteBookData(String bName) {
 		
 		// 수업때는 유저 정보를 삭제하는 로직으로 세션아이디를 받아왔는데..
@@ -152,8 +151,7 @@ public class BookDAO {
 		
 		
 	// DB 내 특정 책 정보 조회
-	// sBnum 세션입니다.
-		public BookVO getBookData(String bNam) {
+		public BookVO getBookData(String b_Name) {
 
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -164,7 +162,7 @@ public class BookDAO {
 				con = ds.getConnection();
 				String sql = "SELECT * FROM book WHERE bname = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, bNam);
+				pstmt.setString(1, b_Name);
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					int bNum = rs.getInt("bnum");

@@ -31,7 +31,7 @@
 						<td>${bookList.bWriter}</td>
 						<td>${bookList.bPub}</td>
 						<td>${bookList.bCategory}</td>
-						<td>${bookList.check_out}</td>
+						<td>${bookList.checkOut}</td>
 						
 					</tr>
 				</c:forEach>
