@@ -76,7 +76,7 @@ public class BookDAO {
 	
 	// DB에 책 정보 삭제
 	// sBnum 세션입니다.
-	public void deleteBookData(String sBname) {
+	public void deleteBookData(String bName) {
 		
 		// 수업때는 유저 정보를 삭제하는 로직으로 세션아이디를 받아왔는데..
 		// 책 정보도 세션을 줘야할지 그냥 갈지..
@@ -90,7 +90,7 @@ public class BookDAO {
 			String sql = "DELETE FROM book WHERE bname = ?";
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, sBname);
+			pstmt.setString(1, bName);
 			
 			pstmt.executeUpdate();
 			
@@ -153,7 +153,7 @@ public class BookDAO {
 		
 	// DB 내 특정 책 정보 조회
 	// sBnum 세션입니다.
-		public BookVO getBookData(String sBname) {
+		public BookVO getBookData(String bNam) {
 
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -164,7 +164,7 @@ public class BookDAO {
 				con = ds.getConnection();
 				String sql = "SELECT * FROM book WHERE bname = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, sBname);
+				pstmt.setString(1, bNam);
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					int bNum = rs.getInt("bnum");
