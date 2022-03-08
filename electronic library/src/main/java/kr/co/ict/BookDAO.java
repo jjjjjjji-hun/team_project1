@@ -76,79 +76,75 @@ public class BookDAO {
 	
 	// DB에 책 정보 삭제
 	// sBnum 세션입니다.
-		public void deleteBookData(int sBnum) {
+	public void deleteBookData(String bName) {
 			
-			// 수업때는 유저 정보를 삭제하는 로직으로 세션아이디를 받아왔는데..
-			// 책 정보도 세션을 줘야할지 그냥 갈지..
-			Connection con = null;
-			PreparedStatement pstmt = null;
+		// 수업때는 유저 정보를 삭제하는 로직으로 세션아이디를 받아왔는데..
+		// 책 정보도 세션을 줘야할지 그냥 갈지..
+		Connection con = null;
+		PreparedStatement pstmt = null;
 			
+		try {
+			con = ds.getConnection();
+			
+			String sql = "DELETE FROM book WHERE bname = ?";
+			pstmt = con.prepareStatement(sql);
+				
+			pstmt.setString(1, bName);
+				
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
 			try {
-				
-				con = ds.getConnection();
-				
-				String sql = "DELETE FROM book WHERE bnum = ?";
-				pstmt = con.prepareStatement(sql);
-				
-				pstmt.setInt(1, sBnum);
-				
-				pstmt.executeUpdate();
-				
+				con.close();
+				pstmt.close();
 			}catch(Exception e) {
 				e.printStackTrace();
-			}finally {
-				try {
-					
-					con.close();
-					pstmt.close();
-					
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
 			}
 		}
-		
-	// DB 내 모든 책 정보 조회 
-		public List<BookVO> getAllBookList(){
-			
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
+	}
 
-			List<BookVO> BookList = new ArrayList<>();
-			try {
-				con = ds.getConnection();
-				
-				String sql = "SELECT * FROM book";
-				pstmt = con.prepareStatement(sql);
+	// DB 내 모든 책 정보 조회 
+	public List<BookVO> getAllBookList(){
 			
-				rs = pstmt.executeQuery();
-			
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<BookVO> BookList = new ArrayList<>();
+		try {
+			con = ds.getConnection();
 				
-				while(rs.next()) {
-					int bNum = rs.getInt("bnum");
-					String bName = rs.getString("bname");
-					String bWriter = rs.getString("bwriter");
-					String bPub = rs.getString("bpub");
-					String bCategory = rs.getString("bcategory");
-					boolean checkOut = rs.getBoolean("check_out");
+			String sql = "SELECT * FROM book";
+			pstmt = con.prepareStatement(sql);
+		
+			rs = pstmt.executeQuery();
+		
+				
+			while(rs.next()) {
+				int bNum = rs.getInt("bnum");
+				String bName = rs.getString("bname");
+				String bWriter = rs.getString("bwriter");
+				String bPub = rs.getString("bpub");
+				String bCategory = rs.getString("bcategory");
+				boolean checkOut = rs.getBoolean("check_out");
 					
-					BookVO BookData = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
-					BookList.add(BookData);
-				}
+				BookVO BookData = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
+				BookList.add(BookData);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
 			}catch(Exception e) {
 				e.printStackTrace();
-			}finally {
-				try {
-					con.close();
-					pstmt.close();
-					rs.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
 			}
-			return BookList;
 		}
+		return BookList;
+	}
 		
 		
 	// DB 내 특정 책 정보 조회
@@ -189,10 +185,14 @@ public class BookDAO {
 			}
 			return book;
 		}
+<<<<<<< HEAD
 		
 		
 		
 		
 		
 		
+=======
+
+>>>>>>> 13ae9103b41653ac080358bd79b9fc182c79003e
 }

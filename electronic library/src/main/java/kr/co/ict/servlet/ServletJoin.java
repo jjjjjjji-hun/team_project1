@@ -41,16 +41,16 @@ public class ServletJoin extends HttpServlet {
 		
 		String fId = request.getParameter("fid");
 		String fPw = request.getParameter("fpw");
-		String fPnum = request.getParameter("fpnum");
 		String fName = request.getParameter("fname");
+		String fPnum = request.getParameter("fpnum");
 		String fEmail = request.getParameter("femail");
 		
 		System.out.println("post로 들어온 데이터 : " + fId + ", " + fPw + ", " + fName + ", " + fPnum + ", " + fEmail);
 		
 		request.setAttribute("fId", fId);
 		request.setAttribute("fPw", fPw);
-		request.setAttribute("fPnum", fPnum);
 		request.setAttribute("fName", fName);
+		request.setAttribute("fPnum", fPnum);
 		request.setAttribute("fEmail", fEmail);
 		
 		RequestDispatcher dp = request.getRequestDispatcher("/users/join_check.jsp");
