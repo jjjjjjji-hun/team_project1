@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.ict.UserDAO;
+
 /**
  * Servlet implementation class ServletJoin
  */
@@ -47,15 +49,16 @@ public class ServletJoin extends HttpServlet {
 		
 		System.out.println("post로 들어온 데이터 : " + fId + ", " + fPw + ", " + fName + ", " + fPnum + ", " + fEmail);
 		
-		request.setAttribute("fId", fId);
-		request.setAttribute("fPw", fPw);
-		request.setAttribute("fName", fName);
-		request.setAttribute("fPnum", fPnum);
-		request.setAttribute("fEmail", fEmail);
 		
-		RequestDispatcher dp = request.getRequestDispatcher("/users/join_check.jsp");
+		UserDAO dao = UserDAO.getInstance();
 		
-		dp.forward(request, response);
+		dao.insertUserData(fId, fPw, fName, fPnum, fEmail);
+		
+		// 로그인 폼으로 리다이렉트
+		response.sendRedirect("http://localhost:8181/electronic_library/users/login_form.jsp");
+		
+		
+		
 	}
 
 }

@@ -22,13 +22,15 @@
 				
 			</thead>
 			<tbody>
+			<!-- 서블릿에서는 search_check.jsp로는 데이터를 주었지만 search_check.jsp에서 detail로는
+			데이터를 어떻게 받아올지.. -->
 					<tr>
-						<td>${allBookList[i].bnum}</td>
-						<td>${allBookList[i].bname}</td>
-						<td>${allBookList[i].bwriter}</td>
-						<td>${allBookList[i].bpub}</td>
-						<td>${allBookList[i].bcategory}</td>
-						<td>${allBookList[i].check_out}</td>
+						<td>${allBookList.bNum}</td>
+						<td>${allBookList.bName}</td>
+						<td>${allBookList.bWriter}</td>
+						<td>${allBookList.bPub}</td>
+						<td>${allBookList.bCategory}</td>
+						<td>${allBookList.check_out}</td>
 						
 					</tr>
 			</tbody>

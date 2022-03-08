@@ -24,7 +24,7 @@
 				
 			</thead>
 			<tbody> <!-- end값 조정해야 함. length 쓸 수 있게 -->
-				<c:forEach var="bookList" items="${allBookList }">
+				<c:forEach var="bookList" items="${allBookList}">
 					<tr>
 						<td>${bookList.bNum}</td>
 						<td>${bookList.bName}</td>

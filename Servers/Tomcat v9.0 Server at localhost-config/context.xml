@@ -27,6 +27,7 @@
     <Manager pathname="" />
     -->
     
+
           <Resource
 	     auth="Container"
 	     driverClassName = "com.mysql.cj.jdbc.Driver"
@@ -38,7 +39,5 @@
 	     maxActive = "300"   
 	     maxWait = "1000"  
 	    />
-    
-    
-    
+
 </Context>
