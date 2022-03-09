@@ -27,7 +27,7 @@ public class UserListServlet extends HttpServlet {
      */
     public UserListServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stub이중 SELECT
     }
 
 	/**

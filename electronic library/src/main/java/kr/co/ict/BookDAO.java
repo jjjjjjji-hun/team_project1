@@ -1,6 +1,7 @@
 package kr.co.ict;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import javax.sql.DataSource;
 
 public class BookDAO {
 
-private DataSource ds = null;
+	private DataSource ds = null;
 	
 	private static BookDAO dao = new BookDAO();
 	
@@ -74,29 +75,32 @@ private DataSource ds = null;
 	
 	
 	// DB에 책 정보 삭제
-	// sBnum 세션입니다.
 	public void deleteBookData(String bName) {
-			
+		
 		// 수업때는 유저 정보를 삭제하는 로직으로 세션아이디를 받아왔는데..
 		// 책 정보도 세션을 줘야할지 그냥 갈지..
 		Connection con = null;
 		PreparedStatement pstmt = null;
-			
+		
 		try {
+			
 			con = ds.getConnection();
 			
 			String sql = "DELETE FROM book WHERE bname = ?";
 			pstmt = con.prepareStatement(sql);
-				
+			
 			pstmt.setString(1, bName);
-				
+			
 			pstmt.executeUpdate();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
+				
 				con.close();
 				pstmt.close();
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -104,6 +108,7 @@ private DataSource ds = null;
 	}
 
 	// DB 내 모든 책 정보 조회 
+
 	public List<BookVO> getAllBookList(){
 			
 		Connection con = null;
@@ -116,7 +121,7 @@ private DataSource ds = null;
 				
 			String sql = "SELECT * FROM book";
 			pstmt = con.prepareStatement(sql);
-		
+
 			rs = pstmt.executeQuery();
 		
 				
@@ -147,8 +152,8 @@ private DataSource ds = null;
 		
 		
 	// DB 내 특정 책 정보 조회
-	// sBnum 세션입니다.
-		public BookVO getBookData(String sBnum) {
+	// 메인 페이지에서 카테고리나 모든 도서 목록에서 사용할 때
+		public BookVO getBookData(String b_Name) {
 
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -157,9 +162,9 @@ private DataSource ds = null;
 			try {
 
 				con = ds.getConnection();
-				String sql = "SELECT * FROM bookinfo WHERE bnum = ?";
+				String sql = "SELECT * FROM book WHERE bname = ?";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, sBnum);
+				pstmt.setString(1, b_Name);
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					int bNum = rs.getInt("bnum");
@@ -185,4 +190,95 @@ private DataSource ds = null;
 			return book;
 		}
 
+
+		// 도서 검색할 때 사용
+		// booksearch 할때도 사용
+		public List<BookVO> getSearchBookList(String b_Name){
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			List<BookVO> BookList = new ArrayList<>();
+			try {
+				con = ds.getConnection();
+					
+				String sql = "SELECT * FROM book WHERE bname like ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, ("%" + b_Name + "%"));
+				rs = pstmt.executeQuery();
+			
+					
+				while(rs.next()) {
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getString("bname");
+					String bWriter = rs.getString("bwriter");
+					String bPub = rs.getString("bpub");
+					String bCategory = rs.getString("bcategory");
+					boolean checkOut = rs.getBoolean("check_out");
+						
+					BookVO BookData = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
+					BookList.add(BookData);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return BookList;
+		}
+	// 대여 버튼 클릭 시 대출중인 상태로 만드는 메서드(0 -->1)
+		public void CheckOutOn(int bNum) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				con = ds.getConnection();
+				String sql = "UPDATE book SET check_out = 1 WHERE bnum = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bNum);
+				
+				pstmt.executeUpdate();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		// 반납 버튼 클릭 시 대출 가능 상태로 만드는 메서드(1 -->0)
+				public void CheckOutOff(int bNum) {
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					
+					try {
+						con = ds.getConnection();
+						String sql = "UPDATE book SET check_out = 0 WHERE bnum = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, bNum);
+						
+						pstmt.executeUpdate();
+					}catch (Exception e) {
+						e.printStackTrace();
+					}finally {
+						try {
+							con.close();
+							pstmt.close();
+						}catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
 }
+

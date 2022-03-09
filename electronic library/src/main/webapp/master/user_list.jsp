@@ -22,15 +22,15 @@
 				<th>대여한 도서 수</th>
 			</thead>
 			<tbody> <!-- end값 조정해야 함. length 쓸 수 있게 -->
-				<c:forEach begin="0" end="2" var="i">
+				<c:forEach var="userList" items="${allUserList}">
 					<tr>
-						<td>${allUserList[i].uId}</td>
-						<td>${allUserList[i].uPw}</td>
-						<td>${allUserList[i].uName}</td>
-						<td>${allUserList[i].uPnum}</td>
-						<td>${allUserList[i].uEmail}</td>
-						<td>${allUserList[i].uType}</td>
-						<td>${allUserList[i].counting}</td>
+						<td>${userList.uId}</td>
+						<td>${userList.uPw}</td>
+						<td>${userList.uName}</td>
+						<td>${userList.uPnum}</td>
+						<td>${userList.uEmail}</td>
+						<td>${userList.uType}</td>
+						<td>${userList.counting}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -43,6 +43,8 @@ public class BookListServlet extends HttpServlet {
 		// 여러 UserVO 받아올 리스트 생성
 		List<BookVO> allBookList = dao.getAllBookList();
 		
+		System.out.println("모든 리스트 목록 : " + allBookList);
+		
 		// 바인딩
 		request.setAttribute("allBookList", allBookList);
 		
@@ -71,6 +73,8 @@ public class BookListServlet extends HttpServlet {
 		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher("/master/book_list.jsp");
 		dp.forward(request, response);
+		
+		
 	}
 
 }

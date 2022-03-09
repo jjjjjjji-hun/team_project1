@@ -24,14 +24,14 @@
 				
 			</thead>
 			<tbody> <!-- end값 조정해야 함. length 쓸 수 있게 -->
-				<c:forEach begin="0" end="2" var="i">
+				<c:forEach var="bookList" items="${allBookList}">
 					<tr>
-						<td>${allBookList[i].bnum}</td>
-						<td>${allBookList[i].bname}</td>
-						<td>${allBookList[i].bwriter}</td>
-						<td>${allBookList[i].bpub}</td>
-						<td>${allBookList[i].bcategory}</td>
-						<td>${allBookList[i].check_out}</td>
+						<td>${bookList.bNum}</td>
+						<td>${bookList.bName}</td>
+						<td>${bookList.bWriter}</td>
+						<td>${bookList.bPub}</td>
+						<td>${bookList.bCategory}</td>
+						<td>${bookList.checkOut}</td>
 						
 					</tr>
 				</c:forEach>
