@@ -49,7 +49,7 @@ public class UserDAO {
 			
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO userinfo VALUES(?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO userinfo(uid, uname, upw, upnum, uemail) VALUES(?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, fId);
