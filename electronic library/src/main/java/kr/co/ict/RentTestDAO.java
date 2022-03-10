@@ -39,7 +39,7 @@ private DataSource ds = null;
 	
 	
 	
-	// DB에 대여 책 목록 적재 (필요 없을 수도)
+	// DB에 대여 책 목록 적재 
 		// 번호 AI, 대여일/반납일/반납예정일/대출,반납여부/연체여부(디폴트값)
 	public void insertRentTestBookData(int bnum, String uid){
 		
@@ -191,7 +191,7 @@ private DataSource ds = null;
 		}
 
 	// 도서 미반납 시 연체 여부 업데이트 쿼리문 
-		// 번호 AI, 도서번호, 유저아이디(수정필요 없음), 대여일, 반납예정일(null값), 연체여부(디폴트값)
+		
 		public void UpdateOverdueOnBookData(Boolean overdue, int rentnum){
 								
 			Connection con = null;
@@ -223,7 +223,7 @@ private DataSource ds = null;
 		}
 
 	// 연체 여부 false로 되돌리는 업데이트 쿼리문 
-		// 번호 AI, 도서번호, 유저아이디(수정필요 없음), 대여일, 반납예정일(null값), 연체여부(디폴트값)
+	
 		public void UpdateOverdueOffBookData(Boolean overdue, int rentnum){
 										
 			Connection con = null;
@@ -252,5 +252,47 @@ private DataSource ds = null;
 					e.printStackTrace();
 				}
 			}
+		}
+	
+	// 대출 여부 확인하는 쿼리문
+		// check_out이 1 이면 대여 가능(한 번도 대여가 안 된 도서거나, 반납이 된 상태)
+		// check_out이 0 이면 대여 불가능(대여 중인 상태)
+		public RentTestVO getCheckOutData(int b_Num) {
+
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			RentTestVO book = null;
+			try {
+
+				con = ds.getConnection();
+				String sql = "SELECT check_out FROM renttest WHERE bnum = ? ORDER BY rentdate DESC limit 0, 1;";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, b_Num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					int rentNum = rs.getInt("rentnum");
+					Date rentDate = rs.getDate("rentdate");
+					Date returnDate = rs.getDate("returndate");
+					Date returnschedule = rs.getDate("returnschedule");
+					int bNum = rs.getInt("bnum");
+					String uId = rs.getString("uid");
+					boolean checkOut = rs.getBoolean("check_out");
+					boolean overdue = rs.getBoolean("overdue");
+					book = new RentTestVO(rentNum, rentDate, returnDate, returnschedule, bNum, uId, checkOut, overdue);
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();	
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return book;
 		}
 }
