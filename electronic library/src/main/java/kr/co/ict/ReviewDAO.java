@@ -63,8 +63,9 @@ public class ReviewDAO {
 				String revTitle = rs.getString("revtitle");
 				String revContent = rs.getString("revcontent");
 				Date revDate = rs.getDate("revdate");
+				Date revMDate = rs.getDate("revmdate");
 				
-				ReviewVO review = new ReviewVO(revNum, bNum, uId, revTitle, revContent, revDate);
+				ReviewVO review = new ReviewVO(revNum, bNum, uId, revTitle, revContent, revDate, revMDate);
 				allReviewList.add(review);
 				
 			}
@@ -121,8 +122,9 @@ public class ReviewDAO {
 				String revTitle = rs.getString("revtitle");
 				String revContent = rs.getString("revcontent");
 				Date revDate = rs.getDate("revdate");
+				Date revMDate = rs.getDate("revmdate");
 				
-				detailReview = new ReviewVO(revNum, bNum, uId, revTitle, revContent, revDate);
+				detailReview = new ReviewVO(revNum, bNum, uId, revTitle, revContent, revDate, revMDate);
 			}
 			
 		}catch(Exception e) {
@@ -144,7 +146,7 @@ public class ReviewDAO {
 	}
 	
 	
-	
+	// 리뷰 삭제
 	public void deleteReview(int reviewNum) {
 		
 		Connection con = null;
@@ -173,6 +175,47 @@ public class ReviewDAO {
 		
 		
 	}
+	
+	
+	
+	// 리뷰 수정
+	public void updateReview(int bookNum, String title, String content, int reviewNum) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "UPDATE review SET bnum=?, revtitle=?, revcontent=?, revmdate=now() WHERE revnum=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, bookNum);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			pstmt.setInt(4, reviewNum);
+			
+			pstmt.executeUpdate();		
+			
+			
+		}catch(Exception e) {
+			
+		}finally {
+			try {
+				con.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+	}
+	
+	
+	
 	
 	
 	

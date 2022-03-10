@@ -11,11 +11,12 @@ public class ReviewVO {
 	private String uId;
 	private String revTitle;
 	private String revContent;
-	private Date revDate;
+	private Date revDate;      // 작성일
+	private Date revMDate;     // 수정일
 	
 	
 	// 생성자
-	public ReviewVO(int revNum, int bNum, String uId, String revTitle, String revContent, Date revDate) {
+	public ReviewVO(int revNum, int bNum, String uId, String revTitle, String revContent, Date revDate, Date revMDate) {
 		super();
 		this.revNum = revNum;
 		this.bNum = bNum;
@@ -23,11 +24,14 @@ public class ReviewVO {
 		this.revTitle = revTitle;
 		this.revContent = revContent;
 		this.revDate = revDate;
-	}
+		this.revMDate = revMDate;
+	}	
 
+	
 	
 	// getter / setter
 	
+
 	public int getRevNum() {
 		return revNum;
 	}
@@ -88,14 +92,26 @@ public class ReviewVO {
 	}
 
 
+	public Date getRevMDate() {
+		return revMDate;
+	}
+
+
+	public void setRevMDate(Date revMDate) {
+		this.revMDate = revMDate;
+	}
+
+
+
+	
 	// toString
+	
 	@Override
 	public String toString() {
 		return "ReviewVO [revNum=" + revNum + ", bNum=" + bNum + ", uId=" + uId + ", revTitle=" + revTitle
-				+ ", revContent=" + revContent + ", revDate=" + revDate + "]";
+				+ ", revContent=" + revContent + ", revDate=" + revDate + ", revMDate=" + revMDate + "]";
 	}
 	
 	
 	
-
 }

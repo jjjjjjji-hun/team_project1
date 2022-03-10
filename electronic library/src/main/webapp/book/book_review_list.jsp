@@ -16,6 +16,7 @@
 			<th>제목</th>
 			<th>아이디</th>
 			<th>작성일</th>
+			<th>수정일</th>
 		</thead>
 		<tbody>
 			<c:forEach var="review" items="${allReviewList}">			
@@ -25,6 +26,7 @@
 					<td><a href="http://localhost:8181/electronic_library/reviewdetail?revnum=${review.revNum}">${review.revTitle}</a></td>
 					<td>${review.uId}</td>
 					<td>${review.revDate}</td>
+					<td>${review.revMDate}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
