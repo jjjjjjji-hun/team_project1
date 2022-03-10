@@ -139,10 +139,38 @@ public class ReviewDAO {
 		}
 		
 		
-		
-		
-		
 		return detailReview;
+		
+	}
+	
+	
+	
+	public void deleteReview(int reviewNum) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "DELETE FROM review WHERE revnum = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, reviewNum);
+			pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 	}
 	

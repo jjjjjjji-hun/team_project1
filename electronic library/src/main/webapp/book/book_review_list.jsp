@@ -27,11 +27,10 @@
 					<td>${review.revDate}</td>
 				</tr>
 			</c:forEach>
-
-
 		</tbody>
+	</table><br/>
 	
-	</table>
+
 
 </body>
 </html>
