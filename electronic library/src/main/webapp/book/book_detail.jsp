@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,15 +31,25 @@
 						<td>${bName.bWriter}</td>
 						<td>${bName.bPub}</td>
 						<td>${bName.bCategory}</td>
-						<td>${bName.checkOut}</td>
-						<td><c:if test="${book.checkOut eq 0}">
-    			<a href="http://localhost:8181/electronic_library/book/rent_check.jsp"><input type="button" value="대여"></a>
-				</c:if></td>
+						<td>
+							<c:choose>
+								<c:when test="${bName.checkOut eq true}">
+									대여 가능
+								</c:when>
+								<c:otherwise>
+									대여 불가능
+								</c:otherwise> 
+							</c:choose>
+						</td>
+						<td><c:if test="${bName.checkOut eq true}">
+    						<a href="http://localhost:8181/electronic_library/book/rent_check.jsp"><input type="button" value="대여"></a>
+						</c:if>
+						</td>
 						
 					</tr>
 			</tbody>
 		
-			</table>s
-
+			</table>
+			
 </body>
 </html>

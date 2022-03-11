@@ -233,7 +233,7 @@ public class BookDAO {
 			}
 			return BookList;
 		}
-	// 대여 버튼 클릭 시 대출중인 상태로 만드는 메서드(0 -->1)
+	// 대여 버튼 클릭 시 대출중인 상태로 만드는 메서드(1 -->0)
 		public void CheckOutOn(int bNum) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -257,7 +257,7 @@ public class BookDAO {
 			}
 		}
 		
-		// 반납 버튼 클릭 시 대출 가능 상태로 만드는 메서드(1 -->0)
+		// 반납 버튼 클릭 시 대출 가능 상태로 만드는 메서드(0 -->1)
 				public void CheckOutOff(int bNum) {
 					Connection con = null;
 					PreparedStatement pstmt = null;

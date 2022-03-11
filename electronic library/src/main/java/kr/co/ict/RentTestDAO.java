@@ -50,7 +50,7 @@ private DataSource ds = null;
 			
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO renttest(bnum, uid) VALUES (?, ?)";
+			String sql = "INSERT INTO renttest(rentdate, returnschedule, bnum, uid) VALUES (now(), DATE_ADD(NOW(), INTERVAL 14 DAY), ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, bnum);
@@ -104,6 +104,11 @@ private DataSource ds = null;
 					String uId = rs.getString("uid");
 					Boolean checkOut = rs.getBoolean("check_out");
 					Boolean overdue = rs.getBoolean("overdue");
+					if(returnDate.compareTo(returnSchedule) > 0 ) {
+						System.out.println("연체");
+					}else if(returnDate.compareTo(returnSchedule) <= 0 ) {
+						System.out.println("미연체");
+					}
 					
 					RentTestVO BookData = new RentTestVO(rentNum, rentDate, returnDate, returnSchedule, bNum, uId, checkOut, overdue);
 					rentBookList.add(BookData);
@@ -124,7 +129,7 @@ private DataSource ds = null;
 		
 	// 도서 대여 시 업데이트 쿼리문 
 		// 번호 AI, 도서번호, 유저아이디(수정필요 없음), 반납일(null값), 연체여부(디폴트값)
-		public void UpdateRentBookData(Date rentdate, Date returnschedule, Boolean checkOut, int rentnum){
+		public void UpdateRentBookData(Boolean checkOut, int rentnum){
 				
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -133,13 +138,11 @@ private DataSource ds = null;
 					
 				con = ds.getConnection();
 					
-				String sql = "UPDATE renttest SET rentdate = ?, returnschedule = ?, check_out = ? WHERE rentnum = ?";
+				String sql = "UPDATE renttest SET rentdate = now(), returnschedule = DATE_ADD(NOW(), INTERVAL 14 DAY), check_out = ? WHERE rentnum = ?";
 				pstmt = con.prepareStatement(sql);
 					
-				pstmt.setDate(1, rentdate);
-				pstmt.setDate(2, returnschedule);
-				pstmt.setBoolean(3, false);
-				pstmt.setInt(4, rentnum);
+				pstmt.setBoolean(1, false);
+				pstmt.setInt(2, rentnum);
 					
 				pstmt.executeUpdate();
 					
@@ -157,7 +160,7 @@ private DataSource ds = null;
 		}
 	// 도서 반납 시 업데이트 쿼리문 
 		// 번호 AI, 도서번호, 유저아이디(수정필요 없음), 대여일, 반납예정일(null값), 연체여부(디폴트값)
-		public void UpdateReturnBookData(Date rentdate, Date returndate, Date returnschedule, Boolean checkOut, int rentnum){
+		public void UpdateReturnBookData(Boolean checkOut, int rentnum){
 						
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -166,14 +169,11 @@ private DataSource ds = null;
 							
 				con = ds.getConnection();
 							
-				String sql = "UPDATE renttest SET rentdate = ?, returndate = ?, returnschedule = ?, check_out = ? WHERE rentnum = ?";
+				String sql = "UPDATE renttest SET rentdate = null, returndate = now(), returnschedule = null, check_out = ? WHERE rentnum = ?";
 				pstmt = con.prepareStatement(sql);
 							
-				pstmt.setDate(1, rentdate);
-				pstmt.setDate(2, returndate);
-				pstmt.setDate(3, returnschedule);
-				pstmt.setBoolean(4, true);
-				pstmt.setInt(5, rentnum);
+				pstmt.setBoolean(1, true);
+				pstmt.setInt(2, rentnum);
 							
 				pstmt.executeUpdate();
 							
