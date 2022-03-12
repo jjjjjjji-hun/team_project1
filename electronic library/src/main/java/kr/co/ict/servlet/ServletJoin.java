@@ -40,7 +40,7 @@ public class ServletJoin extends HttpServlet {
 		System.out.println("join_form.jsp에서 post 방식으로 접속");
 		
 		request.setCharacterEncoding("utf-8");
-		
+
 		String fId = request.getParameter("fid");
 		String fPw = request.getParameter("fpw");
 		String fName = request.getParameter("fname");

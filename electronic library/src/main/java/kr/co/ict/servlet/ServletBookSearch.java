@@ -58,7 +58,6 @@ public class ServletBookSearch extends HttpServlet {
 		System.out.println("post로 들어온 데이터 : " + fBname );
 		// VO 생성
 		List<BookVO> booklist = dao.getSearchBookList(fBname);
-		System.out.println("booklist" + booklist);
 		// 바인딩
 		request.setAttribute("BookList", booklist);
 		

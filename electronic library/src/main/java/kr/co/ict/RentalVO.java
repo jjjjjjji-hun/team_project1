@@ -2,22 +2,22 @@ package kr.co.ict;
 
 import java.sql.Date;
 // 렌트 테이블 + 리턴 테이블
-public class RentTestVO {
+public class RentalVO {
 
-	// rent 변수
+	// rental 변수
 		private int rentNum;     // 번호
 		private Date rentDate;   // 대여일
 		private Date returnDate;     // 반납일
 		private Date returnSchedule;  // 반납 예정일
 		private int bNum;             
 		private String uId;
-		private Boolean checkOut;     // 대출/반납 여부 디폴트 true 
-		// (true => 대출이 가능한 상태(마지막이 반납이였을 때) , false => 대출 불가능한 상태(마지막이 대출이였을 때))
-		private Boolean overdue;      // 연체 유무 디폴트 false
-		// (true => 연체 이력 있음, false => 연체 이력 없음) 추가로 true이면 패널티 받게(어떻게..?)
+		private Boolean checkOut;     // 대출/반납 여부 디폴트 false(0)
+		// (false => 대출이 가능한 상태(마지막이 반납이였을 때) , true => 대출 불가능한 상태(마지막이 대출이였을 때))
+		private Boolean overdue;      // 연체 유무 디폴트 false(0)
+		// (false => 연체 이력 없음,   true => 연체 이력 있음) 추가로 true이면 패널티 받게(어떻게..?)
 		
-	// 생성자
-		public RentTestVO(int rentNum, Date rentDate, Date returnDate, Date returnSchedule, int bNum, String uId,
+		// 생성자
+		public RentalVO(int rentNum, Date rentDate, Date returnDate, Date returnSchedule, int bNum, String uId,
 				Boolean checkOut, Boolean overdue) {
 			super();
 			this.rentNum = rentNum;
@@ -30,7 +30,7 @@ public class RentTestVO {
 			this.overdue = overdue;
 		}
 
-	// getter / setter
+		// getter / setter
 		public int getRentNum() {
 			return rentNum;
 		}
@@ -95,11 +95,13 @@ public class RentTestVO {
 			this.overdue = overdue;
 		}
 
-	// toString
+		// toString
 		@Override
 		public String toString() {
-			return "RentTestVO [rentNum=" + rentNum + ", rentDate=" + rentDate + ", returnDate=" + returnDate
+			return "RentalVO [rentNum=" + rentNum + ", rentDate=" + rentDate + ", returnDate=" + returnDate
 					+ ", returnSchedule=" + returnSchedule + ", bNum=" + bNum + ", uId=" + uId + ", checkOut="
 					+ checkOut + ", overdue=" + overdue + "]";
 		}
+		
+	
 }

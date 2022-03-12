@@ -33,7 +33,7 @@
 						<td>${bName.bCategory}</td>
 						<td>
 							<c:choose>
-								<c:when test="${bName.checkOut eq true}">
+								<c:when test="${bName.checkOut eq false}">
 									대여 가능
 								</c:when>
 								<c:otherwise>
@@ -41,9 +41,15 @@
 								</c:otherwise> 
 							</c:choose>
 						</td>
-						<td><c:if test="${bName.checkOut eq true}">
-    						<a href="http://localhost:8181/electronic_library/book/rent_check.jsp"><input type="button" value="대여"></a>
+						<td><c:if test="${bName.checkOut eq false}">
+    						<form action="http://localhost:8181/electronic_library/RentCheckServlet" method="post">
+    							<input type="hidden" value="${bName.bNum }" name="bnum"/>
+    							<input type="hidden" value="${bName.checkOut }" name="checkout"/>
+    							<input type="hidden" value="${sessionScope.session_id }" name="sid"/>
+    							<input type="submit" value="대여">
+    						</form>
 						</c:if>
+						
 						</td>
 						
 					</tr>

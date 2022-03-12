@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.ict.RentDAO;
-import kr.co.ict.RentVO;
+import kr.co.ict.RentalDAO;
+import kr.co.ict.RentalVO;
 
 /**
  * Servlet implementation class BookRentListServlet
@@ -34,17 +34,16 @@ public class BookRentListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// 관리자만 가능하다면 post로 바꿀 필요가 있지 않을까요? 관리자 창에서 버튼을 누를때 여기로 이동하게끔
 		// dao
-		RentDAO dao = RentDAO.getInstance();
-		
-		// 여러 RentVO 받아올 리스트 생성
-		List<RentVO> allRentBookList = dao.getAllRentBookList();
-		System.out.println("리스트 : " + allRentBookList);
+		RentalDAO dao = RentalDAO.getInstance();
+		// 여러 RentalVO 받아올 리스트 생성
+		List<RentalVO> allRentalBookList = dao.getAllRentalBookList();
+		System.out.println("리스트 : " + allRentalBookList);
 		
 		// 바인딩
-		request.setAttribute("allRentBookList", allRentBookList);
-		
+		request.setAttribute("allRentalBookList", allRentalBookList);
+
 		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher("/master/book_rent_list.jsp");
 		dp.forward(request, response);

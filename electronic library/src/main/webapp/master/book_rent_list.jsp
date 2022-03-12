@@ -14,19 +14,23 @@
 		<theader>
 			<th>대여 번호</th>
 			<th>대출일</th>
+			<th>반납일</th>
 			<th>반납 예정일</th>
 			<th>책 번호</th>
 			<th>아이디</th>
+			<th>대출 여부</th>
 			<th>연체 여부</th>
 		</theader>
 		<tbody>
-			<c:forEach var="list" items="${allRentBookList}">
+			<c:forEach var="list" items="${allRentalBookList}">
 				<tr>
 					<td>${list.rentNum }</td>
 					<td>${list.rentDate}</td>
+					<td>${list.returnDate}</td>
 					<td>${list.returnSchedule}</td>
 					<td>${list.bNum}</td>
 					<td>${list.uId}</td>
+					<td>${list.checkOut}</td>
 					<td>${list.overdue}</td>
 				</tr>
 			</c:forEach>
