@@ -30,6 +30,15 @@ public class UserVO {
 	
 	// getter / setter
 
+
+
+	public UserVO() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 	public String getuId() {
 		return uId;
 	}
