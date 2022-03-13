@@ -288,7 +288,7 @@ input[type=text]:placeholder {
     </div>
 
     <!-- Login Form -->
-    <form action="http://localhost:8181/electronic_library/users/login_check.jsp" method="post">   
+    <form action="http://localhost:8181/electronic_library/LoginServlet" method="post">   
       <input type="text" id="login" class="fadeIn second" name="fid" placeholder="login">
       <input type="text" id="password" class="fadeIn third" name="fpw" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">

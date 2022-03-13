@@ -14,7 +14,7 @@ public class UserVO {
 	
 	
 	// 생성자
-	public UserVO(String uId, String uName, String uPw, String uPnum, String uEmail, Boolean utype, int counting) {
+	public UserVO(String uId, String uName, String uPw, String uPnum, String uEmail, Boolean uType, int counting) {
 		super();
 		this.uId = uId;
 		this.uPw = uPw;
@@ -29,6 +29,15 @@ public class UserVO {
 	
 	
 	// getter / setter
+
+
+
+	public UserVO() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 
 	public String getuId() {
 		return uId;
