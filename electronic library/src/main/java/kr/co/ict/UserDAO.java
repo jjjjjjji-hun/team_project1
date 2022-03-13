@@ -53,7 +53,7 @@ public class UserDAO {
          
          con = ds.getConnection();
          
-         String sql = "INSERT INTO userinfo VALUES(?, ?, ?, ?, ?)";
+         String sql = "INSERT INTO userinfo(uid, uname, upw, upnum, uemail) VALUES(?, ?, ?, ?, ?)";
          pstmt = con.prepareStatement(sql);
          
          pstmt.setString(1, fId);
@@ -129,7 +129,7 @@ public class UserDAO {
    
    
    
-   // ■ 유저(한 명) 데이터 가져오기 ■ (세션 아이디) 
+   // ■ 유저(한 명) 데이터 가져오기 ■
    public UserVO getUserData(String sId) {
       
       String userId = sId;
@@ -180,7 +180,7 @@ public class UserDAO {
    
    
    
-   // ■ 회원 정보 수정 ■ (세션 아이디)
+   // ■ 회원 정보 수정 ■ (이름도 바꿀까 말까 고민했는데 일단 넣음)
    public void userUpdate(String name, String pw, String email, String pNum, String sId) {
       
       Connection con = null;

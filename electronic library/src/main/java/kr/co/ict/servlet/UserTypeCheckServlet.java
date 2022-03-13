@@ -35,9 +35,12 @@ public class UserTypeCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("/utypecheck로 들어옴");
+		
 		
 		HttpSession session = request.getSession();
-		Boolean sUserType = (Boolean)session.getAttribute("폼에서 입력해준 세션명으로 고쳐야함");
+		Boolean sUserType = (Boolean)session.getAttribute("sUtype");
+		System.out.println("들어온 유저 타입 -> " + sUserType );
 		
 		
 		// sUserType이 1이면 관리자, 0이면 사용자
@@ -45,8 +48,8 @@ public class UserTypeCheckServlet extends HttpServlet {
 			// 관리자
 			response.sendRedirect("http://localhost:8181/electronic_library/users/admin_page.jsp");
 		}else {
-			// 사용자
-			response.sendRedirect("http://localhost:8181/electronic_library/users/my_page.jsp");
+			// 사용자 (UserMyinfo.java 서블릿으로 이동)
+			response.sendRedirect("http://localhost:8181/electronic_library/usermyinfo");
 		}
 		
 		
