@@ -36,10 +36,21 @@
 		</div>	
 	</div>
 	<div id="category">
-		<h2>카테고리 목록</h2>
+		<!-- 대여수가 많은 수로 나열 -->
+		<h2>바로 대여 가능</h2>
+		<c:forEach var="bookList" items="${allBookList}">
+			<c:if test="${bookList.checkOut eq true}">
+				<a href="http://localhost:8181/electronic_library/book/book_detail.jsp">
+				${bookList.bName}
+				</a>	
+			</c:if>
+		</c:forEach>			
 	</div>
-	<div id="bookList">
+	<div id="BookList">
 		<h2>도서 목록</h2>
+		<c:forEach var="bookList" items="${allBookList}">
+			<td>${bookList.bName}</td>
+		</c:forEach>
 	</div>
 </body>
 </html>
