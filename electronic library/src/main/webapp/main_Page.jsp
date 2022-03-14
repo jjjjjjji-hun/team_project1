@@ -31,14 +31,17 @@
 				<a href="http://localhost:8181/electronic_library/logout">
 					<input type="button" value="로그아웃">
 				</a>
-
-				<a href="http://localhost:8181/electronic_library/utypecheck">
-					<input type="button" value="마이페이지">
-				</a>
-				
-
-				
 			</c:if>
+
+			<a href="http://localhost:8181/electronic_library/utypecheck">
+				<c:if test="${sUtype == true }">
+					<input type="button" value="관리 페이지">
+				</c:if>	
+				<c:if test="${sUtype == false }">
+					<input type="button" value="마이 페이지">
+				</c:if>	
+			</a>
+
 		</div>	
 	</div>
 	<div id="searchBar">
@@ -51,10 +54,21 @@
 		</div>	
 	</div>
 	<div id="category">
-		<h2>카테고리 목록</h2>
+		<!-- 대여수가 많은 수로 나열 -->
+		<h2>바로 대여 가능</h2>
+		<c:forEach var="bookList" items="${allBookList}">
+			<c:if test="${bookList.checkOut eq true}">
+				<a href="http://localhost:8181/electronic_library/book/book_detail.jsp">
+				${bookList.bName}
+				</a>	
+			</c:if>
+		</c:forEach>			
 	</div>
-	<div id="bookList">
+	<div id="BookList">
 		<h2>도서 목록</h2>
+		<c:forEach var="bookList" items="${allBookList}">
+			<td>${bookList.bName}</td>
+		</c:forEach>
 	</div>
 </body>
 </html>

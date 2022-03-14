@@ -92,7 +92,7 @@ public class UserDAO {
       try {
          
          con = ds.getConnection();
-         String sql = "SELECT * FROM userinfo";
+         String sql = "SELECT * FROM userinfo ORDER BY utype desc";
          pstmt = con.prepareStatement(sql);
          rs = pstmt.executeQuery();
          
