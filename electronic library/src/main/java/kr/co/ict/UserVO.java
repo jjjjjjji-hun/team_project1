@@ -21,7 +21,7 @@ public class UserVO {
 		this.uName = uName;
 		this.uPnum = uPnum;
 		this.uEmail = uEmail;
-		this.uType = false;
+		this.uType = uType;
 		this.counting = 0;
 	}
 

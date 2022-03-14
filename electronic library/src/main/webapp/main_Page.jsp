@@ -31,14 +31,17 @@
 				<a href="http://localhost:8181/electronic_library/logout">
 					<input type="button" value="로그아웃">
 				</a>
-
-				<a href="http://localhost:8181/electronic_library/utypecheck">
-					<input type="button" value="마이페이지">
-				</a>
-				
-
-				
 			</c:if>
+
+			<a href="http://localhost:8181/electronic_library/utypecheck">
+				<c:if test="${sUtype == true }">
+					<input type="button" value="관리 페이지">
+				</c:if>	
+				<c:if test="${sUtype == false }">
+					<input type="button" value="마이 페이지">
+				</c:if>	
+			</a>
+
 		</div>	
 	</div>
 	<div id="searchBar">

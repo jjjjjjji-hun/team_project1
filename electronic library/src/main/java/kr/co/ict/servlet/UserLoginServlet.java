@@ -43,6 +43,7 @@ public class UserLoginServlet extends HttpServlet {
 		// DAO 생성 후, fId로 날아온 아이디로 DB에서 SELECT 하는 메서드 실행
 		UserDAO dao = UserDAO.getInstance();
 		UserVO user = dao.getUserData(fId);
+		System.out.println("/userlogin 서블릿으로 들어온 유저 정보 -> " + user);
 		
 		// 폼에서 날린 아이디가 DB에 있는 경우
 		if(user != null) {
@@ -55,6 +56,9 @@ public class UserLoginServlet extends HttpServlet {
 				session.setAttribute("sId", user.getuId());
 				session.setAttribute("sPw", user.getuPw());
 				session.setAttribute("sUtype", user.isuType());
+				
+				Boolean utypecheck = (Boolean)session.getAttribute("sUtype");
+				System.out.println("/userlogin 서블릿에서 들어온 유저 타입은 -> " + utypecheck);
 				
 				// 메인 페이지로 이동
 				response.sendRedirect("http://localhost:8181/electronic_library/main_Page.jsp");
