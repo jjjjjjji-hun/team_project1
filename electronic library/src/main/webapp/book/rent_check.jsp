@@ -16,7 +16,7 @@
 	대여 완료                                         
 	*/
 	// 
-	if(session.getAttribute("session_id") == null){
+	if(session.getAttribute("sId") == null){
 		out.println("<script>alert('로그인이 필요한 서비스 입니다.');</script>");
 	} else {
 		out.println("<script>alert('대여가 완료되었습니다. 마이페이지를 확인해주세요.');</script>");

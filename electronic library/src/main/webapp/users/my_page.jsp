@@ -32,8 +32,11 @@
 	</form>
 	
 	<!-- 대여정보 구현 아직 -->
-	<button><a href="http://localhost:8181/electronic_library/booklist"> 대여 정보 </a></button>
-
+	<!-- <form action="http://localhost:8181/electronic_library/rentinfo" method="post">
+		<input type="hidden" name="sid" value="${sessionScope.sId}"/>
+		<input type="submit" value="대여 정보"/>
+	</form>-->
+	<button><a href="http://localhost:8181/electronic_library/rentinfo"> 대여 정보 </a></button>
 	
 	<!-- 탈퇴하기 -->
 	<form action="http://localhost:8181/electronic_library/memberout" method="post">

@@ -58,13 +58,18 @@ public class ServletBookSearch extends HttpServlet {
 		System.out.println("post로 들어온 데이터 : " + fBname );
 		// VO 생성
 		List<BookVO> booklist = dao.getSearchBookList(fBname);
+
 		// 바인딩
 		request.setAttribute("BookList", booklist);
 		
 		// 포워딩
-		RequestDispatcher dp = request.getRequestDispatcher("/book/search_check.jsp");
-		//dp = request.getRequestDispatcher("/book/book_detail.jsp");
+		if(booklist.isEmpty()) { //찾는 책이 없다는 경고문구 추가해야함
+		RequestDispatcher dp = request.getRequestDispatcher("/book/book_search.jsp");
 		dp.forward(request, response);
+		} else {
+			RequestDispatcher dp = request.getRequestDispatcher("/book/search_check.jsp");
+			dp.forward(request, response);
+		}
 	}
 
 }
