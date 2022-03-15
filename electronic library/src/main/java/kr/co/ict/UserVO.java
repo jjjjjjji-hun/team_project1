@@ -22,7 +22,7 @@ public class UserVO {
 		this.uPnum = uPnum;
 		this.uEmail = uEmail;
 		this.uType = uType;
-		this.counting = 0;
+		this.counting = counting;
 	}
 
 

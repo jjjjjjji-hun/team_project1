@@ -59,13 +59,14 @@ public class ReviewDAO {
 			while(rs.next()) {
 				int revNum = rs.getInt("revnum");
 				int bNum = rs.getInt("bnum");
+				String bName = rs.getString("bname");
 				String uId = rs.getString("uid");
 				String revTitle = rs.getString("revtitle");
 				String revContent = rs.getString("revcontent");
 				Date revDate = rs.getDate("revdate");
 				Date revMDate = rs.getDate("revmdate");
 				
-				ReviewVO review = new ReviewVO(revNum, bNum, uId, revTitle, revContent, revDate, revMDate);
+				ReviewVO review = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
 				allReviewList.add(review);
 				
 			}
@@ -118,13 +119,14 @@ public class ReviewDAO {
 			if(rs.next()) {
 				int revNum = rs.getInt("revnum");
 				int bNum = rs.getInt("bnum");
+				String bName = rs.getString("bname");
 				String uId = rs.getString("uid");
 				String revTitle = rs.getString("revtitle");
 				String revContent = rs.getString("revcontent");
 				Date revDate = rs.getDate("revdate");
 				Date revMDate = rs.getDate("revmdate");
 				
-				detailReview = new ReviewVO(revNum, bNum, uId, revTitle, revContent, revDate, revMDate);
+				detailReview = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
 			}
 			
 		}catch(Exception e) {
@@ -179,7 +181,7 @@ public class ReviewDAO {
 	
 	
 	// 리뷰 수정
-	public void updateReview(int bookNum, String title, String content, int reviewNum) {
+	public void updateReview(String title, String content, int reviewNum) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -188,13 +190,12 @@ public class ReviewDAO {
 			
 			con = ds.getConnection();
 			
-			String sql = "UPDATE review SET bnum=?, revtitle=?, revcontent=?, revmdate=now() WHERE revnum=?";
+			String sql = "UPDATE review SET revtitle=?, revcontent=?, revmdate=now() WHERE revnum=?";
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, bookNum);
-			pstmt.setString(2, title);
-			pstmt.setString(3, content);
-			pstmt.setInt(4, reviewNum);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, reviewNum);
 			
 			pstmt.executeUpdate();		
 			
