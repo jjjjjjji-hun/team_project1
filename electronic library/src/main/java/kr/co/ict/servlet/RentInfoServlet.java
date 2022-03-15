@@ -44,6 +44,7 @@ public class RentInfoServlet extends HttpServlet {
 		UserDAO dao2 = UserDAO.getInstance();
 		List<RentalVO> rentInfoList = dao1.getAllRentalInfoBookList(sId);
 		UserVO userInfo = dao2.getUserData(sId);
+		System.out.println(userInfo);
 		// 바인딩
 		request.setAttribute("rentInfoList", rentInfoList);
 		request.setAttribute("userInfo", userInfo);
