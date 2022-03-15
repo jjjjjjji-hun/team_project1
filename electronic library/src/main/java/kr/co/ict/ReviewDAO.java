@@ -250,6 +250,51 @@ public class ReviewDAO {
 	}
 	
 	
+	// 이미 작성한 리뷰인지 확인하는 메서드 (ReviewInsertFormService 에서 사용)
+	
+			public ReviewVO getMyReviewInfo(String uId) {
+				
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				int DBbNum = 0;
+				int DBrevNum = 0;
+				ReviewVO testVO = null;
+				
+				try {
+					
+					con = ds.getConnection();
+					
+					String sql = "SELECT bnum, revnum FROM review WHERE uid =? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, uId);
+					pstmt.executeQuery();
+					
+					
+					if(rs.next()) {
+						DBbNum = rs.getInt("bnum");
+						DBrevNum = rs.getInt("revnum");
+						
+						testVO = new ReviewVO(DBrevNum, DBbNum, "test", uId, "test", "test", null, null);
+					}
+					
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						con.close();
+						pstmt.close();
+						rs.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
+				
+				return testVO;
+			}
+	
 	
 	
 	

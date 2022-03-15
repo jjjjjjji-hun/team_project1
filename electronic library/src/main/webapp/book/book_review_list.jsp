@@ -32,9 +32,9 @@
 		</tbody>
 	</table><br/>
 	
-	<!-- 임시 버튼(대여리스트에 구현할까 생각중) -->
+	<!-- 임시 버튼(대여리스트에 구현할까 생각중) -> 구현 (책 반납을 완료한 사람만 리뷰 작성할 수 있게)
 	<button><a href="/electronic_library/insertReviewForm.do">리뷰 쓰기</a></button>
-	
+	 -->
 
 	
 

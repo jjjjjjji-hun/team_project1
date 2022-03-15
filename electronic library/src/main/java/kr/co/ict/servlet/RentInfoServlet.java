@@ -38,7 +38,7 @@ public class RentInfoServlet extends HttpServlet {
 		// 세션 아이디
 		HttpSession session = request.getSession();
 		String sId = (String)session.getAttribute("sId");
-		//String sId = request.getParameter("sid");
+		
 		// 다오 생성, 메서드 호출
 		RentalDAO dao1 = RentalDAO.getInstance();
 		UserDAO dao2 = UserDAO.getInstance();

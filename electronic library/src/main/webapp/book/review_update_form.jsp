@@ -15,7 +15,7 @@
 
 	<form action="http://localhost:8181/electronic_library/updateReview.do" method="post">
 		리뷰 번호 <input type="number" name="revnum" value="${reviewDetail.revNum}" readonly>	&nbsp;&nbsp;
-		책 번호 <input type="number" name="booknum" value="${reviewDetail.bNum}">&nbsp;&nbsp;
+		책 번호 <input type="number" name="booknum" value="${reviewDetail.bNum}" readonly>&nbsp;&nbsp;
 		작성일 <input type="text" value="${reviewDetail.revDate}" readonly>
 		수정일 <input type="text" value="${reviewDetail.revMDate}" readonly><br/><br/><br/>
 			

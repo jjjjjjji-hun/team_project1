@@ -18,9 +18,13 @@
 			<th>반납일</th>
 			<th>반납 예정일</th>
 			<th>책 번호</th>
-			<th>아이디</th>
+			<th>책 이름</th>
+			<!-- <th>아이디</th>  -->
 			<th>대출 여부</th>
 			<th>반납하기</th>
+			<!-- 03.15 추가사항 -->
+			<th>리뷰 작성</th>
+			
 			<!-- <th>연체 여부</th> 굳이 필요 없을것 같아서 주석처리했습니다. -->
 		</theader>
 		<tbody>
@@ -31,7 +35,8 @@
 					<td>${list.returnDate}</td>
 					<td>${list.returnSchedule}</td>
 					<td>${list.bNum}</td>
-					<td>${list.uId}</td>
+					<td>${list.bName}</td>
+					<!-- <td>${list.uId}</td>  없어도 될 것 같아서 주석처리 했어요 -다은- -->
 					<td>
 						<c:choose>
 							<c:when test="${list.checkOut eq true}">
@@ -55,6 +60,19 @@
 							<c:otherwise>
 							
 							</c:otherwise>
+						</c:choose>
+					</td>
+					<td><!-- 03.15 추가 리뷰작성 -->
+						<c:choose>
+							<c:when test="${list.checkOut eq false}">
+								<form action="/electronic_library/insertReviewForm.do" method="post">
+									<input type="hidden" value="${list.bNum}" name="fbnum"/>
+									<input type="hidden" value="${list.bName}" name="fbname"/>
+									<input type="hidden" value="${list.uId}" name="fid"/>
+									
+							    	<input type="submit" value="리뷰 쓰기">
+								</form>
+							</c:when>
 						</c:choose>
 					</td>
 				</tr>

@@ -9,7 +9,8 @@ public class RentalVO {
 		private Date rentDate;   // 대여일
 		private Date returnDate;     // 반납일
 		private Date returnSchedule;  // 반납 예정일
-		private int bNum;             
+		private int bNum;     
+		private String bName;
 		private String uId;
 		private Boolean checkOut;     // 대출/반납 여부 디폴트 false(0)
 		// (false => 대출이 가능한 상태(마지막이 반납이였을 때) , true => 대출 불가능한 상태(마지막이 대출이였을 때))
@@ -17,7 +18,7 @@ public class RentalVO {
 		// (false => 연체 이력 없음,   true => 연체 이력 있음) 추가로 true이면 패널티 받게(어떻게..?)
 		
 		// 생성자
-		public RentalVO(int rentNum, Date rentDate, Date returnDate, Date returnSchedule, int bNum, String uId,
+		public RentalVO(int rentNum, Date rentDate, Date returnDate, Date returnSchedule, int bNum, String bName, String uId,
 				Boolean checkOut, Boolean overdue) {
 			super();
 			this.rentNum = rentNum;
@@ -25,11 +26,14 @@ public class RentalVO {
 			this.returnDate = returnDate;
 			this.returnSchedule = returnSchedule;
 			this.bNum = bNum;
+			this.bName = bName;
 			this.uId = uId;
 			this.checkOut = checkOut;
 			this.overdue = overdue;
 		}
 
+		
+		
 		// getter / setter
 		public int getRentNum() {
 			return rentNum;
@@ -71,6 +75,14 @@ public class RentalVO {
 			this.bNum = bNum;
 		}
 
+		public String getbName() {
+			return bName;
+		}
+
+		public void setbName(String bName) {
+			this.bName = bName;
+		}
+
 		public String getuId() {
 			return uId;
 		}
@@ -95,13 +107,27 @@ public class RentalVO {
 			this.overdue = overdue;
 		}
 
+
+		
 		// toString
 		@Override
 		public String toString() {
 			return "RentalVO [rentNum=" + rentNum + ", rentDate=" + rentDate + ", returnDate=" + returnDate
-					+ ", returnSchedule=" + returnSchedule + ", bNum=" + bNum + ", uId=" + uId + ", checkOut="
-					+ checkOut + ", overdue=" + overdue + "]";
+					+ ", returnSchedule=" + returnSchedule + ", bNum=" + bNum + ", bName=" + bName + ", uId=" + uId
+					+ ", checkOut=" + checkOut + ", overdue=" + overdue + "]";
 		}
+		
+		
+		
+		
+		
+
+
+		
+		
+		
+
+		
 		
 	
 }

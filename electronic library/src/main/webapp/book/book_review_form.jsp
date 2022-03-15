@@ -18,9 +18,9 @@
 	<h1>리뷰 작성 페이지 </h1>
 	
 		<form action="http://localhost:8181/electronic_library/insertReview.do" method="post">
-			책 번호 <input type="number" name="fbnum" >&nbsp;&nbsp;
-			책 이름 <input type="text" name="fbname" >&nbsp;&nbsp;
-			아이디 <input type="text" name="fid"><br/><br/> <br/>
+			책 번호 <input type="number" name="fbnum" value="${bNum}" readonly>&nbsp;&nbsp;
+			책 이름 <input type="text" name="fbname" value="${bName}" readonly>&nbsp;&nbsp;
+			아이디 <input type="text" name="fid" value="${uId}" readonly><br/><br/> <br/>
 			제목 <textarea rows="1" cols="50" name="ftitle"></textarea> <br/> <br/>
 			<textarea rows="15" cols="100" name="fcontent"></textarea> <br/><br/>
 			<input type="reset" value="초기화"/>
