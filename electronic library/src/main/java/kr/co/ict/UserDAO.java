@@ -305,4 +305,70 @@ public class UserDAO {
 		}
 		return ID_LOGIN_FAIL;
 	}
+   
+// 대여 시 대여 중인 도서 수 증가 업데이트
+   public void countingUpdateUP(String sId) {
+      
+      Connection con = null;
+      PreparedStatement pstmt = null;
+      
+      try {
+         
+         
+         con = ds.getConnection();
+         
+         String sql = "UPDATE userinfo SET counting = counting + 1 WHERE uid = ?";
+         pstmt = con.prepareStatement(sql);
+         
+         pstmt.setString(1, sId);
+         
+         pstmt.executeUpdate();
+         
+         
+      }catch(Exception e) {
+         e.printStackTrace();
+         
+      }finally {
+         try {
+            con.close();
+            pstmt.close();
+            
+         }catch(Exception e) {
+            e.printStackTrace();
+         }
+      }
+   }
+   
+// 반납 시 대여 중인 도서 수 감소 업데이트
+   public void countingUpdateDown(String sId) {
+      
+      Connection con = null;
+      PreparedStatement pstmt = null;
+      
+      try {
+         
+         
+         con = ds.getConnection();
+         
+         String sql = "UPDATE userinfo SET counting = counting - 1 WHERE uid = ?";
+         pstmt = con.prepareStatement(sql);
+         
+         pstmt.setString(1, sId);
+         
+         pstmt.executeUpdate();
+         
+         
+      }catch(Exception e) {
+         e.printStackTrace();
+         
+      }finally {
+         try {
+            con.close();
+            pstmt.close();
+            
+         }catch(Exception e) {
+            e.printStackTrace();
+         }
+      }
+   }
 }

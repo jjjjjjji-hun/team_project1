@@ -23,7 +23,7 @@
 	이름 : <input type="text" value="${user.uName}" readonly><br/>
 	전화번호 : <input type="text" value="${user.uPnum}" readonly> <br/>
 	이메일 : <input type="text" value="${user.uEmail}" readonly> <br/>	<br/>
-	대여 중인 도서 수 : <input type="number" value="${user.counting}" readonly> <br/><br/>
+	<!-- 대여 중인 도서 수 : <input type="number" value="${user.counting}" readonly> <br/><br/> 대여 정보로 옮김-->
 	
 	<!-- 정보 수정하기 -->
 	<form action="http://localhost:8181/electronic_library/userupdateform" method="post">

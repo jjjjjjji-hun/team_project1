@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import kr.co.ict.BookDAO;
 import kr.co.ict.BookVO;
 import kr.co.ict.RentalDAO;
+import kr.co.ict.UserDAO;
 
 /**
  * Servlet implementation class RentCheckServlet
@@ -46,10 +47,12 @@ public class RentCheckServlet extends HttpServlet {
 		// 다오 생성
 		BookDAO dao1 = BookDAO.getInstance();
 		RentalDAO dao2 = RentalDAO.getInstance();
+		UserDAO dao3 = UserDAO.getInstance();
 		// 대여 버튼 클릭 시 메서드 실행
 		dao2.insertRentalBookData(bNum, sId);
 		dao1.CheckOutOn(bNum);
 		BookVO Book = dao1.getBookData(bName);
+		dao3.countingUpdateUP(sId);
 		
 		/*if(uId == null){
 			out.println("<script>alert('로그인이 필요한 서비스 입니다.');</script>");

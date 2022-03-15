@@ -47,6 +47,7 @@ public class ReturnBookServlet extends HttpServlet {
 		UserDAO dao3 = UserDAO.getInstance();
 		dao1.CheckOutOff(bNum);
 		dao2.UpdateRentalBookData(rentNum);
+		dao3.countingUpdateDown(sId);
 		List<RentalVO> rentInfoList = dao2.getAllRentalInfoBookList(sId);
 		UserVO userInfo = dao3.getUserData(sId);
 		// 바인딩

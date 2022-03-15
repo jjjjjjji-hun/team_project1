@@ -9,7 +9,8 @@
 </head>
 <body>
 	<h1>'${userInfo.uId }' 님의 도서 대여 정보 입니다.</h1>
-	
+	<hr/>
+	<h2>'${userInfo.uId }' 님의 대여 중인 도서 수는 '${userInfo.counting }' 권 입니다.</h2>
    	 		<table border="1">
 		<theader>
 			<th>대여 번호</th>
