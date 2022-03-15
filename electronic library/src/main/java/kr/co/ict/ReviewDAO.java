@@ -215,6 +215,40 @@ public class ReviewDAO {
 		
 	}
 	
+
+	// 리뷰 적재 ( 리뷰쓰기 버튼 구현 이후 수정 필요, 제목/내용/아이디만 받게 )
+	public void insertReview(int bNum, String bName, String sId, String title, String content) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "INSERT INTO review(bnum, bname, uid, revtitle, revcontent) VALUES(?, ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bNum);
+			pstmt.setString(2, bName);
+			pstmt.setString(3, sId);
+			pstmt.setString(4, title);
+			pstmt.setString(5, content);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+				pstmt.close();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	
 	
 	

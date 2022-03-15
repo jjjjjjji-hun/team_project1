@@ -30,7 +30,7 @@ public class ReviewDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("post로 접근");
 		
-		String strReviewNum = request.getParameter("reviewNum");
+		String strReviewNum = request.getParameter("revnum");
 		int reviewNum = Integer.parseInt(strReviewNum);
 		System.out.println("받은 리뷰 번호 : " + reviewNum);
 		

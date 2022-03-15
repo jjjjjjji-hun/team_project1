@@ -23,7 +23,7 @@
 				<tr>
 					<td>${review.revNum}</td>
 					<td>${review.bNum}</td>
-					<td><a href="http://localhost:8181/electronic_library/reviewdetail?revnum=${review.revNum}">${review.revTitle}</a></td>
+					<td><a href="http://localhost:8181/electronic_library/reviewDetail.do?revnum=${review.revNum}">${review.revTitle}</a></td>
 					<td>${review.uId}</td>
 					<td>${review.revDate}</td>
 					<td>${review.revMDate}</td>
@@ -31,6 +31,11 @@
 			</c:forEach>
 		</tbody>
 	</table><br/>
+	
+	<!-- 임시 버튼(대여리스트에 구현할까 생각중) -->
+	<button><a href="/electronic_library/insertReviewForm.do">리뷰 쓰기</a></button>
+	
+
 	
 
 

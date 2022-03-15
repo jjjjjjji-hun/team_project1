@@ -32,10 +32,10 @@ public class ReviewUpdateServlet extends HttpServlet {
 		// 폼에서 날아온 데이터 받기
 		request.setCharacterEncoding("utf-8");
 		
-		String strRevNum = request.getParameter("revNum");
+		String strRevNum = request.getParameter("revnum");
 		int revNum = Integer.parseInt(strRevNum);
 		
-		String strBookNum = request.getParameter("bookNum");
+		String strBookNum = request.getParameter("booknum");
 		System.out.println("폼에서 수정한 책 번호 String 타입 : " + strBookNum);
 		int bookNum = Integer.parseInt(strBookNum);
 		System.out.println("폼에서 수정한 책 번호 : " + bookNum);
