@@ -30,7 +30,7 @@ public class ReviewInsertToDBService implements IReviewService {
 
 		ReviewDAO dao = ReviewDAO.getInstance();
 		
-		dao.insertReview(bNum, bName, title, content, id);
+		dao.insertReview(bNum, bName, id, title, content);
 		
 	}
 

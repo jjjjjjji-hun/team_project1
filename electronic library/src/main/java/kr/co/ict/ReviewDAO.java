@@ -252,30 +252,36 @@ public class ReviewDAO {
 	
 	// 이미 작성한 리뷰인지 확인하는 메서드 (ReviewInsertFormService 에서 사용)
 	
-			public ReviewVO getMyReviewInfo(String uId) {
+			public List<ReviewVO> getMyReviewInfo(String userId) {
 				
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
-				int DBbNum = 0;
-				int DBrevNum = 0;
-				ReviewVO testVO = null;
+				List<ReviewVO> testVOList = null;
 				
 				try {
 					
 					con = ds.getConnection();
 					
-					String sql = "SELECT bnum, revnum FROM review WHERE uid =? ";
+					String sql = "SELECT * FROM review WHERE uid =? ";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, uId);
-					pstmt.executeQuery();
+					pstmt.setString(1, userId);
+					rs = pstmt.executeQuery();
 					
 					
-					if(rs.next()) {
-						DBbNum = rs.getInt("bnum");
-						DBrevNum = rs.getInt("revnum");
+					while(rs.next()) {
 						
-						testVO = new ReviewVO(DBrevNum, DBbNum, "test", uId, "test", "test", null, null);
+						int revNum = rs.getInt("revnum");
+						int bNum = rs.getInt("bnum");
+						String bName = rs.getString("bname");
+						String uId = rs.getString("uid");
+						String revTitle = rs.getString("revtitle");
+						String revContent = rs.getString("revcontent");
+						Date revDate = rs.getDate("revdate");
+						Date revMDate = rs.getDate("revmdate");
+						
+						ReviewVO testVO = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
+						testVOList.add(testVO);
 					}
 					
 					
@@ -292,7 +298,7 @@ public class ReviewDAO {
 				}
 				
 				
-				return testVO;
+				return testVOList;
 			}
 	
 	
