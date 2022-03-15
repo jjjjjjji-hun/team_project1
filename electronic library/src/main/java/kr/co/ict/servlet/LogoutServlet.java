@@ -24,16 +24,23 @@ public class LogoutServlet extends HttpServlet {
     }
 
 	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-			// 세션 만료
-			HttpSession session = request.getSession();
-			session.invalidate();
-			
-			// 로그인 폼으로 리다이렉트
-			response.sendRedirect("http://localhost:8181/electronic_library/users/login_form.jsp");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+     HttpSession session = request.getSession();
+		
+	 session.invalidate();
+     
+     response.sendRedirect("http://localhost:8181/electronic_library/main_Page.jsp");
 	}
 
 }

@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.co.ict.BookDAO;
-import kr.co.ict.BookVO;
 import kr.co.ict.RentalDAO;
 import kr.co.ict.RentalVO;
 import kr.co.ict.UserDAO;
@@ -44,7 +42,6 @@ public class RentInfoServlet extends HttpServlet {
 		// 다오 생성, 메서드 호출
 		RentalDAO dao1 = RentalDAO.getInstance();
 		UserDAO dao2 = UserDAO.getInstance();
-		BookDAO dao3 = BookDAO.getInstance();
 		List<RentalVO> rentInfoList = dao1.getAllRentalInfoBookList(sId);
 		UserVO userInfo = dao2.getUserData(sId);
 		// 바인딩
