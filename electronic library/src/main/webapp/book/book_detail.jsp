@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<!-- 검색된 도서 최종 확인 페이지 -->
-   	 		<table border="1">
+	<h1>'${bName.bName }' 책 검색 결과</h1>
+   	 		<table class="table table-hover">
 		
 			<thead>
 				<th>도서 번호</th>
@@ -19,23 +20,42 @@
 				<th>출판사</th>
 				<th>카테고리</th>
 				<th>대여 상태</th>
+				<th>대여하기</th>
+				
 				
 			</thead>
 			<tbody>
-			<!-- 서블릿에서는 search_check.jsp로는 데이터를 주었지만 search_check.jsp에서 detail로는
-			데이터를 어떻게 받아올지.. -->
 					<tr>
-						<td>${allBookList.bNum}</td>
-						<td>${allBookList.bName}</td>
-						<td>${allBookList.bWriter}</td>
-						<td>${allBookList.bPub}</td>
-						<td>${allBookList.bCategory}</td>
-						<td>${allBookList.check_out}</td>
+						<td>${bName.bNum}</td>
+						<td>${bName.bName}</td>
+						<td>${bName.bWriter}</td>
+						<td>${bName.bPub}</td>
+						<td>${bName.bCategory}</td>
+						<td>
+							<c:choose>
+								<c:when test="${bName.checkOut eq false}">
+									대여 가능
+								</c:when>
+								<c:otherwise>
+									대여 불가능
+								</c:otherwise> 
+							</c:choose>
+						</td>
+						<td><c:if test="${bName.checkOut eq false}">
+    						<form action="http://localhost:8181/electronic_library/RentCheckServlet" method="post">
+    							<input type="hidden" value="${bName.bNum }" name="bnum"/>
+    							<input type="hidden" value="${bName.checkOut }" name="checkout"/>
+    							<input type="hidden" value="${sessionScope.session_id }" name="sid"/>
+    							<input type="submit" value="대여">
+    						</form>
+						</c:if>
+						
+						</td>
 						
 					</tr>
 			</tbody>
 		
 			</table>
-
+			
 </body>
 </html>

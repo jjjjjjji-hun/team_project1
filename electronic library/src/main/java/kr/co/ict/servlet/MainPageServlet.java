@@ -1,5 +1,3 @@
-/* 서블릿 : 대여 도서 확인용 -> book_rent_list.jsp로 이동*/
-
 package kr.co.ict.servlet;
 
 import java.io.IOException;
@@ -12,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.ict.RentalDAO;
-import kr.co.ict.RentalVO;
+import kr.co.ict.BookDAO;
+import kr.co.ict.BookVO;
 
 /**
- * Servlet implementation class BookRentListServlet
+ * Servlet implementation class mainPageServlet
  */
-@WebServlet("/rentlist")
-public class BookRentListServlet extends HttpServlet {
+@WebServlet("/mainPage")
+public class MainPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookRentListServlet() {
+    public MainPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,23 +32,29 @@ public class BookRentListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 관리자만 가능하다면 post로 바꿀 필요가 있지 않을까요? 관리자 창에서 버튼을 누를때 여기로 이동하게끔
 		// dao
-		RentalDAO dao = RentalDAO.getInstance();
-		// 여러 RentalVO 받아올 리스트 생성
-		List<RentalVO> allRentalBookList = dao.getAllRentalBookList();
-		System.out.println("리스트 : " + allRentalBookList);
+		BookDAO dao = BookDAO.getInstance();
+		
+		// 여러 UserVO 받아올 리스트 생성
+		List<BookVO> allBookList = dao.getAllBookList();
+		
+		System.out.println("모든 리스트 목록 : " + allBookList);
 		
 		// 바인딩
-		request.setAttribute("allRentalBookList", allRentalBookList);
-
+		request.setAttribute("allBookList", allBookList);
+		
 		// 포워딩
-		RequestDispatcher dp = request.getRequestDispatcher("/master/book_rent_list.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/main_Page.jsp");
 		dp.forward(request, response);
 		
-				
-		
-		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

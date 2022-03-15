@@ -1,6 +1,7 @@
 package kr.co.ict.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -56,9 +57,10 @@ public class ServletBookSearch extends HttpServlet {
 		// 확인하기(디버깅)
 		System.out.println("post로 들어온 데이터 : " + fBname );
 		// VO 생성
-		BookVO book1 = dao.getBookData(fBname);
+		List<BookVO> booklist = dao.getSearchBookList(fBname);
 		// 바인딩
-		request.setAttribute("allBookList", book1);
+		request.setAttribute("BookList", booklist);
+		
 		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher("/book/search_check.jsp");
 		//dp = request.getRequestDispatcher("/book/book_detail.jsp");

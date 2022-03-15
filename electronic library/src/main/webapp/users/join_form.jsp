@@ -7,16 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- ../master/user_list.jsp -->
+
 	<h1>회원 가입 페이지</h1>
 		<form action ="http://localhost:8181/electronic_library/ServletJoin" method="post">
-		아이디 : <input type="text" name="fid" required/><br/>
-		비밀번호 : <input type="password" name="fpw" required/><br/>
-		이름 : <input type="text" name="fname" required/><br/>
-		전화번호 : <input type="text" name="fpnum" required/><br/>
-		이메일 : <input type="email" name="femail"/><br/>
-		<input type="submit" value="회원가입"/>&nbsp;&nbsp;&nbsp;
-		<input type="reset" value="초기화"/>
+			아이디 : <input type="text" name="fid" required/><br/>
+			비밀번호 : <input type="password" name="fpw" required/><br/>
+			이름 : <input type="text" name="fname" required/><br/>
+			전화번호 : <input type="text" name="fpnum" required/><br/>
+			이메일 : <input type="email" name="femail" required/><br/>
+			<input type="submit" value="회원가입"/>&nbsp;&nbsp;&nbsp;
+			<input type="reset" value="초기화"/>
 		</form>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package kr.co.ict.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,18 +39,33 @@ public class MemberOutServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	    HttpSession session = null;
-	    session = request.getSession();
-
-	    String sId = (String)session.getAttribute("session_id");
-	
+		System.out.println("/memberout doPost로 들어옴");
+		
+	    HttpSession session = request.getSession();
+	    String sId = (String)session.getAttribute("sId");
+	    System.out.println("삭제 서블릿에서 발급된 세션 아이디 -> " + sId);	    
+	    
+	    // 회원탈퇴 완료창 (확인 / 취소 누르기도 전에 밑에 코드를 실행해버림)
+	    	// 찾아보니까 자바 코드를 다 실행하고 스크립트를 출력해주는거라 안되는 것 같음 ㅠ
+//	 	response.setContentType("text/html; charset=UTF-8"); 
+//	 	PrintWriter out = response.getWriter(); 
+//	 	out.println("<script> var result = confirm('정말 탈퇴하시겠습니까?');</script>"); 
+//	 	out.println("<script> if(!result){location.href='http://localhost:8181/electronic_library/utypecheck';}</script>");
+//	 	out.flush();
+	 		
+	 	// 다오 생성	
 		UserDAO dao = UserDAO.getInstance();
 		dao.deleteUser(sId);
+		System.out.println("탈퇴 완료");
 		
 		session.invalidate();
-		
-		response.sendRedirect("http://localhost:8181/electronic_library/main_Page.jsp");
+		System.out.println("세션 만료");
+	
+		// 탈퇴 후 알림창
+		response.setContentType("text/html; charset=UTF-8"); 
+		PrintWriter writer = response.getWriter(); 
+		writer.println("<script>alert('회원 탈퇴가 완료 되었습니다.'); location.href='http://localhost:8181/electronic_library/main_Page.jsp';</script>"); writer.close();
+
 	}
 
 }
