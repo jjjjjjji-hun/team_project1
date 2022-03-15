@@ -27,20 +27,20 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("doGet()으로 들어옴");
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doPost()로 들어옴");
 		
-     HttpSession session = request.getSession();
-		
-	 session.invalidate();
-     
-     response.sendRedirect("http://localhost:8181/electronic_library/main_Page.jsp");
+	     HttpSession session = request.getSession();
+		 session.invalidate();
+	     
+	     response.sendRedirect("http://localhost:8181/electronic_library/main_Page.jsp");
 	}
 
 }
