@@ -30,7 +30,16 @@
 					<td>${list.returnSchedule}</td>
 					<td>${list.bNum}</td>
 					<td>${list.uId}</td>
-					<td>${list.checkOut}</td>
+					<td>
+						<c:choose>
+							<c:when test="${list.checkOut eq true}">
+									대여 중
+							</c:when>
+							<c:otherwise>
+									반납 완료
+							</c:otherwise> 
+						</c:choose>
+					</td>
 					<td>${list.overdue}</td>
 				</tr>
 			</c:forEach>

@@ -1,6 +1,7 @@
 package kr.co.ict.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import kr.co.ict.BookDAO;
 import kr.co.ict.BookVO;
 import kr.co.ict.RentalDAO;
+import kr.co.ict.RentalVO;
 import kr.co.ict.UserDAO;
 
 /**
@@ -37,32 +39,40 @@ public class RentCheckServlet extends HttpServlet {
 		// 한글
 		request.setCharacterEncoding("utf-8");
 		// detail에서 값 받아오기
+		int Counting = Integer.parseInt(request.getParameter("count"));
 		int bNum = Integer.parseInt(request.getParameter("bnum"));
 		String bName = request.getParameter("bname");
 		String checkOut = request.getParameter("checkout");
 		HttpSession session = request.getSession();
 		String sId = (String)session.getAttribute("sId");
 		// 디버깅
-		System.out.println(bNum + ", " + bName + ", " + checkOut + ", " + sId);
+		System.out.println(bNum + ", " + bName + ", " + checkOut + ", " + sId + ", " + Counting);
 		// 다오 생성
 		BookDAO dao1 = BookDAO.getInstance();
 		RentalDAO dao2 = RentalDAO.getInstance();
 		UserDAO dao3 = UserDAO.getInstance();
 		// 대여 버튼 클릭 시 메서드 실행
-		dao2.insertRentalBookData(bNum, sId);
-		dao1.CheckOutOn(bNum);
 		BookVO Book = dao1.getBookData(bName);
-		dao3.countingUpdateUP(sId);
+
+			dao2.insertRentalBookData(bNum, sId);
+			dao1.CheckOutOn(bNum);
+			Book = dao1.getBookData(bName);
+			dao3.countingUpdateUP(sId);
+			// 바인딩
+			request.setAttribute("bName", Book);
+			// 포워딩
+			RequestDispatcher dp = request.getRequestDispatcher("/book/book_detail.jsp");
+			dp.forward(request, response);
 		
 		/*if(uId == null){
 			out.println("<script>alert('로그인이 필요한 서비스 입니다.');</script>");
 		} else {
 			out.println("<script>alert('대여가 완료되었습니다. 마이페이지를 확인해주세요.');</script>");*/
 		// 바인딩
-		request.setAttribute("bName", Book);
+		//request.setAttribute("bName", Book);
 		// 포워딩
-		RequestDispatcher dp = request.getRequestDispatcher("/book/book_detail.jsp");
-		dp.forward(request, response);
+		//RequestDispatcher dp = request.getRequestDispatcher("/book/book_detail.jsp");
+		//dp.forward(request, response);
 	}
 
 }
