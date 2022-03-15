@@ -4,7 +4,7 @@
     String sid = (String)session.getAttribute("session_id");
 
     if(sid != null){
-    	response.sendRedirect("main.jsp");
+    	response.sendRedirect("main_Page.jsp");
     }
 %>
 <!DOCTYPE html>
