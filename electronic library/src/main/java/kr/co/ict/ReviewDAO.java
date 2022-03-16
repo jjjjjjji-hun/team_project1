@@ -257,7 +257,7 @@ public class ReviewDAO {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
-				List<ReviewVO> testVOList = null;
+				List<ReviewVO> testVOList = new ArrayList<>();
 				
 				try {
 					
