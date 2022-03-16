@@ -17,6 +17,7 @@
 			<th>반납일</th>
 			<th>반납 예정일</th>
 			<th>책 번호</th>
+			<th>책 이름</th>
 			<th>아이디</th>
 			<th>대출 여부</th>
 			<th>연체 여부</th>
@@ -29,6 +30,7 @@
 					<td>${list.returnDate}</td>
 					<td>${list.returnSchedule}</td>
 					<td>${list.bNum}</td>
+					<td>${list.bName}</td>
 					<td>${list.uId}</td>
 					<td>
 						<c:choose>
@@ -40,7 +42,14 @@
 							</c:otherwise> 
 						</c:choose>
 					</td>
-					<td>${list.overdue}</td>
+					<td><c:choose>
+							<c:when test="${list.overdue eq true}">
+									연체
+							</c:when>
+							<c:otherwise>
+									미연체
+							</c:otherwise> 
+						</c:choose></td>
 				</tr>
 			</c:forEach>
 		</tbody>
