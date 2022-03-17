@@ -76,8 +76,8 @@
 							<c:when test="${list.checkOut eq false}">
 								<form action="/electronic_library/insertReviewForm.do" method="post">
 									<input type="hidden" value="${list.bNum}" name="fbnum"/>
-									<input type="hidden" value="${list.bName}" name="fbname"/>
-									<input type="hidden" value="${list.uId}" name="fid"/>
+									<input type="hidden" value="${list.bName}" name="fbname"/> 
+									<!-- <input type="hidden" value="${list.uId}" name="fid"/> 03.16 세션 아이디로 변경 -->
 									
 							    	<input type="submit" value="리뷰 쓰기">
 								</form>
@@ -89,7 +89,7 @@
 		</tbody>
 	
 	</table>
-			<a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a>
-			<a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a>
+			<button><a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a></button>
+			<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a></button>
 </body>
 </html>

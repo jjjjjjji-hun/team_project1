@@ -57,6 +57,28 @@
 			</form>
 		</div>	
 	</div>
+	 -->
+	 
+	<!-- 03.17 안되면 삭제 -->
+	
+		<form action="http://localhost:8181/electronic_library/ServletBookSearch2" method="post">
+		<fieldset>
+			<legend>도서 검색</legend>
+			<label>검색 항목</label>
+			<select name= "option">
+				<option value="bname">도서명</option>
+				<option value="bwriter">저자</option>
+				<option value="bpub">출판사</option>
+				
+			</select>
+			<label>검색어
+				<input type="text" name="keyword" placeholder="검색하기" size=40 />
+				<input type="submit" value="검색">
+			</label>
+		</fieldset>
+	</form><br/>
+	
+	
 	<div id="category">
 		<!-- 대여 여부가 가능인 책 목록 표현 -->
 		<h2>바로 대여 가능</h2>

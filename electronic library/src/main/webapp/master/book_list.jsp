@@ -1,9 +1,15 @@
 <!-- 모든 도서 확인 페이지 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<% Boolean uType = (Boolean)session.getAttribute("sUtype"); 
+	if(uType != true){
+		response.sendRedirect("http://localhost:8181/electronic_library/");
+	}
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +50,10 @@
 				</c:forEach>
 			</tbody>
 		
-			</table>
+			</table><br/>
+			
+			<!-- 관리 페이지 이동 버튼 (추후 프론트 컨트롤러로 변경할 것) -->
+			<button><a href="http://localhost:8181/electronic_library/users/admin_page.jsp">관리 페이지로 이동</a></button>
 
 </body>
 </html>
