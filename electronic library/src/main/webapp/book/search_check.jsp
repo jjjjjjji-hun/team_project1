@@ -34,6 +34,9 @@
 				</c:forEach>
 			</tbody>
 		
-			</table>
+	</table><br/>
+	
+	<button><a href="http://localhost:8181/electronic_library/">뒤로가기</a></button>
+	
 </body>
 </html>

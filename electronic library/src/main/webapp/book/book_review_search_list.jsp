@@ -40,7 +40,11 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table>
+	</table><br/>
+	
+	<button><a href="http://localhost:8181/electronic_library/reviewList.do">뒤로 가기</a></button>
+	<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">책 검색하기</a></button><br/><br/>
+	
 
 </body>
 </html>
