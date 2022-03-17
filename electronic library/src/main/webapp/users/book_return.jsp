@@ -89,7 +89,7 @@
 		</tbody>
 	
 	</table>
-			<button><a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a></button>
-			<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a></button>
+			<a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a>
+			<a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a>
 </body>
 </html>
