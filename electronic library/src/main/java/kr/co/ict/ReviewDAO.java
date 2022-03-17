@@ -302,6 +302,51 @@ public class ReviewDAO {
 			}
 	
 	
+			
+		// 03.17 	
+		
+			public List<ReviewVO> getSearchReviewList(String searchTitle){
+				
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+
+				List<ReviewVO> reviewList = new ArrayList<>();
+				try {
+					con = ds.getConnection();
+						
+					String sql = "SELECT * FROM review WHERE revtitle like ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, ("%" + searchTitle + "%"));
+					rs = pstmt.executeQuery();
+				
+						
+					while(rs.next()) {
+						int revNum = rs.getInt("revnum");
+						int bNum = rs.getInt("bnum");
+						String bName = rs.getString("bname");
+						String uId = rs.getString("uid");
+						String revTitle = rs.getString("revtitle");
+						String revContent = rs.getString("revcontent");
+						Date revDate = rs.getDate("revdate");
+						Date revMDate = rs.getDate("revmdate");
+							
+						ReviewVO review = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
+						reviewList.add(review);
+					}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						con.close();
+						pstmt.close();
+						rs.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				return reviewList;
+			}
 	
 	
 	

@@ -15,6 +15,7 @@ import kr.co.ict.servlet.service.ReviewDetailService;
 import kr.co.ict.servlet.service.ReviewInsertFormService;
 import kr.co.ict.servlet.service.ReviewInsertToDBService;
 import kr.co.ict.servlet.service.ReviewListService;
+import kr.co.ict.servlet.service.ReviewSearchService;
 import kr.co.ict.servlet.service.ReviewUpdateFormService;
 import kr.co.ict.servlet.service.ReviewUpdateService;
 
@@ -114,7 +115,13 @@ public class FrontController extends HttpServlet {
 		}else {
 			ui = "/";
 		}
-			
+		
+		// ■ 리뷰 찾기 결과 페이지
+		if(uri.equals("/electronic_library/reviewSearch.do")) {
+			rs = new ReviewSearchService();
+			rs.execute(request, response);
+			ui ="/book/book_review_search_list.jsp";
+		}
 		
 		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher(ui);

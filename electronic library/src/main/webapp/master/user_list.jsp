@@ -42,6 +42,10 @@
 				</c:forEach>
 			</tbody>
 		
-			</table>
+			</table><br/>
+			
+		<!-- 관리 페이지 이동 버튼 (추후 프론트 컨트롤러로 변경할 것) -->
+		<button><a href="http://localhost:8181/electronic_library/users/admin_page.jsp">관리 페이지로 이동</a></button>			
+			
 </body>
 </html>
