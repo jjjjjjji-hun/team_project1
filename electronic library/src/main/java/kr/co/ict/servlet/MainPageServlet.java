@@ -35,7 +35,7 @@ public class MainPageServlet extends HttpServlet {
 		// dao
 		BookDAO dao = BookDAO.getInstance();
 		
-		// 여러 UserVO 받아올 리스트 생성
+		// 여러 BookVO 받아올 리스트 생성
 		List<BookVO> allBookList = dao.getAllBookList();
 		
 		System.out.println("모든 리스트 목록 : " + allBookList);

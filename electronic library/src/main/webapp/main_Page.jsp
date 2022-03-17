@@ -26,8 +26,8 @@
 					<input type="button" value="로그인">
 				</a>
 			</c:if>
-				<!-- 로그아웃용 서블릿 만들어서 구현해야함. -->
-				<c:if test="${sId != null }">
+			<!-- 로그아웃용 서블릿 만들어서 구현해야함. -->
+			<c:if test="${sId != null }">
 				<a href="http://localhost:8181/electronic_library/logout">
 					<input type="button" value="로그아웃">
 				</a>
@@ -40,6 +40,10 @@
 				<c:if test="${sUtype == false }">
 					<input type="button" value="마이 페이지">
 				</c:if>	
+			</a>
+			
+			<a href="http://localhost:8181/electronic_library/reviewList.do">
+				<input type="button" value="도서 후기 둘러보기">
 			</a>
 
 		</div>	
@@ -54,17 +58,18 @@
 		</div>	
 	</div>
 	<div id="category">
-		<!-- 대여수가 많은 수로 나열 -->
+		<!-- 대여 여부가 가능인 책 목록 표현 -->
 		<h2>바로 대여 가능</h2>
 		<c:forEach var="bookList" items="${allBookList}">
-			<c:if test="${bookList.checkOut eq true}">
-				<a href="http://localhost:8181/electronic_library/book/book_detail.jsp">
+			<c:if test="${bookList.checkOut eq false}">
+				<a href="http://localhost:8181/electronic_library/book/BookDetailServlet">
 				${bookList.bName}
 				</a>	
 			</c:if>
 		</c:forEach>			
 	</div>
 	<div id="BookList">
+	<!-- 모든 도서 목록 -->
 		<h2>도서 목록</h2>
 		<c:forEach var="bookList" items="${allBookList}">
 			<td>${bookList.bName}</td>

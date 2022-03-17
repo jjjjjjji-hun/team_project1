@@ -9,7 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.ict.servlet.service.BookDetailService;
+import kr.co.ict.servlet.service.BookListService;
+import kr.co.ict.servlet.service.BookRentListService;
 import kr.co.ict.servlet.service.IReviewService;
+import kr.co.ict.servlet.service.RentCheckService;
+import kr.co.ict.servlet.service.RentInfoService;
+import kr.co.ict.servlet.service.ReturnBookService;
 import kr.co.ict.servlet.service.ReviewDeleteService;
 import kr.co.ict.servlet.service.ReviewDetailService;
 import kr.co.ict.servlet.service.ReviewInsertFormService;
@@ -17,6 +23,7 @@ import kr.co.ict.servlet.service.ReviewInsertToDBService;
 import kr.co.ict.servlet.service.ReviewListService;
 import kr.co.ict.servlet.service.ReviewUpdateFormService;
 import kr.co.ict.servlet.service.ReviewUpdateService;
+import kr.co.ict.servlet.service.SearchBookService;
 
 /**
  * Servlet implementation class FrontController
@@ -109,7 +116,41 @@ public class FrontController extends HttpServlet {
 			rs = new ReviewDeleteService();
 			rs.execute(request, response);
 			ui = "/reviewList.do";
-			
+		// ■ 도서 검색
+		}else if(uri.equals("/electronic_library/bookSearch.do")) {
+			rs = new SearchBookService();
+			rs.execute(request, response);
+			ui = "/book/search_check.jsp";
+		// ■ 상세 도서 검색
+		}else if(uri.equals("/electronic_library/bookDetail.do")) {
+			rs = new BookDetailService();
+			rs.execute(request, response);
+			ui = "/book/book_detail.jsp";
+		// ■ 대여 버튼 클릭 시 대여 체크
+		}else if(uri.equals("/electronic_library/rentCheck.do")) {
+			rs = new RentCheckService();
+			rs.execute(request, response);
+			ui = "/book/book_detail.jsp";
+		// ■ 마이페이지에서 대여 정보 조회	
+		}else if(uri.equals("/electronic_library/rentInfo.do")) {
+			rs = new RentInfoService();
+			rs.execute(request, response);
+			ui = "/users/book_return.jsp";
+		// ■ 대여 정보 조회에서 반납 버튼 클릭 시
+		}else if(uri.equals("/electronic_library/returnBook.do")) {
+			rs = new ReturnBookService();
+			rs.execute(request, response);
+			ui = "/users/book_return.jsp";
+		// ■ 관리자 페이지에서 대여 리스트 조회
+		}else if(uri.equals("/electronic_library/bookRentList.do")) {
+			rs = new BookRentListService();
+			rs.execute(request, response);
+			ui = "/master/book_rent_list.jsp";
+		// ■ 관리자 페이지에서 북 리스트 조회
+		}else if(uri.equals("/electronic_library/bookList.do")) {
+			rs = new BookListService();
+			rs.execute(request, response);
+			ui = "/master/book_list.jsp";
 		// ■ 그 외	
 		}else {
 			ui = "/";
