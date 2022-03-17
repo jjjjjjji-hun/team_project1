@@ -7,21 +7,59 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/updateForm.css">
+
 <title>Insert title here</title>
 </head>
 <body>
 
-<h1>유저 페이지</h1>
+	<div class = "menu">
 	
-	<h3> ${user.uId}님의 회원 정보 수정 페이지</h3> <br/>
-	
-	<form action="http://localhost:8181/electronic_library/userinfoupdate" method="post">
-		아이디 : <input type="text" name="fuid" value="${user.uId}" readonly><br/>
-		비밀번호 : <input type="text" name="fupw" value="${user.uPw}"><br/>
-		이름 : <input type="text" name="funame" value="${user.uName}"><br/>
-		전화번호 : <input type="text" name="fupnum" value="${user.uPnum}" > <br/>
-		이메일 : <input type="text" name="fuemail" value="${user.uEmail}" > <br/>	<br/>
-		<input type="submit" value="수정 완료"/>
-	</form>
+		<form action ="http://localhost:8181/electronic_library/userinfoupdate" class = "updateForm" method="post">
+			<h1>${user.uId}님</h1>
+			<h3>회원 정보 수정</h3>
+			
+			<hr/>
+			<div class="item">
+				<div class = "title"> 아이디  </div>
+				<div class = "title_icon">:</div>
+				<input type="text" name="fuid" class="textForm"  value="${user.uId}"  readonly /><br/>
+			</div>
+			
+			<div class="item">
+				<div class = "title"> 비밀번호  </div>
+				<div class = "title_icon">:</div>
+				
+				<input type="password" name="fupw" class="textForm"  value="${user.uPw}" /><br/>
+			</div>
+			
+			<div class="item">
+				<div class = "title"> 이름  </div>
+				<div class = "title_icon">:</div>
+				<input type="text" name="funame" class="textForm"  value="${user.uName}" /><br/>
+			</div>
+			
+			<div class="item">
+				<div class = "title"> 전화번호  </div>
+				<div class = "title_icon">:</div>
+				<input type="text" name="fupnum" class="textForm"  value="${user.uPnum}" /><br/>
+			</div>
+			
+			<div class="item">
+				<div class = "title"> 이메일  </div>
+				<div class = "title_icon">:</div>
+				<input type="email" name="fuemail" class="textForm"  value="${user.uEmail}" /><br/>
+			</div>
+			
+			<br/>
+			<br/>
+			
+			<input type="submit" class= "btn" value="수정완료"/>
+			<input type="reset" class= "btn"value="초기화"/>
+		</form>
+		
+	</div>
+
+
 </body>
 </html>
