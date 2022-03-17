@@ -10,6 +10,7 @@
 </head>
 <body>
 
+	
 	<!-- 없는 검색어를 입력한 경우 (리뷰 검색 실패 페이지로 이동)-->
 	<c:if test="${empty reviewList}">
 		<c:redirect url="http://localhost:8181/electronic_library/book/book_review_search_fail.jsp"/>

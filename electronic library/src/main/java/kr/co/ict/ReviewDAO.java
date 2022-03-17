@@ -306,7 +306,7 @@ public class ReviewDAO {
 		// 03.17 	
 		
 			public List<ReviewVO> getSearchReviewList(String searchTitle){
-				
+				System.out.println("(메서드) getSearchReviewList()로 " + searchTitle + "를 가지고 진입");
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -334,6 +334,8 @@ public class ReviewDAO {
 						ReviewVO review = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
 						reviewList.add(review);
 					}
+					
+					System.out.println("(메서드) getSearchReviewList() 안에서 찾은 리스트 ->" + reviewList);
 				}catch(Exception e) {
 					e.printStackTrace();
 				}finally {
@@ -347,7 +349,61 @@ public class ReviewDAO {
 				}
 				return reviewList;
 			}
-	
+			
+			
+			public List<ReviewVO> getSearchReviewList(String option, String searchKeyword){
+				System.out.println("(메서드) getSearchReviewList2()로 " + option +", " +searchKeyword+ "를 가지고 진입");
+				
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+
+				List<ReviewVO> reviewList = new ArrayList<>();
+				String sql = "SELECT * FROM review WHERE " + option.trim();
+				try {
+					con = ds.getConnection();
+					
+					if(searchKeyword != null && !searchKeyword.equals("")) {
+						sql += " LIKE '%" + searchKeyword.trim() + "%'";
+					}
+					
+					pstmt = con.prepareStatement(sql);
+					//pstmt.setString(1, searchKeyword);
+					//pstmt.setString(1, option);
+					//pstmt.setString(2, ("%" + searchKeyword + "%"));
+					rs = pstmt.executeQuery();
+				
+						
+					while(rs.next()) {
+						int revNum = rs.getInt("revnum");
+						int bNum = rs.getInt("bnum");
+						String bName = rs.getString("bname");
+						String uId = rs.getString("uid");
+						String revTitle = rs.getString("revtitle");
+						String revContent = rs.getString("revcontent");
+						Date revDate = rs.getDate("revdate");
+						Date revMDate = rs.getDate("revmdate");
+							
+						ReviewVO review = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
+						reviewList.add(review);
+					}
+				
+					System.out.println("(메서드) getSearchReviewList2() 안에서 찾은 리스트 ->" + reviewList);
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						con.close();
+						pstmt.close();
+						rs.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				return reviewList;
+			}
+			
 	
 	
 }

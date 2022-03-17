@@ -16,12 +16,17 @@ public class ReviewSearchService implements IReviewService{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// book_review_list.jsp에서 검색된 키워드
-		String searchKeyword = request.getParameter("ftitle");
+		
+		String searchKeyword = request.getParameter("keyword");
 		System.out.println("(서비스)리뷰서치서비스에 들어온 검색 키워드 -> "+ searchKeyword);
+		
+		String option = request.getParameter("option");
+		System.out.println("(서비스)리뷰서치서비스에 들어온 옵션 키워드 -> "+ option);
+		
 		
 		// 해당하는 키워드로 찾아온 리뷰
 		ReviewDAO dao = ReviewDAO.getInstance();
-		List<ReviewVO> reviewList = dao.getSearchReviewList(searchKeyword);
+		List<ReviewVO> reviewList = dao.getSearchReviewList(option, searchKeyword);
 		
 		System.out.println("검색으로 찾은 리뷰 리스트 -> " + reviewList);
 		
