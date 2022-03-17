@@ -1,6 +1,7 @@
 package kr.co.ict.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,22 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.co.ict.BookDAO;
-import kr.co.ict.BookVO;
+import kr.co.ict.RentalDAO;
+import kr.co.ict.RentalVO;
 import kr.co.ict.UserDAO;
 import kr.co.ict.UserVO;
 
 /**
- * Servlet implementation class BookDetailServlet
+ * Servlet implementation class RentInfoServlet
  */
-@WebServlet("/BookDetailServlet")
-public class BookDetailServlet extends HttpServlet {
+@WebServlet("/rentinfo")
+public class RentInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookDetailServlet() {
+    public RentInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,30 +35,22 @@ public class BookDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// request.getParameter 를 이용해 도서명 가져오기
-		String BName = request.getParameter("bName");
+		// 세션 아이디
 		HttpSession session = request.getSession();
 		String sId = (String)session.getAttribute("sId");
-		// 디버깅
-		System.out.println(BName);
-		// 다오 생성
-		BookDAO dao1 = BookDAO.getInstance();
+		//String sId = request.getParameter("sid");
+		// 다오 생성, 메서드 호출
+		RentalDAO dao1 = RentalDAO.getInstance();
 		UserDAO dao2 = UserDAO.getInstance();
-		// 한글
-		request.setCharacterEncoding("utf-8");
-		// 다오에서 해당 도서명에 대한 정보 가져오고 디버깅
-		BookVO Book = dao1.getBookData(BName);
-		UserVO User = dao2.getUserData(sId);
-		System.out.println(Book);
+		List<RentalVO> rentInfoList = dao1.getAllRentalInfoBookList(sId);
+		UserVO userInfo = dao2.getUserData(sId);
+		System.out.println(userInfo);
 		// 바인딩
-		request.setAttribute("bName", Book);
-		request.setAttribute("user", User);
+		request.setAttribute("rentInfoList", rentInfoList);
+		request.setAttribute("userInfo", userInfo);
 		// 포워딩
-		RequestDispatcher dp = request.getRequestDispatcher("/book/book_detail.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/users/book_return.jsp");
 		dp.forward(request, response);
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-
 	}
 
 }

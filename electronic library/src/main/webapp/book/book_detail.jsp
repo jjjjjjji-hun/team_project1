@@ -41,21 +41,26 @@
 								</c:otherwise> 
 							</c:choose>
 						</td>
-						<td><c:if test="${bName.checkOut eq false}">
-    						<form action="http://localhost:8181/electronic_library/RentCheckServlet" method="post">
-    							<input type="hidden" value="${bName.bNum }" name="bnum"/>
-    							<input type="hidden" value="${bName.checkOut }" name="checkout"/>
-    							<input type="hidden" value="${sessionScope.session_id }" name="sid"/>
-    							<input type="submit" value="대여">
-    						</form>
-						</c:if>
-						
+						<td>
+							<c:if test="${bName.checkOut eq false}">
+								<c:if test="${user.counting < 5 }">
+	    							<form action="http://localhost:8181/electronic_library/RentCheckServlet" method="post">
+	    								<input type="hidden" value="${bName.bNum }" name="bnum"/>
+	    								<input type="hidden" value="${bName.checkOut }" name="checkout"/>
+	    								<input type="hidden" value="${bName.bName }" name="bname"/>
+	    								<!-- <input type="hidden" value="${user.counting }" name="user"/> -->
+	    								<input type="submit" value="대여">
+	    							</form>
+	    						</c:if>
+	    						<c:if test="${user.counting >=5 }">
+	    							대여 횟수 초과
+	    						</c:if>
+							</c:if>
 						</td>
-						
 					</tr>
 			</tbody>
-		
 			</table>
-			
+			<a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a>
+			<a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a>
 </body>
 </html>

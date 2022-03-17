@@ -81,6 +81,51 @@ private DataSource ds = null;
 				return rentBookList;
 			}
 	
+		// 사용자가 대여한 전체 도서 목록 가져오기
+			// sId 세션 아이디
+			public List<RentalVO> getAllRentalInfoBookList(String sId){
+							
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+
+				List<RentalVO> rentInfoBookList = new ArrayList<>();
+							
+				try {
+					con = ds.getConnection();
+								
+					String sql = "SELECT * FROM rental WHERE uid = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, sId);
+					rs = pstmt.executeQuery();
+								
+					while(rs.next()) {
+						int rentNum = rs.getInt("rentnum");
+						Date rentDate = rs.getDate("rentdate");
+						Date returnDate = rs.getDate("returndate");
+						Date returnSchedule = rs.getDate("returnschedule");
+						int bNum = rs.getInt("bnum");
+						String uId = rs.getString("uid");
+						Boolean checkOut = rs.getBoolean("check_out");
+						Boolean overdue = rs.getBoolean("overdue");
+									
+						RentalVO BookData = new RentalVO(rentNum, rentDate, returnDate, returnSchedule, bNum, uId, checkOut, overdue);
+						rentInfoBookList.add(BookData);
+					}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						con.close();
+						pstmt.close();
+						rs.close();
+					}catch(Exception e) {
+					e.printStackTrace();
+					}
+				}
+				return rentInfoBookList;
+	  }
+			
 	// 대여 버튼 클릭 시 DB에 대여 책 목록 적재 
 		// 대여 시 bnum과 uid 값을 얻어와 쿼리문 실행
 	public void insertRentalBookData(int bnum, String uid){
@@ -92,7 +137,7 @@ private DataSource ds = null;
 			
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL 14 DAY), ?, ?, false);";
+			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL 14 DAY), ?, ?, true);";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, bnum);
@@ -125,7 +170,7 @@ private DataSource ds = null;
 							
 				con = ds.getConnection();
 							
-				String sql = "UPDATE rental SET returndate = now() WHERE rentnum = ?";
+				String sql = "UPDATE rental SET returndate = now(), check_out = false WHERE rentnum = ?";
 
 				pstmt = con.prepareStatement(sql);
 							

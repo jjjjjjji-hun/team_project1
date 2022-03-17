@@ -34,7 +34,6 @@ public class BookRentListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 관리자만 가능하다면 post로 바꿀 필요가 있지 않을까요? 관리자 창에서 버튼을 누를때 여기로 이동하게끔
 		// dao
 		RentalDAO dao = RentalDAO.getInstance();
 		// 여러 RentalVO 받아올 리스트 생성
@@ -46,10 +45,7 @@ public class BookRentListServlet extends HttpServlet {
 
 		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher("/master/book_rent_list.jsp");
-		dp.forward(request, response);
-		
-				
-		
+		dp.forward(request, response);	
 		
 	}
 

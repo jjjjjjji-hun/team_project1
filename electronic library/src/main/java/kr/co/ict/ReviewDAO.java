@@ -59,13 +59,14 @@ public class ReviewDAO {
 			while(rs.next()) {
 				int revNum = rs.getInt("revnum");
 				int bNum = rs.getInt("bnum");
+				String bName = rs.getString("bname");
 				String uId = rs.getString("uid");
 				String revTitle = rs.getString("revtitle");
 				String revContent = rs.getString("revcontent");
 				Date revDate = rs.getDate("revdate");
 				Date revMDate = rs.getDate("revmdate");
 				
-				ReviewVO review = new ReviewVO(revNum, bNum, uId, revTitle, revContent, revDate, revMDate);
+				ReviewVO review = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
 				allReviewList.add(review);
 				
 			}
@@ -118,13 +119,14 @@ public class ReviewDAO {
 			if(rs.next()) {
 				int revNum = rs.getInt("revnum");
 				int bNum = rs.getInt("bnum");
+				String bName = rs.getString("bname");
 				String uId = rs.getString("uid");
 				String revTitle = rs.getString("revtitle");
 				String revContent = rs.getString("revcontent");
 				Date revDate = rs.getDate("revdate");
 				Date revMDate = rs.getDate("revmdate");
 				
-				detailReview = new ReviewVO(revNum, bNum, uId, revTitle, revContent, revDate, revMDate);
+				detailReview = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
 			}
 			
 		}catch(Exception e) {
@@ -179,7 +181,7 @@ public class ReviewDAO {
 	
 	
 	// 리뷰 수정
-	public void updateReview(int bookNum, String title, String content, int reviewNum) {
+	public void updateReview(String title, String content, int reviewNum) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -188,13 +190,12 @@ public class ReviewDAO {
 			
 			con = ds.getConnection();
 			
-			String sql = "UPDATE review SET bnum=?, revtitle=?, revcontent=?, revmdate=now() WHERE revnum=?";
+			String sql = "UPDATE review SET revtitle=?, revcontent=?, revmdate=now() WHERE revnum=?";
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, bookNum);
-			pstmt.setString(2, title);
-			pstmt.setString(3, content);
-			pstmt.setInt(4, reviewNum);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, reviewNum);
 			
 			pstmt.executeUpdate();		
 			
@@ -212,6 +213,40 @@ public class ReviewDAO {
 		
 		
 		
+	}
+	
+
+	// 리뷰 적재 ( 리뷰쓰기 버튼 구현 이후 수정 필요, 제목/내용/아이디만 받게 )
+	public void insertReview(int bNum, String bName, String sId, String title, String content) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "INSERT INTO review(bnum, bname, uid, revtitle, revcontent) VALUES(?, ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bNum);
+			pstmt.setString(2, bName);
+			pstmt.setString(3, sId);
+			pstmt.setString(4, title);
+			pstmt.setString(5, content);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+				pstmt.close();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	
