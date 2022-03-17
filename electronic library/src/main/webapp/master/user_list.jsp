@@ -31,7 +31,7 @@
 				<c:forEach var="userList" items="${allUserList}">
 					<tr>
 						<!-- <td>${userList.uId}</td>  -->
-						<td><a href="http://localhost:8181/electronic_library/UserRentInfoCheckServlet?uId=${userList.uId}">${userList.uId}</a></td>
+						<td><a href="http://localhost:8181/electronic_library/UseRentInfoCheckServlet?uId=${userList.uId}">${userList.uId}</a></td>
 						<td>${userList.uPw}</td>
 						<td>${userList.uName}</td>
 						<td>${userList.uPnum}</td>

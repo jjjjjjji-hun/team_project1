@@ -17,13 +17,13 @@ import kr.co.ict.RentalVO;
  * Servlet implementation class UseRentInfoCheckServlet
  */
 @WebServlet("/UseRentInfoCheckServlet")
-public class UseRentInfoCheckServlet extends HttpServlet {
+public class UserRentInfoCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UseRentInfoCheckServlet() {
+    public UserRentInfoCheckServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
