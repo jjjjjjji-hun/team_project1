@@ -39,7 +39,6 @@ public class BookRentListServlet extends HttpServlet {
 		// 여러 RentalVO 받아올 리스트 생성
 		List<RentalVO> allRentalBookList = dao.getAllRentalBookList();
 		System.out.println("리스트 : " + allRentalBookList);
-		
 		// 바인딩
 		request.setAttribute("allRentalBookList", allRentalBookList);
 

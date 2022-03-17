@@ -139,7 +139,7 @@ private DataSource ds = null;
 			
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, bname, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL 14 DAY), ?, ?, ?, true);";
+			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, bname, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL -1 DAY), ?, ?, ?, true)";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, bnum);
@@ -174,7 +174,7 @@ private DataSource ds = null;
 				con = ds.getConnection();
 							
 				String sql = "UPDATE rental SET returndate = now(), check_out = false WHERE rentnum = ?";
-
+				// DATE_ADD(NOW(), INTERVAL 15 DAY)
 				pstmt = con.prepareStatement(sql);
 							
 				pstmt.setInt(1, rentnum);
@@ -196,7 +196,7 @@ private DataSource ds = null;
 
 	// 연체 여부 쿼리문,  overdue에 false가 들어오면 연체X, true가 들어오면 연체O
 		
-		public void UpdateOverdue(Boolean overdue){
+		public void UpdateOverdue(Boolean overdue, int bNum){
 								
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -205,10 +205,11 @@ private DataSource ds = null;
 									
 				con = ds.getConnection();
 									
-				String sql = "UPDATE rental SET overdue = ?";
+				String sql = "UPDATE rental SET overdue = ? WHERE bnum = ?";
 				pstmt = con.prepareStatement(sql);
 									
 				pstmt.setBoolean(1, overdue);
+				pstmt.setInt(2, bNum);
 									
 				pstmt.executeUpdate();
 									
@@ -270,7 +271,45 @@ private DataSource ds = null;
 		}
 		
 		
-		
+		/*public RentalVO getReturnDateData(int b_Num) {
+
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			RentalVO book = null;
+			try {
+
+				con = ds.getConnection();
+				String sql = "SELECT returndate FROM rental WHERE bnum = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, b_Num);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					int rentNum = rs.getInt("rentnum");
+					Date rentDate = rs.getDate("rentdate");
+					Date returnDate = rs.getDate("returndate");
+					Date returnschedule = rs.getDate("returnschedule");
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getNString("bname");
+					String uId = rs.getString("uid");
+					boolean checkOut = rs.getBoolean("check_out");
+					boolean overdue = rs.getBoolean("overdue");
+					book = new RentalVO(rentNum, rentDate, returnDate, returnschedule, bNum, bName, uId, checkOut, overdue);
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();	
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return book;
+		}*/
 		
 		
 		

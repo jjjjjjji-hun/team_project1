@@ -10,7 +10,12 @@
 <body>
 	<h1>'${userInfo.uId }' 님의 도서 대여 정보 입니다.</h1>
 	<hr/>
+	<c:if test="${userInfo.counting > 0}">
 	<h2>'${userInfo.uId }' 님의 대여 중인 도서 수는 '${userInfo.counting }' 권 입니다.</h2>
+	</c:if>
+	<c:if test="${userInfo.counting <= 0}">
+	<h2>빌린 도서가 없습니다.</h2>
+	</c:if>
    	 		<table border="1">
 		<theader>
 			<th>대여 번호</th>
@@ -29,6 +34,7 @@
 		</theader>
 		<tbody>
 			<c:forEach var="list" items="${rentInfoList}">
+
 				<tr>
 					<td>${list.rentNum }</td>
 					<td>${list.rentDate}</td>
@@ -54,6 +60,9 @@
 								<form action="http://localhost:8181/electronic_library/returnbook?rentNum=${list.rentNum }" method="post">
 									<input type="hidden" value="${list.rentNum }" name="rentnum"/>
 									<input type="hidden" value="${list.bNum }" name="bnum"/>
+									<input type="hidden" value="${list.returnDate}" name="returndate"/>
+									<input type="hidden" value="${list.returnSchedule }" name="returnschedule"/>
+									<input type="hidden" value="${list.overdue }" name="overdue"/>
 							    	<input type="submit" value="반납">
 								</form>
 							</c:when>
