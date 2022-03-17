@@ -234,6 +234,59 @@ public class BookDAO {
 			return BookList;
 		}
 		
+	// 03.17 새로운 검색창과 연결되는 메서드	
+		
+		public List<BookVO> getSearchBookList2(String option, String searchKeyword){
+			System.out.println("(메서드) getSearchBookList2()로 " + option +", " +searchKeyword+ "를 가지고 진입");
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			List<BookVO> BookList = new ArrayList<>();
+			
+			String sql = "SELECT * FROM book WHERE " + option.trim();
+			
+			try {
+				con = ds.getConnection();
+				
+				if(searchKeyword != null && !searchKeyword.equals("")) {
+					sql += " LIKE '%" + searchKeyword.trim() + "%'";
+				}
+
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+			
+					
+				while(rs.next()) {
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getString("bname");
+					String bWriter = rs.getString("bwriter");
+					String bPub = rs.getString("bpub");
+					String bCategory = rs.getString("bcategory");
+					boolean checkOut = rs.getBoolean("check_out");
+						
+					BookVO BookData = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
+					BookList.add(BookData);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return BookList;
+		}
+		
+		
+		
+		
 		
 	/* 책 대여 및 반납 시 메서드*/
 	// 대여 버튼 클릭 시 대출중인 상태로 만드는 메서드(0 -->1)
