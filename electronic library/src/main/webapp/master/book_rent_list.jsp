@@ -20,24 +20,22 @@
 		<theader>
 			<th>대여 번호</th>
 			<th>대출일</th>
-			<th>반납일</th>
 			<th>반납 예정일</th>
 			<th>책 번호</th>
 			<th>책 이름</th>
 			<th>아이디</th>
-			<th>대출 여부</th>
 			<th>연체 여부</th>
 		</theader>
 		<tbody>
-			<c:forEach var="list" items="${allRentalBookList}">
+			<c:forEach var="list" items="${allRentBookList}">
 				<tr>
 					<td>${list.rentNum }</td>
 					<td>${list.rentDate}</td>
-					<td>${list.returnDate}</td>
 					<td>${list.returnSchedule}</td>
 					<td>${list.bNum}</td>
 					<td>${list.bName}</td>
 					<td>${list.uId}</td>
+<<<<<<< HEAD
 					<td>
 						<c:choose>
 							<c:when test="${list.checkOut eq true}">
@@ -56,6 +54,9 @@
 									미연체
 							</c:otherwise> 
 						</c:choose></td>
+=======
+					<td>${list.overdue}</td>
+>>>>>>> 299816329980666db67e233e20bc383e98e1a6e7
 				</tr>
 			</c:forEach>
 		</tbody>

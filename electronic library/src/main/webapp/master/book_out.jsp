@@ -10,11 +10,11 @@
 <body>
 <%
 	// 폼에서 전송한 데이터
-	String bName = request.getParameter("bname");
+	//String bName = request.getParameter("bname");
 	// 다오생성
-	BookDAO dao = BookDAO.getInstance();
+	//BookDAO dao = BookDAO.getInstance();
 	// DELETE 로직 호출
-	dao.deleteBookData(bName);
+	//dao.deleteBookData(bName);
 %>	
 </body>
 </html>

@@ -16,8 +16,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>전자도서광</h1>
 	<div id="header">
-		<h1>전자도서광</h1>
 		<div class="log">
 			<!-- 세션 아이디를 가져와서 로그인 상태면 '로그아웃' & '마이 페이지', 비로그인 상태면 '로그인' 버튼이 보이게 함 -->
 
@@ -50,9 +50,9 @@
 	</div>
 	<div id="searchBar">
 		<div class="search">
-			<form action="http://localhost:8181/electronic_library/ServletBookSearch" method="post">
+			<form action="http://localhost:8181/electronic_library/bookSearch.do" method="post">
 				<h2>도서 검색</h2>
-				<input type="text" name="fbname" placeholder="도서검색">
+				<input type="text" name="fbname" placeholder="도서검색" required>
 				<input type="submit" value="검색">
 			</form>
 		</div>	

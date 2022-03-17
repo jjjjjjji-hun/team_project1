@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,17 +14,19 @@
    	 		<table class="table table-hover">
 		
 			<thead>
-				<th>도서 번호</th>
-				<th>도서명</th>
-				<th>저자</th>
-				<th>출판사</th>
-				<th>카테고리</th>
-				<th>대여 상태</th>
-				<th>대여하기</th>
-				
+				<tr>
+					<th>도서 번호</th>
+					<th>도서명</th>
+					<th>저자</th>
+					<th>출판사</th>
+					<th>카테고리</th>
+					<th>대여 상태</th>
+					<th>대여하기</th>
+				</tr>
 				
 			</thead>
 			<tbody>
+<<<<<<< HEAD
 					<tr>
 						<td>${bName.bNum}</td>
 						<td>${bName.bName}</td>
@@ -62,5 +64,20 @@
 			</table><br/>
 			<button><a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a></button>
 			<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a></button>
+=======
+				<tr>
+					<td>${bName.bNum}</td>
+					<td>${bName.bName}</td>
+					<td>${bName.bWriter}</td>
+					<td>${bName.bPub}</td>
+					<td>${bName.bCategory}</td>
+					<td>${bName.checkOut}</td>
+							
+				</tr>
+			</tbody>
+		
+			</table>
+
+>>>>>>> 299816329980666db67e233e20bc383e98e1a6e7
 </body>
 </html>

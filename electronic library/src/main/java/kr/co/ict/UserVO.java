@@ -4,8 +4,8 @@ public class UserVO {
 	
 	// 변수
 	private String uId;
-	private String uName;
 	private String uPw;
+	private String uName;
 	private String uPnum;
 	private String uEmail;
 	private boolean uType; // 사용자0, 관리자1
@@ -14,15 +14,15 @@ public class UserVO {
 	
 	
 	// 생성자
-	public UserVO(String uId, String uName, String uPw, String uPnum, String uEmail, boolean uType, int counting) {
+	public UserVO(String uId, String uName, String uPw, String uPnum, String uEmail, Boolean uType, int counting) {
 		super();
 		this.uId = uId;
-		this.uName = uName;
 		this.uPw = uPw;
+		this.uName = uName;
 		this.uPnum = uPnum;
 		this.uEmail = uEmail;
-		this.uType = uType;
-		this.counting = counting;
+		this.uType = false;
+		this.counting = 0;
 	}
 
 
@@ -36,11 +36,9 @@ public class UserVO {
 
 
 
-
 	public void setuId(String uId) {
 		this.uId = uId;
 	}
-
 
 
 
@@ -50,11 +48,9 @@ public class UserVO {
 
 
 
-
 	public void setuPw(String uPw) {
 		this.uPw = uPw;
 	}
-
 
 
 
@@ -64,11 +60,9 @@ public class UserVO {
 
 
 
-
 	public void setuName(String uName) {
 		this.uName = uName;
 	}
-
 
 
 
@@ -78,11 +72,9 @@ public class UserVO {
 
 
 
-
 	public void setuPnum(String uPnum) {
 		this.uPnum = uPnum;
 	}
-
 
 
 
@@ -92,11 +84,9 @@ public class UserVO {
 
 
 
-
 	public void setuEmail(String uEmail) {
 		this.uEmail = uEmail;
 	}
-
 
 
 
@@ -106,18 +96,15 @@ public class UserVO {
 
 
 
-
 	public void setuType(boolean uType) {
 		this.uType = uType;
 	}
 
 
 
-
 	public int getCounting() {
 		return counting;
 	}
-
 
 
 
@@ -130,9 +117,12 @@ public class UserVO {
 	// toString
 	@Override
 	public String toString() {
-		return "UserVO [uId=" + uId + ", uName=" + uName + ", uPw=" + uPw + ", uPnum=" + uPnum + ", uEmail=" + uEmail
+		return "UserVO [uId=" + uId + ", uPw=" + uPw + ", uName=" + uName + ", uPnum=" + uPnum + ", uEmail=" + uEmail
 				+ ", uType=" + uType + ", counting=" + counting + "]";
-	}	
+	}
+
+
+	
 	
 
 }

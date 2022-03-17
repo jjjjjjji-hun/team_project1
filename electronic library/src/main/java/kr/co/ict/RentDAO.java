@@ -124,7 +124,7 @@ public class RentDAO {
 			return rentBookList;
 		}
 	
-	// 대여하면 대여 책 목록에서 사라지는 메서드 deleteRentBookData 필요
+	
 	
 	
 	
