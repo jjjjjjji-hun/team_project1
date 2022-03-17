@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.ict.servlet.service.IReviewService;
 import kr.co.ict.servlet.service.ReviewDeleteService;
 import kr.co.ict.servlet.service.ReviewDetailService;
+import kr.co.ict.servlet.service.ReviewInsertFormService;
 import kr.co.ict.servlet.service.ReviewInsertToDBService;
 import kr.co.ict.servlet.service.ReviewListService;
 import kr.co.ict.servlet.service.ReviewUpdateFormService;
@@ -68,7 +69,8 @@ public class FrontController extends HttpServlet {
 		
 		// ■ 리뷰 입력 폼으로 이동하기
 		if(uri.equals("/electronic_library/insertReviewForm.do")) {
-			
+			rs = new ReviewInsertFormService();
+			rs.execute(request, response);			
 			ui = "/book/book_review_form.jsp";
 			
 		// ■ 리뷰 폼에서 날린 데이터 DB에 적재하기	

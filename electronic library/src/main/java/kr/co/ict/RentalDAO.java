@@ -60,11 +60,12 @@ private DataSource ds = null;
 						Date returnDate = rs.getDate("returndate");
 						Date returnSchedule = rs.getDate("returnschedule");
 						int bNum = rs.getInt("bnum");
+						String bName = rs.getString("bname");
 						String uId = rs.getString("uid");
 						Boolean checkOut = rs.getBoolean("check_out");
 						Boolean overdue = rs.getBoolean("overdue");
 						
-						RentalVO BookData = new RentalVO(rentNum, rentDate, returnDate, returnSchedule, bNum, uId, checkOut, overdue);
+						RentalVO BookData = new RentalVO(rentNum, rentDate, returnDate, returnSchedule, bNum, bName, uId, checkOut, overdue);
 						rentBookList.add(BookData);
 					}
 				}catch(Exception e) {
@@ -105,11 +106,12 @@ private DataSource ds = null;
 						Date returnDate = rs.getDate("returndate");
 						Date returnSchedule = rs.getDate("returnschedule");
 						int bNum = rs.getInt("bnum");
+						String bName = rs.getString("bname");
 						String uId = rs.getString("uid");
 						Boolean checkOut = rs.getBoolean("check_out");
 						Boolean overdue = rs.getBoolean("overdue");
 									
-						RentalVO BookData = new RentalVO(rentNum, rentDate, returnDate, returnSchedule, bNum, uId, checkOut, overdue);
+						RentalVO BookData = new RentalVO(rentNum, rentDate, returnDate, returnSchedule, bNum, bName, uId, checkOut, overdue);
 						rentInfoBookList.add(BookData);
 					}
 				}catch(Exception e) {
@@ -128,7 +130,7 @@ private DataSource ds = null;
 			
 	// 대여 버튼 클릭 시 DB에 대여 책 목록 적재 
 		// 대여 시 bnum과 uid 값을 얻어와 쿼리문 실행
-	public void insertRentalBookData(int bnum, String uid){
+	public void insertRentalBookData(int bnum, String bname, String uid){
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -137,11 +139,12 @@ private DataSource ds = null;
 			
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL 14 DAY), ?, ?, true);";
+			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, bname, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL 14 DAY), ?, ?, ?, true);";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, bnum);
-			pstmt.setString(2, uid);
+			pstmt.setString(2, bname);
+			pstmt.setString(3, uid);
 			
 			pstmt.executeUpdate();
 			
@@ -245,10 +248,11 @@ private DataSource ds = null;
 					Date returnDate = rs.getDate("returndate");
 					Date returnschedule = rs.getDate("returnschedule");
 					int bNum = rs.getInt("bnum");
+					String bName = rs.getNString("bname");
 					String uId = rs.getString("uid");
 					boolean checkOut = rs.getBoolean("check_out");
 					boolean overdue = rs.getBoolean("overdue");
-					book = new RentalVO(rentNum, rentDate, returnDate, returnschedule, bNum, uId, checkOut, overdue);
+					book = new RentalVO(rentNum, rentDate, returnDate, returnschedule, bNum, bName, uId, checkOut, overdue);
 				}
 				
 			}catch(Exception e) {
@@ -264,5 +268,11 @@ private DataSource ds = null;
 			}
 			return book;
 		}
+		
+		
+		
+		
+		
+		
 		
 }

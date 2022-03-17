@@ -18,8 +18,15 @@ public class ReviewListService implements IReviewService {
 		ReviewDAO dao = ReviewDAO.getInstance();
 		List<ReviewVO> allReviewList = dao.getAllReviewList();
 		
+		
+		// 세션 발급
+		HttpSession session = request.getSession();
+		String sId = (String)session.getAttribute("sId");
+		
+		
 		// 바인딩
 		request.setAttribute("allReviewList", allReviewList);
+		request.setAttribute("sId", sId);
 		
 	}
 

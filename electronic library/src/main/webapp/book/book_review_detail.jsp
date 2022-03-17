@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,16 +22,18 @@
 	아이디 <input type="text" value="${reviewDetail.uId}" readonly><br/><br/> <br/>
 	<textarea rows="15" cols="100" readonly>${reviewDetail.revContent}</textarea> <br/><br/>
 	
+	<!-- 03.16 리뷰를 쓴 아이디와 세션 아이디가 같은 경우만 수정/삭제 가능하도록 -->
+	<c:if test="${sId eq reviewDetail.uId}">
+		<form action="http://localhost:8181/electronic_library/deleteReview.do" method="post">
+			<input type="hidden" name="revnum" value="${reviewDetail.revNum}"/>
+			<input type="submit" value="리뷰 삭제"/>
+		</form><br/>
 		
-	<form action="http://localhost:8181/electronic_library/deleteReview.do" method="post">
-		<input type="hidden" name="revnum" value="${reviewDetail.revNum}"/>
-		<input type="submit" value="리뷰 삭제"/>
-	</form><br/>
-	
-	<form action="http://localhost:8181/electronic_library/updateReviewForm.do" method="post">
-		<input type="hidden" name="revnum" value="${reviewDetail.revNum}"/>
-		<input type="submit" value="리뷰 수정"/>
-	</form><br/>
+		<form action="http://localhost:8181/electronic_library/updateReviewForm.do" method="post">
+			<input type="hidden" name="revnum" value="${reviewDetail.revNum}"/>
+			<input type="submit" value="리뷰 수정"/>
+		</form><br/>
+	</c:if>
 	
 	<button><a href="/electronic_library/reviewList.do">리뷰 목록 보기</a></button>
 	
