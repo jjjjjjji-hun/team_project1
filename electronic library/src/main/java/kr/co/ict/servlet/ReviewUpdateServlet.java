@@ -48,7 +48,7 @@ public class ReviewUpdateServlet extends HttpServlet {
 		ReviewDAO dao = ReviewDAO.getInstance();
 		
 		// 메서드 호출
-		dao.updateReview(bookNum, title, content, revNum);
+		dao.updateReview(title, content, revNum);
 		
 		// 수정 후, 해당 디테일 페이지로 리다이렉트
 		response.sendRedirect("http://localhost:8181/electronic_library/reviewdetail?revnum=" + revNum);
