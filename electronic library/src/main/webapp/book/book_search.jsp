@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookSearch.css">
+
+
 <title>Insert title here</title>
 </head>
 <body>
+
 
 	<!-- ServletBookSearch2에서 포워딩된 searchKeyword의 값(검색어 입력)이 있는 경우 -->
 		<c:if test="${searchKeyword ne null}">
@@ -42,6 +46,6 @@
 		<input type="submit" value="검색"/>
 	</form>
 	 -->
-	
+
 </body>
 </html>
