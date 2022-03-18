@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<!-- ServletBookSearch2에서 포워딩된 searchKeyword의 값(검색어 입력)이 있는 경우 -->
+	<!-- ServletBookSearch2에서 포워딩된 searchKeyword의 값이 있는 경우(= 없는 검색어, 공백을 입력) -->
 		<c:if test="${searchKeyword ne null}">
 			<h1>검색하신 키워드와 관련된 정보가 없습니다</h1>
 			<h2>다시 검색해주세요</h2><br/>
