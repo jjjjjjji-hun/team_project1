@@ -16,8 +16,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>전자도서광</h1>
 	<div id="header">
+		<h1>전자도서광</h1>
 		<div class="log">
 			<!-- 세션 아이디를 가져와서 로그인 상태면 '로그아웃' & '마이 페이지', 비로그인 상태면 '로그인' 버튼이 보이게 함 -->
 

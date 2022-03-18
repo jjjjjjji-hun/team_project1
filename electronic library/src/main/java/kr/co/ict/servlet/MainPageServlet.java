@@ -38,6 +38,7 @@ public class MainPageServlet extends HttpServlet {
 		// 여러 BookVO 받아올 리스트 생성
 		List<BookVO> allBookList = dao.getAllBookList();
 		
+		//디버깅
 		System.out.println("모든 리스트 목록 : " + allBookList);
 		
 		// 바인딩
