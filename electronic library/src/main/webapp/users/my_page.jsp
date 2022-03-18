@@ -43,7 +43,7 @@
 		<input type="submit" value="탈퇴하기"/>
 	</form>
 	
-	<button><a href="http://localhost:8181/electronic_library/main_Page.jsp"> 메인 화면으로 </a></button>
+	<button><a href="http://localhost:8181/electronic_library/mainPage"> 메인 화면으로 </a></button>
 
 </body>
 </html>

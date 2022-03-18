@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>도서 추가</h1>
-	<form action="book_insert_check.jsp" method="get">
+	<form action="http://localhost:8181/electronic_library/bookInsert" method="get">
 		책번호 : <input type="text" name="bnum" required /><br/>
 		책이름 : <input type="text" name="bname" required /><br/>
 		지은이 : <input type="text" name="bwriter" required /><br/>

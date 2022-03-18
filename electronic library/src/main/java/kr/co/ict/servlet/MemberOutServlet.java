@@ -65,7 +65,7 @@ public class MemberOutServlet extends HttpServlet {
 		// 탈퇴 후 알림창
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter writer = response.getWriter(); 
-		writer.println("<script>alert('회원 탈퇴가 완료 되었습니다.'); location.href='http://localhost:8181/electronic_library/main_Page.jsp';</script>"); writer.close();
+		writer.println("<script>alert('회원 탈퇴가 완료 되었습니다.'); location.href='http://localhost:8181/electronic_library/mainPage';</script>"); writer.close();
 
 	}
 
