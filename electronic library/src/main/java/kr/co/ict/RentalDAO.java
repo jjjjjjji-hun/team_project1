@@ -139,7 +139,7 @@ private DataSource ds = null;
 			
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, bname, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL -1 DAY), ?, ?, ?, true)";
+			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, bname, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL 14 DAY), ?, ?, ?, true)";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, bnum);

@@ -36,7 +36,7 @@
 		<input type="hidden" name="sid" value="${sessionScope.sId}"/>
 		<input type="submit" value="대여 정보"/>
 	</form>-->
-	<button><a href="http://localhost:8181/electronic_library/rentinfo"> 대여 정보 </a></button>
+	<button><a href="http://localhost:8181/electronic_library/rentInfo.do"> 대여 정보 </a></button>
 	
 	<!-- 탈퇴하기 -->
 	<form action="http://localhost:8181/electronic_library/memberout" method="post">
