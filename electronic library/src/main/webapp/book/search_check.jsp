@@ -19,19 +19,24 @@
 			<thead>
 				<th>도서 번호</th>
 				<th>도서명</th>
-				<th>카테고리</th>				
+				<th>카테고리</th>
+
+				
 			</thead>
 			<tbody>
 			<!-- 사용자가 검색한 단어를 포함하는 책 리스트 보여주기 코드 찾는중 -->
 				<c:forEach var="SearchList" items="${BookList}">
 					<tr>
 						<td>${SearchList.bNum}</td>
-						<td><a href="http://localhost:8181/electronic_library/BookDetailServlet?bName=${SearchList.bName }">${SearchList.bName }</a></td>
+						<td><a href="http://localhost:8181/electronic_library/bookDetail.do?bName=${SearchList.bName }">${SearchList.bName }</a></td>
 						<td>${SearchList.bCategory}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		
-			</table>
+	</table><br/>
+	
+	<button><a href="http://localhost:8181/electronic_library/">뒤로가기</a></button>
+	
 </body>
 </html>

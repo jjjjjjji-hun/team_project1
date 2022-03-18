@@ -26,8 +26,8 @@
 					<input type="button" value="로그인">
 				</a>
 			</c:if>
-			<!-- 로그아웃용 서블릿 만들어서 구현해야함. -->
-			<c:if test="${sId != null }">
+				<!-- 로그아웃용 서블릿 만들어서 구현해야함. -->
+				<c:if test="${sId != null }">
 				<a href="http://localhost:8181/electronic_library/logout">
 					<input type="button" value="로그아웃">
 				</a>
@@ -41,10 +41,6 @@
 					<input type="button" value="마이 페이지">
 				</c:if>	
 			</a>
-			
-			<a href="http://localhost:8181/electronic_library/reviewList.do">
-				<input type="button" value="도서 후기 둘러보기">
-			</a>
 
 		</div>	
 	</div>
@@ -52,24 +48,45 @@
 		<div class="search">
 			<form action="http://localhost:8181/electronic_library/bookSearch.do" method="post">
 				<h2>도서 검색</h2>
-				<input type="text" name="fbname" placeholder="도서검색" required>
+				<input type="text" name="fbname" placeholder="도서검색">
 				<input type="submit" value="검색">
 			</form>
 		</div>	
 	</div>
+	 -->
+	 
+	<!-- 03.17 안되면 삭제 -->
+	
+		<form action="http://localhost:8181/electronic_library/ServletBookSearch2" method="post">
+		<fieldset>
+			<legend>도서 검색</legend>
+			<label>검색 항목</label>
+			<select name= "option">
+				<option value="bname">도서명</option>
+				<option value="bwriter">저자</option>
+				<option value="bpub">출판사</option>
+				
+			</select>
+			<label>검색어
+				<input type="text" name="keyword" placeholder="검색하기" size=40 />
+				<input type="submit" value="검색">
+			</label>
+		</fieldset>
+	</form><br/>
+	
+	
 	<div id="category">
 		<!-- 대여 여부가 가능인 책 목록 표현 -->
 		<h2>바로 대여 가능</h2>
 		<c:forEach var="bookList" items="${allBookList}">
 			<c:if test="${bookList.checkOut eq true}">
-				<a href="http://localhost:8181/electronic_library/book/book_detail.jsp">
+				<a href="http://localhost:8181/electronic_library/book/bookDetail.do">
 				${bookList.bName}
 				</a>	
 			</c:if>
 		</c:forEach>			
 	</div>
 	<div id="BookList">
-	<!-- 모든 도서 목록 -->
 		<h2>도서 목록</h2>
 		<c:forEach var="bookList" items="${allBookList}">
 			<td>${bookList.bName}</td>

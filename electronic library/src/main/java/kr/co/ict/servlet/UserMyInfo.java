@@ -1,9 +1,6 @@
-/* 서블릿 : 대여 도서 확인용 -> book_rent_list.jsp로 이동*/
-
 package kr.co.ict.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,21 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import kr.co.ict.RentDAO;
-import kr.co.ict.RentVO;
+import kr.co.ict.UserDAO;
+import kr.co.ict.UserVO;
 
 /**
- * Servlet implementation class BookRentListServlet
+ * Servlet implementation class UserMyInfo
  */
-@WebServlet("/rentlist")
-public class BookRentListServlet extends HttpServlet {
+@WebServlet("/usermyinfo")
+public class UserMyInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookRentListServlet() {
+    public UserMyInfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,23 +33,22 @@ public class BookRentListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// dao
-		RentDAO dao = RentDAO.getInstance();
+		// 세션 아이디
+		HttpSession session = request.getSession();
+		String sId = (String)session.getAttribute("sId");
 		
-		// 여러 RentVO 받아올 리스트 생성
-		List<RentVO> allRentBookList = dao.getAllRentBookList();
-		System.out.println("리스트 : " + allRentBookList);
+		// 다오 생성, 메서드 호출
+		UserDAO dao = UserDAO.getInstance();
+		UserVO user = dao.getUserData(sId);
 		
 		// 바인딩
-		request.setAttribute("allRentBookList", allRentBookList);
+		request.setAttribute("user", user);
+		
+		// 주소지
+		RequestDispatcher dp = request.getRequestDispatcher("/users/my_page.jsp");
 		
 		// 포워딩
-		RequestDispatcher dp = request.getRequestDispatcher("/master/book_rent_list.jsp");
 		dp.forward(request, response);
-		
-				
-		
-		
 	}
 
 }

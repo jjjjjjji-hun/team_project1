@@ -4,6 +4,7 @@
 <%@ page import="kr.co.ict.UserVO" %>
 <%@ page import="kr.co.ict.UserDAO"%>
 <% 
+	request.setCharacterEncoding("utf-8");
     String fId = request.getParameter("fid");
     String fPw = request.getParameter("fpw");  
     
@@ -19,8 +20,10 @@
 			
 			session.setAttribute("session_id", uId);
 			session.setAttribute("session_pw", uPw);
-			
-			response.sendRedirect("main.jsp");
+			//session.setMaxInactiveInterval(3);
+			//String userId = (String)session.getAttribute("session_id");
+			//System.out.print(userId);
+			response.sendRedirect("../mainPage");
 			
 		}else{
 			out.println("<script>alert('비밀번호가 없습니다 . 다시 확인해 주세요.'); </script>");

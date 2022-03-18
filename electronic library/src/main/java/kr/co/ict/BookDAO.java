@@ -1,7 +1,6 @@
 package kr.co.ict;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -36,6 +35,7 @@ public class BookDAO {
 		return dao;
 	}
 	
+	/* 책 정보 관련 메서드*/
 	// DB에 책 정보 적재
 	public void insertBookData(int bNum, String bName, String bWriter,
 			 		String bPub, String bCategory, boolean checkOut) {
@@ -193,7 +193,7 @@ public class BookDAO {
 
 		// 도서 검색할 때 사용
 		// booksearch 할때도 사용
-		public List<BookVO> getSearchBookList(String b_Name){
+		/*public List<BookVO> getSearchBookList(String b_Name){
 			
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -232,15 +232,73 @@ public class BookDAO {
 				}
 			}
 			return BookList;
+		}*/
+		// 도서 검색할 때 사용
+		// booksearch 할때도 사용
+	// 03.17 새로운 검색창과 연결되는 메서드	
+		
+		public List<BookVO> getSearchBookList2(String option, String searchKeyword){
+			System.out.println("(메서드) getSearchBookList2()로 " + option +", " +searchKeyword+ "를 가지고 진입");
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			List<BookVO> BookList = new ArrayList<>();
+			
+			String sql = "SELECT * FROM book WHERE " + option.trim();
+			
+			try {
+				con = ds.getConnection();
+				
+				if(searchKeyword != null && !searchKeyword.equals("")) {
+					sql += " LIKE '%" + searchKeyword.trim() + "%'";
+				}
+
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+			
+					
+				while(rs.next()) {
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getString("bname");
+					String bWriter = rs.getString("bwriter");
+					String bPub = rs.getString("bpub");
+					String bCategory = rs.getString("bcategory");
+					boolean checkOut = rs.getBoolean("check_out");
+						
+					BookVO BookData = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
+					BookList.add(BookData);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return BookList;
 		}
+		
+		
+		
+		
+		
+	/* 책 대여 및 반납 시 메서드*/
 	// 대여 버튼 클릭 시 대출중인 상태로 만드는 메서드(0 -->1)
+		// date관련은 RentalDAO에서 호출 / rentnum, overdue는 디폴트값
 		public void CheckOutOn(int bNum) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			
 			try {
 				con = ds.getConnection();
-				String sql = "UPDATE book SET check_out = 1 WHERE bnum = ?";
+				String sql = "UPDATE book SET check_out = true WHERE bnum = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, bNum);
 				
@@ -264,7 +322,7 @@ public class BookDAO {
 					
 					try {
 						con = ds.getConnection();
-						String sql = "UPDATE book SET check_out = 0 WHERE bnum = ?";
+						String sql = "UPDATE book SET check_out = false WHERE bnum = ?";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, bNum);
 						
@@ -280,5 +338,6 @@ public class BookDAO {
 						}
 					}
 				}
+				
+	// 
 }
-
