@@ -1,3 +1,5 @@
+/* 서블릿 : 모든 도서 확인용 -> book_list.jsp로 이동 */
+
 package kr.co.ict.servlet;
 
 import java.io.IOException;
@@ -12,18 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.ict.BookDAO;
 import kr.co.ict.BookVO;
+import kr.co.ict.UserDAO;
+import kr.co.ict.UserVO;
 
 /**
- * Servlet implementation class mainPageServlet
+ * Servlet implementation class BookListServlet
  */
-@WebServlet("/mainPage")
-public class MainPageServlet extends HttpServlet {
+@WebServlet("/booklist")
+public class BookListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MainPageServlet() {
+    public BookListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +36,7 @@ public class MainPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		// dao
 		BookDAO dao = BookDAO.getInstance();
 		
@@ -44,17 +49,32 @@ public class MainPageServlet extends HttpServlet {
 		request.setAttribute("allBookList", allBookList);
 		
 		// 포워딩
-		RequestDispatcher dp = request.getRequestDispatcher("/main_Page.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/master/book_list.jsp");
 		dp.forward(request, response);
 		
-	}
+	}	
+		
+		
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// dao
+		BookDAO dao = BookDAO.getInstance();
+		
+		// 여러 UserVO 받아올 리스트 생성
+		List<BookVO> allBookList = dao.getAllBookList();
+		
+		// 바인딩
+		request.setAttribute("allBookList", allBookList);
+		
+		// 포워딩
+		RequestDispatcher dp = request.getRequestDispatcher("/master/book_list.jsp");
+		dp.forward(request, response);
+		
+		
 	}
 
 }

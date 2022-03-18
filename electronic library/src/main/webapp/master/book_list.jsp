@@ -37,7 +37,14 @@
 						<td>${bookList.bWriter}</td>
 						<td>${bookList.bPub}</td>
 						<td>${bookList.bCategory}</td>
-						<td>${bookList.checkOut}</td>
+						<td>
+							<c:if test="${bookList.checkOut == true}">
+								<c:out value="대여중"/>
+							</c:if>
+							<c:if test="${bookList.checkOut == false}">
+								<c:out value="대여 가능"/>
+							</c:if>  
+						</td>
 						
 					</tr>
 				</c:forEach>

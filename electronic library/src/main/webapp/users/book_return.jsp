@@ -57,7 +57,7 @@
 					<td>
 						<c:choose>
 							<c:when test="${list.checkOut eq true}">
-								<form action="http://localhost:8181/electronic_library/returnBook.do?rentNum=${list.rentNum }" method="post">
+								<form action="http://localhost:8181/electronic_library/returnbook?rentNum=${list.rentNum }" method="post">
 									<input type="hidden" value="${list.rentNum }" name="rentnum"/>
 									<input type="hidden" value="${list.bNum }" name="bnum"/>
 									<input type="hidden" value="${list.returnDate}" name="returndate"/>

@@ -35,6 +35,7 @@ public class BookDAO {
 		return dao;
 	}
 	
+	/* 책 정보 관련 메서드*/
 	// DB에 책 정보 적재
 	public void insertBookData(int bNum, String bName, String bWriter,
 			 		String bPub, String bCategory, boolean checkOut) {
@@ -289,13 +290,14 @@ public class BookDAO {
 		
 	/* 책 대여 및 반납 시 메서드*/
 	// 대여 버튼 클릭 시 대출중인 상태로 만드는 메서드(0 -->1)
+		// date관련은 RentalDAO에서 호출 / rentnum, overdue는 디폴트값
 		public void CheckOutOn(int bNum) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			
 			try {
 				con = ds.getConnection();
-				String sql = "UPDATE book SET check_out = 1 WHERE bnum = ?";
+				String sql = "UPDATE book SET check_out = true WHERE bnum = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, bNum);
 				
@@ -319,7 +321,7 @@ public class BookDAO {
 					
 					try {
 						con = ds.getConnection();
-						String sql = "UPDATE book SET check_out = 0 WHERE bnum = ?";
+						String sql = "UPDATE book SET check_out = false WHERE bnum = ?";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, bNum);
 						
@@ -335,5 +337,7 @@ public class BookDAO {
 						}
 					}
 				}
+				
+	// 
 }
 

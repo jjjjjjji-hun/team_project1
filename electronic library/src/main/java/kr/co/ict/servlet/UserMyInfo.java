@@ -8,21 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import kr.co.ict.ReviewDAO;
-import kr.co.ict.ReviewVO;
+import kr.co.ict.UserDAO;
+import kr.co.ict.UserVO;
 
 /**
- * Servlet implementation class ReviewDetailServlet
+ * Servlet implementation class UserMyInfo
  */
-@WebServlet("/reviewdetail")
-public class ReviewDetailServlet extends HttpServlet {
+@WebServlet("/usermyinfo")
+public class UserMyInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewDetailServlet() {
+    public UserMyInfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +33,19 @@ public class ReviewDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String strReviewNum = request.getParameter("revnum");
-		int reviewNum = Integer.parseInt(strReviewNum);
+		// 세션 아이디
+		HttpSession session = request.getSession();
+		String sId = (String)session.getAttribute("sId");
 		
-		// 다오
-		ReviewDAO dao = ReviewDAO.getInstance();
-		
-		// 메서드 호출
-		ReviewVO reviewDetail = dao.getDetailReview(reviewNum);
-		System.out.println("받은 데이터 : " + reviewDetail);
+		// 다오 생성, 메서드 호출
+		UserDAO dao = UserDAO.getInstance();
+		UserVO user = dao.getUserData(sId);
 		
 		// 바인딩
-		request.setAttribute("reviewDetail", reviewDetail);
+		request.setAttribute("user", user);
 		
 		// 주소지
-		RequestDispatcher dp = request.getRequestDispatcher("/book/book_review_detail.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/users/my_page.jsp");
 		
 		// 포워딩
 		dp.forward(request, response);

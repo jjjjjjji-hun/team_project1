@@ -27,7 +27,7 @@
 				<th>유저 타입</th>
 				<th>대여한 도서 수</th>
 			</thead>
-			<tbody> <!-- end값 조정해야 함. length 쓸 수 있게 -->
+			<tbody>
 				<c:forEach var="userList" items="${allUserList}">
 					<tr>
 						<!-- <td>${userList.uId}</td>  -->
@@ -36,7 +36,14 @@
 						<td>${userList.uName}</td>
 						<td>${userList.uPnum}</td>
 						<td>${userList.uEmail}</td>
-						<td>${userList.uType}</td>
+						<td>
+							<c:if test="${userList.uType == true}">
+							<c:out value="관리자"/>
+							</c:if>
+							<c:if test="${userList.uType == false}">
+							<c:out value="사용자"/>
+							</c:if>
+						</td>
 						<td>${userList.counting}</td>
 					</tr>
 				</c:forEach>
