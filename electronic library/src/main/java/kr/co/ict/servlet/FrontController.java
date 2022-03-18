@@ -18,6 +18,14 @@ import kr.co.ict.servlet.service.rental.IRentalService;
 import kr.co.ict.servlet.service.rental.RentCheckService;
 import kr.co.ict.servlet.service.rental.RentInfoService;
 import kr.co.ict.servlet.service.rental.ReturnBookService;
+import kr.co.ict.servlet.service.request.IRequestService;
+import kr.co.ict.servlet.service.request.RequestDeleteService;
+import kr.co.ict.servlet.service.request.RequestDetailService;
+import kr.co.ict.servlet.service.request.RequestDetailUpdateFormService;
+import kr.co.ict.servlet.service.request.RequestDetailUpdateToDBService;
+import kr.co.ict.servlet.service.request.RequestFormToDBService;
+import kr.co.ict.servlet.service.request.RequestInsertFormService;
+import kr.co.ict.servlet.service.request.RequestListService;
 import kr.co.ict.servlet.service.review.IReviewService;
 import kr.co.ict.servlet.service.review.ReviewDeleteService;
 import kr.co.ict.servlet.service.review.ReviewDetailService;
@@ -80,6 +88,9 @@ public class FrontController extends HttpServlet {
 			// 인터페이스 - 북
 			IBookService bs = null;
 			
+			// 인터페이스 - 리퀘스트
+			IRequestService rqs = null;
+			
 			System.out.println("현재 주소창에 입력된 .do 패턴 -> " + uri);
 		
 		
@@ -135,44 +146,86 @@ public class FrontController extends HttpServlet {
 		// ■ 도서 검색
 		}else if(uri.equals("/electronic_library/bookSearch.do")) {
 			bs = new SearchBookService();
-			rs.execute(request, response);
+			bs.execute(request, response);
 			ui = "/book/search_check.jsp";
 			
 		// ■ 상세 도서 검색
 		}else if(uri.equals("/electronic_library/bookDetail.do")) {
 			bs = new BookDetailService();
-			rs.execute(request, response);
+			bs.execute(request, response);
 			ui = "/book/book_detail.jsp";
 			
 		// ■ 대여 버튼 클릭 시 대여 체크
 		}else if(uri.equals("/electronic_library/rentCheck.do")) {
 			rts = new RentCheckService();
-			rs.execute(request, response);
+			rts.execute(request, response);
 			ui = "/book/book_detail.jsp";
 			
 		// ■ 마이페이지에서 대여 정보 조회	
 		}else if(uri.equals("/electronic_library/rentInfo.do")) {
 			rts = new RentInfoService();
-			rs.execute(request, response);
+			rts.execute(request, response);
 			ui = "/users/book_return.jsp";
 			
 		// ■ 대여 정보 조회에서 반납 버튼 클릭 시
 		}else if(uri.equals("/electronic_library/returnBook.do")) {
 			rts = new ReturnBookService();
-			rs.execute(request, response);
+			rts.execute(request, response);
 			ui = "/users/book_return.jsp";
 			
 		// ■ 관리자 페이지에서 대여 리스트 조회
 		}else if(uri.equals("/electronic_library/bookRentList.do")) {
 			rts = new BookRentListService();
-			rs.execute(request, response);
+			rts.execute(request, response);
 			ui = "/master/book_rent_list.jsp";
 			
 		// ■ 관리자 페이지에서 북 리스트 조회
 		}else if(uri.equals("/electronic_library/bookList.do")) {
 			bs = new BookListService();
-			rs.execute(request, response);
+			bs.execute(request, response);
 			ui = "/master/book_list.jsp";
+		
+		// ▲ 도서 요청 폼으로 이동
+		}else if(uri.equals("/electronic_library/insertRequestForm.do")) {
+			rqs = new RequestInsertFormService();
+			rqs.execute(request, response);
+			ui = "/request/book_request_form.jsp";
+		
+		// ▲ 도서 요청 폼에 입력된 정보를 DB로 INSERT
+		}else if(uri.equals("/electronic_library/requestInsertFormToDB.do")) {
+			rqs = new RequestFormToDBService();
+			rqs.execute(request, response);
+			ui = "/requestList.do";
+		
+		// ▲ 도서 요청 리스트로 이동
+		}else if(uri.equals("/electronic_library/requestList.do")) {
+			rqs = new RequestListService();
+			rqs.execute(request, response);
+			ui = "/request/book_request_list.jsp";
+		
+		// ▲ 도서 요청 디테일로 이동
+		}else if(uri.equals("/electronic_library/requestDetail.do")){
+			rqs = new RequestDetailService();
+			rqs.execute(request, response);
+			ui = "/request/book_request_detail.jsp";
+			
+		// ▲ 도서 요청 수정 폼으로 이동
+		}else if(uri.equals("/electronic_library/requestUpdateForm.do")) {
+			rqs = new RequestDetailUpdateFormService();
+			rqs.execute(request, response);
+			ui ="/request/book_request_detail_update_form.jsp";
+		
+		// ▲ 수정 폼에서 날린 데이터를 DB에 UPDATE
+		}else if(uri.equals("/electronic_library/requestUpdateFormToDB.do")) {
+			rqs = new RequestDetailUpdateToDBService();
+			rqs.execute(request, response);
+			ui ="/requestDetail.do?reqNum=" + request.getParameter("reqnum");
+		
+		// ▲ 도서 요청 삭제
+		}else if(uri.equals("/electronic_library/deleteBookRequest.do")) {
+			rqs = new RequestDeleteService();
+			rqs.execute(request, response);
+			ui = "/requestList.do";
 			
 		// ■ 그 외	
 		}else {
