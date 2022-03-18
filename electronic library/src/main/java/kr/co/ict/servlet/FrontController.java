@@ -9,22 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.ict.servlet.service.BookDetailService;
-import kr.co.ict.servlet.service.BookListService;
-import kr.co.ict.servlet.service.BookRentListService;
-import kr.co.ict.servlet.service.IReviewService;
-import kr.co.ict.servlet.service.RentCheckService;
-import kr.co.ict.servlet.service.RentInfoService;
-import kr.co.ict.servlet.service.ReturnBookService;
-import kr.co.ict.servlet.service.ReviewDeleteService;
-import kr.co.ict.servlet.service.ReviewDetailService;
-import kr.co.ict.servlet.service.ReviewInsertFormService;
-import kr.co.ict.servlet.service.ReviewInsertToDBService;
-import kr.co.ict.servlet.service.ReviewListService;
-import kr.co.ict.servlet.service.ReviewSearchService;
-import kr.co.ict.servlet.service.ReviewUpdateFormService;
-import kr.co.ict.servlet.service.ReviewUpdateService;
-import kr.co.ict.servlet.service.SearchBookService;
+import kr.co.ict.servlet.service.book.BookDetailService;
+import kr.co.ict.servlet.service.book.BookListService;
+import kr.co.ict.servlet.service.book.IBookService;
+import kr.co.ict.servlet.service.book.SearchBookService;
+import kr.co.ict.servlet.service.rental.BookRentListService;
+import kr.co.ict.servlet.service.rental.IRentalService;
+import kr.co.ict.servlet.service.rental.RentCheckService;
+import kr.co.ict.servlet.service.rental.RentInfoService;
+import kr.co.ict.servlet.service.rental.ReturnBookService;
+import kr.co.ict.servlet.service.review.IReviewService;
+import kr.co.ict.servlet.service.review.ReviewDeleteService;
+import kr.co.ict.servlet.service.review.ReviewDetailService;
+import kr.co.ict.servlet.service.review.ReviewInsertFormService;
+import kr.co.ict.servlet.service.review.ReviewInsertToDBService;
+import kr.co.ict.servlet.service.review.ReviewListService;
+import kr.co.ict.servlet.service.review.ReviewSearchService;
+import kr.co.ict.servlet.service.review.ReviewUpdateFormService;
+import kr.co.ict.servlet.service.review.ReviewUpdateService;
 
 /**
  * Servlet implementation class FrontController
@@ -72,6 +74,12 @@ public class FrontController extends HttpServlet {
 			// 인터페이스 - 리뷰
 			IReviewService rs = null;
 			
+			// 인터페이스 - 렌탈
+			IRentalService rts = null;
+			
+			// 인터페이스 - 북
+			IBookService bs = null;
+			
 			System.out.println("현재 주소창에 입력된 .do 패턴 -> " + uri);
 		
 		
@@ -117,52 +125,60 @@ public class FrontController extends HttpServlet {
 			rs = new ReviewDeleteService();
 			rs.execute(request, response);
 			ui = "/reviewList.do";
+
+		// ■ 리뷰 찾기 결과 페이지
+		}else if(uri.equals("/electronic_library/reviewSearch.do")) {
+			rs = new ReviewSearchService();
+			rs.execute(request, response);
+			ui ="/book/book_review_search_list.jsp";
+			
 		// ■ 도서 검색
 		}else if(uri.equals("/electronic_library/bookSearch.do")) {
-			rs = new SearchBookService();
+			bs = new SearchBookService();
 			rs.execute(request, response);
 			ui = "/book/search_check.jsp";
+			
 		// ■ 상세 도서 검색
 		}else if(uri.equals("/electronic_library/bookDetail.do")) {
-			rs = new BookDetailService();
+			bs = new BookDetailService();
 			rs.execute(request, response);
 			ui = "/book/book_detail.jsp";
+			
 		// ■ 대여 버튼 클릭 시 대여 체크
 		}else if(uri.equals("/electronic_library/rentCheck.do")) {
-			rs = new RentCheckService();
+			rts = new RentCheckService();
 			rs.execute(request, response);
 			ui = "/book/book_detail.jsp";
+			
 		// ■ 마이페이지에서 대여 정보 조회	
 		}else if(uri.equals("/electronic_library/rentInfo.do")) {
-			rs = new RentInfoService();
+			rts = new RentInfoService();
 			rs.execute(request, response);
 			ui = "/users/book_return.jsp";
+			
 		// ■ 대여 정보 조회에서 반납 버튼 클릭 시
 		}else if(uri.equals("/electronic_library/returnBook.do")) {
-			rs = new ReturnBookService();
+			rts = new ReturnBookService();
 			rs.execute(request, response);
 			ui = "/users/book_return.jsp";
+			
 		// ■ 관리자 페이지에서 대여 리스트 조회
 		}else if(uri.equals("/electronic_library/bookRentList.do")) {
-			rs = new BookRentListService();
+			rts = new BookRentListService();
 			rs.execute(request, response);
 			ui = "/master/book_rent_list.jsp";
+			
 		// ■ 관리자 페이지에서 북 리스트 조회
 		}else if(uri.equals("/electronic_library/bookList.do")) {
-			rs = new BookListService();
+			bs = new BookListService();
 			rs.execute(request, response);
 			ui = "/master/book_list.jsp";
+			
 		// ■ 그 외	
 		}else {
 			ui = "/";
 		}
 		
-		// ■ 리뷰 찾기 결과 페이지
-		if(uri.equals("/electronic_library/reviewSearch.do")) {
-			rs = new ReviewSearchService();
-			rs.execute(request, response);
-			ui ="/book/book_review_search_list.jsp";
-		}
 		
 		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher(ui);

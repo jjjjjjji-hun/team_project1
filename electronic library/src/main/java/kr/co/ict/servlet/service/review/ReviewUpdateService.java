@@ -1,4 +1,4 @@
-package kr.co.ict.servlet.service;
+package kr.co.ict.servlet.service.review;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
