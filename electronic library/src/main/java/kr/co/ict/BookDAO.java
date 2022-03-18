@@ -193,7 +193,7 @@ public class BookDAO {
 
 		// 도서 검색할 때 사용
 		// booksearch 할때도 사용
-		public List<BookVO> getSearchBookList(String b_Name){
+		/*public List<BookVO> getSearchBookList(String b_Name){
 			
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -232,8 +232,9 @@ public class BookDAO {
 				}
 			}
 			return BookList;
-		}
-		
+		}*/
+		// 도서 검색할 때 사용
+		// booksearch 할때도 사용
 	// 03.17 새로운 검색창과 연결되는 메서드	
 		
 		public List<BookVO> getSearchBookList2(String option, String searchKeyword){

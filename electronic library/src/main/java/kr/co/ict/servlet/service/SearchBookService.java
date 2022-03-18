@@ -12,19 +12,21 @@ public class SearchBookService implements IReviewService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// book_search.jsp 에서 post 방식으로 접속
-				// 다오 생성
-				BookDAO dao = BookDAO.getInstance();
+		// main_Page.jsp에서 날린 http 데이터들
+        
+        String searchKeyword = request.getParameter("keyword");
+        System.out.println("(서블릿)서블릿북서치2에 들어온 검색 키워드 -> "+ searchKeyword);
+        
+        String option = request.getParameter("option");
+        System.out.println("(서블릿)서블릿북서치2에 들어온 옵션 키워드 -> "+ option);
+        
+        // BookDAO 메서드 호출 (해당하는 옵션, 키워드로 찾아온 책 리스트)
+        BookDAO dao = BookDAO.getInstance();
+        List<BookVO> booklist = dao.getSearchBookList2(option, searchKeyword);
 
-				// 폼에서 날린 데이터 자바 변수로 받기
-				String fBname = request.getParameter("fbname");
-				// 확인하기(디버깅)
-				System.out.println("post로 들어온 데이터 : " + fBname );
-				// VO 생성
-				List<BookVO> booklist = dao.getSearchBookList(fBname);
-
-				// 바인딩
-				request.setAttribute("BookList", booklist);
+        // 바인딩
+        request.setAttribute("BookList", booklist);
+        request.setAttribute("searchKeyword", searchKeyword);
 		
 	}
 

@@ -15,7 +15,7 @@
 		</c:if>
 	
 	<!-- 해당 주소로 바로 들어온 경우는 아래만 출력 -->
-	<form action="http://localhost:8181/electronic_library/ServletBookSearch2" method="post">
+	<form action="http://localhost:8181/electronic_library/bookSearch.do" method="post">
 		<fieldset>
 			<legend>도서 검색</legend>
 			<label>검색 항목</label>

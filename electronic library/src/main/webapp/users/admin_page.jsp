@@ -13,8 +13,8 @@
 
 	
 	<button><a href="http://localhost:8181/electronic_library/userlist"> 회원 관리 </a></button>
-	<button><a href="http://localhost:8181/electronic_library/booklist"> 도서 관리 </a></button>
-	<button><a href="http://localhost:8181/electronic_library/rentlist"> 대출 도서 관리 </a></button> <br/><br/>
+	<button><a href="http://localhost:8181/electronic_library/bookList.do"> 도서 관리 </a></button>
+	<button><a href="http://localhost:8181/electronic_library/bookRentList.do"> 대출 도서 관리 </a></button> <br/><br/>
 
 	<!-- 메인 페이지로 이동 -->
 	 <button><a href="http://localhost:8181/electronic_library/">메인 페이지로 이동</a></button>
