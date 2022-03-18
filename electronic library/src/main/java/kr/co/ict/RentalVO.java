@@ -116,18 +116,4 @@ public class RentalVO {
 					+ ", returnSchedule=" + returnSchedule + ", bNum=" + bNum + ", bName=" + bName + ", uId=" + uId
 					+ ", checkOut=" + checkOut + ", overdue=" + overdue + "]";
 		}
-		
-		
-		
-		
-		
-
-
-		
-		
-		
-
-		
-		
-	
 }

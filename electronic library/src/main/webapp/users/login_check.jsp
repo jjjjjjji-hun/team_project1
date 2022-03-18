@@ -23,7 +23,7 @@
 			//session.setMaxInactiveInterval(3);
 			//String userId = (String)session.getAttribute("session_id");
 			//System.out.print(userId);
-			response.sendRedirect("../main_Page.jsp");
+			response.sendRedirect("../mainPage");
 			
 		}else{
 			out.println("<script>alert('비밀번호가 없습니다 . 다시 확인해 주세요.'); </script>");
