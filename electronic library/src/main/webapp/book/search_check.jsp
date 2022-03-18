@@ -28,12 +28,15 @@
 				<c:forEach var="SearchList" items="${BookList}">
 					<tr>
 						<td>${SearchList.bNum}</td>
-						<td><a href="http://localhost:8181/electronic_library/BookDetailServlet?bName=${SearchList.bName }">${SearchList.bName }</a></td>
+						<td><a href="http://localhost:8181/electronic_library/bookDetail.do?bName=${SearchList.bName }">${SearchList.bName }</a></td>
 						<td>${SearchList.bCategory}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		
-			</table>
+	</table><br/>
+	
+	<button><a href="http://localhost:8181/electronic_library/">뒤로가기</a></button>
+	
 </body>
 </html>

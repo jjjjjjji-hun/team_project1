@@ -152,23 +152,5 @@ public class ReviewVO {
 		public String toString() {
 			return "ReviewVO [revNum=" + revNum + ", bNum=" + bNum + ", bName=" + bName + ", uId=" + uId + ", revTitle="
 					+ revTitle + ", revContent=" + revContent + ", revDate=" + revDate + ", revMDate=" + revMDate + "]";
-		}
-	
-	
-	
-
-	
-	
-	
-	
-
-
-
-
-
-
-	
-	
-	
-	
+		}	
 }

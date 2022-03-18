@@ -44,7 +44,7 @@
 						<td>
 							<c:if test="${bName.checkOut eq false}">
 								<c:if test="${user.counting < 5 }">
-	    							<form action="http://localhost:8181/electronic_library/RentCheckServlet" method="post">
+	    							<form action="http://localhost:8181/electronic_library/rentCheck.do" method="post">
 	    								<input type="hidden" value="${bName.bNum }" name="bnum"/>
 	    								<input type="hidden" value="${bName.checkOut }" name="checkout"/>
 	    								<input type="hidden" value="${bName.bName }" name="bname"/>
@@ -59,8 +59,8 @@
 						</td>
 					</tr>
 			</tbody>
-			</table>
-			<a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a>
-			<a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a>
+			</table><br/>
+			<button><a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a></button>
+			<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a></button>
 </body>
 </html>

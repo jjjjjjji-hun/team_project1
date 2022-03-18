@@ -1,4 +1,4 @@
-<!-- 아직 작업중) 회원 대여 정보 구현 아직-->
+.<!-- 아직 작업중) 회원 대여 정보 구현 아직-->
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -36,14 +36,14 @@
 		<input type="hidden" name="sid" value="${sessionScope.sId}"/>
 		<input type="submit" value="대여 정보"/>
 	</form>-->
-	<button><a href="http://localhost:8181/electronic_library/rentinfo"> 대여 정보 </a></button>
+	<button><a href="http://localhost:8181/electronic_library/rentInfo.do"> 대여 정보 </a></button>
 	
 	<!-- 탈퇴하기 -->
 	<form action="http://localhost:8181/electronic_library/memberout" method="post">
 		<input type="submit" value="탈퇴하기"/>
 	</form>
 	
-	<button><a href="http://localhost:8181/electronic_library/main_Page.jsp"> 메인 화면으로 </a></button>
+	<button><a href="http://localhost:8181/electronic_library/mainPage"> 메인 화면으로 </a></button>
 
 </body>
 </html>

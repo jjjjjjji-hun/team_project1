@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -57,7 +63,7 @@
 					<td>
 						<c:choose>
 							<c:when test="${list.checkOut eq true}">
-								<form action="http://localhost:8181/electronic_library/returnbook?rentNum=${list.rentNum }" method="post">
+								<form action="http://localhost:8181/electronic_library/returnBook.do?rentNum=${list.rentNum }" method="post">
 									<input type="hidden" value="${list.rentNum }" name="rentnum"/>
 									<input type="hidden" value="${list.bNum }" name="bnum"/>
 									<input type="hidden" value="${list.returnDate}" name="returndate"/>
@@ -89,7 +95,7 @@
 		</tbody>
 	
 	</table>
-			<a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a>
-			<a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a>
+			<button><a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a></button>
+			<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a></button>
 </body>
 </html>
