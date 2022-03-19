@@ -298,5 +298,37 @@ public class RequestDAO {
 	}
 	
 	
+	// ▲ 해당 '도서 요청'의 상태를 바꿔줌 (false -> true)
+	
+	public void updateRequestStatus(int reqnum) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = ds.getConnection();
+			String sql = "UPDATE request SET reqstatus = true WHERE reqnum = ?" ;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, reqnum);
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+	}
+	
+	
+	
 	
 }

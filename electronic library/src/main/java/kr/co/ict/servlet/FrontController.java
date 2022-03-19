@@ -26,6 +26,7 @@ import kr.co.ict.servlet.service.request.RequestDetailUpdateToDBService;
 import kr.co.ict.servlet.service.request.RequestFormToDBService;
 import kr.co.ict.servlet.service.request.RequestInsertFormService;
 import kr.co.ict.servlet.service.request.RequestListService;
+import kr.co.ict.servlet.service.request.RequestPermissionService;
 import kr.co.ict.servlet.service.review.IReviewService;
 import kr.co.ict.servlet.service.review.ReviewDeleteService;
 import kr.co.ict.servlet.service.review.ReviewDetailService;
@@ -226,6 +227,12 @@ public class FrontController extends HttpServlet {
 			rqs = new RequestDeleteService();
 			rqs.execute(request, response);
 			ui = "/requestList.do";
+		
+		// ▲ 도서 요청 허가
+		}else if(uri.equals("/electronic_library/requestPermission.do")) {
+			rqs = new RequestPermissionService();
+			rqs.execute(request, response);
+			ui ="/requestDetail.do?reqNum=" + request.getParameter("reqnum"); // 여기 맞겠지?
 			
 		// ■ 그 외	
 		}else {

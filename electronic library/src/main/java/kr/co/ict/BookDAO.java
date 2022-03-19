@@ -36,6 +36,43 @@ public class BookDAO {
 	}
 	
 	/* 책 정보 관련 메서드*/
+	
+	public void insertBookData2(String bName, String bWriter,
+	 		String bPub, String bCategory) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "INSERT INTO book(bname, bwriter, bpub, bcategory) VALUES(?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, bName);
+			pstmt.setString(2, bWriter);
+			pstmt.setString(3, bPub);
+			pstmt.setString(4, bCategory);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+				con.close();
+				pstmt.close();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	
 	// DB에 책 정보 적재
 	public void insertBookData(int bNum, String bName, String bWriter,
 			 		String bPub, String bCategory, boolean checkOut) {
