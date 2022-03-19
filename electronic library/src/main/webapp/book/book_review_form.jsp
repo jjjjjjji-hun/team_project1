@@ -5,9 +5,16 @@
 
 -->
 
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!-- 잘못된 접근시 (주소창에 파라미터 값을 입력해서 들어온 경우) 리다이렉트 -->
+<c:if test="${rentalCheck eq null}">
+	<% response.sendRedirect("http://localhost:8181/electronic_library/reviewList.do"); %>
+</c:if>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +22,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
 	<h1>리뷰 작성 페이지 </h1>
 	
 		<form action="http://localhost:8181/electronic_library/insertReview.do" method="post">

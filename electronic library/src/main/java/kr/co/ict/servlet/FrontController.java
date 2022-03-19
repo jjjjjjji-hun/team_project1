@@ -80,7 +80,7 @@ public class FrontController extends HttpServlet {
 			// 포워딩 할 .jsp 파일의 경로를 미리 저장해둘 변수
 			String ui = null;
 			
-			// 인터페이스 - 리뷰
+			// 인터페이스 - 리뷰 ●
 			IReviewService rs = null;
 			
 			// 인터페이스 - 렌탈
@@ -89,56 +89,56 @@ public class FrontController extends HttpServlet {
 			// 인터페이스 - 북
 			IBookService bs = null;
 			
-			// 인터페이스 - 리퀘스트
+			// 인터페이스 - 리퀘스트 ▲
 			IRequestService rqs = null;
 			
 			System.out.println("현재 주소창에 입력된 .do 패턴 -> " + uri);
 		
 		
-		// ■ 리뷰 입력 폼으로 이동하기
+		// ● 리뷰 입력 폼으로 이동하기
 		if(uri.equals("/electronic_library/insertReviewForm.do")) {
 			rs = new ReviewInsertFormService();
 			rs.execute(request, response);			
 			ui = "/book/book_review_form.jsp";
 			
-		// ■ 리뷰 폼에서 날린 데이터 DB에 적재하기	
+		// ● 리뷰 폼에서 날린 데이터 DB에 적재하기	
 		}else if(uri.equals("/electronic_library/insertReview.do")) {
 			rs = new ReviewInsertToDBService();
 			rs.execute(request, response);
 			ui = "/reviewList.do";
 			
-		// ■ 리뷰 리스트
+		// ● 리뷰 리스트
 		}else if(uri.equals("/electronic_library/reviewList.do")) {
 			rs = new ReviewListService();
 			rs.execute(request, response);
 			ui = "/book/book_review_list.jsp";
 		
-		// ■ 리뷰 디테일
+		// ● 리뷰 디테일
 		}else if(uri.equals("/electronic_library/reviewDetail.do")) {
 			rs = new ReviewDetailService();
 			rs.execute(request, response);
 			ui = "/book/book_review_detail.jsp";
 			
-		// ■ 수정 폼으로 가기
+		// ● 수정 폼으로 가기
 		}else if(uri.equals("/electronic_library/updateReviewForm.do")){
 			rs = new ReviewUpdateFormService();
 			rs.execute(request, response);
 			ui = "/book/review_update_form.jsp";
 			
 			
-		// ■ 수정 폼에서 변경된 정보를 DB에서 update하기
+		// ● 수정 폼에서 변경된 정보를 DB에서 update하기
 		}else if(uri.equals("/electronic_library/updateReview.do")){	
 			rs = new ReviewUpdateService();
 			rs.execute(request, response);
 			ui = "/reviewDetail.do?revnum=" + request.getParameter("revnum");
 		
-		// ■ 리뷰 삭제
+		// ● 리뷰 삭제
 		}else if(uri.equals("/electronic_library/deleteReview.do")) {
 			rs = new ReviewDeleteService();
 			rs.execute(request, response);
 			ui = "/reviewList.do";
 
-		// ■ 리뷰 찾기 결과 페이지
+		// ● 리뷰 찾기 결과 페이지
 		}else if(uri.equals("/electronic_library/reviewSearch.do")) {
 			rs = new ReviewSearchService();
 			rs.execute(request, response);

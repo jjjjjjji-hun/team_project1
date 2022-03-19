@@ -46,7 +46,7 @@
 	</div><br/>
 	
 	<a href="http://localhost:8181/electronic_library/requestList.do"><button>희망 도서 리스트</button></a>
-	
+	<!-- 
 	<div id="searchBar">
 		<div class="search">
 			<form action="http://localhost:8181/electronic_library/bookSearch.do" method="post">

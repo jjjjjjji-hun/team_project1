@@ -26,6 +26,7 @@
 	<c:if test="${sId eq reviewDetail.uId}">
 		<form action="http://localhost:8181/electronic_library/deleteReview.do" method="post">
 			<input type="hidden" name="revnum" value="${reviewDetail.revNum}"/>
+			<input type="hidden" name="fid" value="${reviewDetail.uId}"/>
 			<input type="submit" value="리뷰 삭제"/>
 		</form><br/>
 		
@@ -35,7 +36,7 @@
 		</form><br/>
 	</c:if>
 	
-	<button><a href="/electronic_library/reviewList.do">리뷰 목록 보기</a></button>
+	<a href="/electronic_library/reviewList.do"><button>리뷰 목록 보기</button></a>
 	
 	
 
