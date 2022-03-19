@@ -10,7 +10,11 @@
 </head>
 <body>
 	 
-	잘 들어왔나 확인 ${requestDetail} <hr/>
+	잘 들어왔나 확인 => ${requestDetail} <hr/>
+	<!-- 주소창에 그냥 requestDetail.do 쳤을때 커버하는 코드 -->
+	<c:if test="${requestDetail eq null}">
+		<c:redirect url="http://localhost:8181/electronic_library/requestList.do"/>
+	</c:if>
 
 	<!-- 요청상태를 위한 작업 -->
 	<c:set var="reqStatus"/>
@@ -26,13 +30,13 @@
 	
 	<h1>도서 요청 디테일</h1>
 		<fieldset>
-			요청 상태 <input type="text" value="${reqStatus}"/><br/><br/>			
+			요청 상태 <input type="text" value="${reqStatus}" readonly/><br/><br/>			
 			
 			글 번호 <input type="text" value="${requestDetail.reqNum}" name="reqnum" readonly> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 			조회 수 ${requestDetail.hit} <br/><br/>
 			신청일 <input type="text" value="${requestDetail.reqDate}" readonly>  &nbsp;
 			수정일 <input type="text" value="${requestDetail.reqmDate}" readonly> &nbsp;
-			신청자 <input type="text" name="reqid"  readonly size=20 value=${requestDetail.reqId}> <br/> <br/>
+			신청자 <input type="text" name="reqid"  readonly size=20 value="${requestDetail.reqId}"> <br/> <br/>
 			제 목 &nbsp; <textarea rows="1" cols="94" readonly>${requestDetail.reqTitle}</textarea><br/><br/>
 			국가 분류 <input type="text" value="${requestDetail.country}" size=40 readonly/> <br/>
 			신청 도서 <input type="text" value="${requestDetail.bName}" size=40 readonly/> <br/>
@@ -41,13 +45,29 @@
 			카테고리&nbsp;&nbsp;<input type="text"value="${requestDetail.bCategory}" size=40 readonly/> <br/><br/>
 			
 			<textarea rows="15" cols="100"readonly>${requestDetail.reqContent}</textarea> <br/><br/>
+			
+			<c:if test="${sessionScope.sId eq requestDetail.reqId}">
+				<!-- 수정하기 버튼 -->
+				<form action="http://localhost:8181/electronic_library/requestUpdateForm.do" method="post">
+					<input type="hidden" name="reqnum" value="${requestDetail.reqNum}"/>
+					<input type="submit" value="수정하기"/>
+				</form>
+				
+				<!-- 삭제하기 버튼 -->
+				<form action="http://localhost:8181/electronic_library/deleteBookRequest.do" method="post">
+					<input type="hidden" name="reqnum" value="${requestDetail.reqNum}"/>
+					<input type="hidden" name="fid" value="${requestDetail.reqId}"/>
+					<input type="submit" value="삭제하기"/>
+				</form>
+			</c:if>	
+
 
 		</fieldset><br/>
-		
-	<a href="http://localhost:8181/electronic_library/requestUpdateForm.do?reqnum=${requestDetail.reqNum}"><button>수정하기</button></a>
-	<a href="http://localhost:8181/electronic_library/deleteBookRequest.do?reqnum=${requestDetail.reqNum}"><button>삭제하기</button></a> <br/><br/>
 	
-	<a href="http://localhost:8181/electronic_library/"><button>메인 화면으로</button></a>
+
+	 
+	<a href="http://localhost:8181/electronic_library/requestList.do"><button>뒤로가기</button></a>
+	<a href="http://localhost:8181/electronic_library/"><button>메인 화면으로</button></a><br/><br/>
 	
 	<c:if test="${sUtype eq true}">
 		<form action="http://localhost:8181/electronic_library/requestPermission.do" method="post">

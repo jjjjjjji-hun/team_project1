@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- 로그인 하지 않은 사용자가 폼에 접근시 리스트로 리다이렉트 -->
+	<c:if test="${sId eq null}">
+		<c:redirect url="http://localhost:8181/electronic_library/requestList.do"/>
+	</c:if>
 
 	<form action="http://localhost:8181/electronic_library/requestInsertFormToDB.do" method="post">
 		<fieldset>

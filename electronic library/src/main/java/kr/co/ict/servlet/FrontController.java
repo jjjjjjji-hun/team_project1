@@ -220,7 +220,7 @@ public class FrontController extends HttpServlet {
 		}else if(uri.equals("/electronic_library/requestUpdateFormToDB.do")) {
 			rqs = new RequestDetailUpdateToDBService();
 			rqs.execute(request, response);
-			ui ="/requestDetail.do?reqNum=" + request.getParameter("reqnum");
+			ui ="/requestDetail.do?reqnum=" + request.getParameter("reqnum");
 		
 		// ▲ 도서 요청 삭제
 		}else if(uri.equals("/electronic_library/deleteBookRequest.do")) {
@@ -232,7 +232,7 @@ public class FrontController extends HttpServlet {
 		}else if(uri.equals("/electronic_library/requestPermission.do")) {
 			rqs = new RequestPermissionService();
 			rqs.execute(request, response);
-			ui ="/requestDetail.do?reqNum=" + request.getParameter("reqnum"); // 여기 맞겠지?
+			ui ="/requestDetail.do?reqNum=" + request.getParameter("reqnum");
 			
 		// ■ 그 외	
 		}else {

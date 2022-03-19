@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.ict.RequestDAO;
 
@@ -29,9 +30,14 @@ public class RequestFormToDBService implements IRequestService {
 		System.out.println("(서비스)RequestFormToDB에서 받은 데이터 -> " 
 		+ country + ", " + reqId + ", " + bName + ", " + bWriter + ", " + bPub + ", " + bCategory + ", " + reqTitle + ", " + reqContent);
 		
-		RequestDAO dao = RequestDAO.getInstance();
-		dao.insertRequest(country, reqTitle, bName, bWriter, bPub, bCategory, reqId, reqContent);
+		// 세션
+		HttpSession session = request.getSession();
+		String sId = (String)session.getAttribute("sId");
 		
+		if(sId != null) {
+			RequestDAO dao = RequestDAO.getInstance();
+			dao.insertRequest(country, reqTitle, bName, bWriter, bPub, bCategory, reqId, reqContent);
+		}
 	}
 
 }

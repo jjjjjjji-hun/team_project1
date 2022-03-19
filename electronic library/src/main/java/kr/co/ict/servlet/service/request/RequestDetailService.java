@@ -17,8 +17,11 @@ public class RequestDetailService implements IRequestService{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String strReqNum = request.getParameter("reqNum");
-		int reqNum = Integer.parseInt(strReqNum);
+		String strReqNum = request.getParameter("reqnum");
+		int reqNum = 0 ;
+		if(strReqNum != null) {
+			reqNum = Integer.parseInt(strReqNum);
+		}
 		
 		// 디테일 페이지에서 책 신청을 허가 버튼을 위해 utype 발급 받음
 		HttpSession session = request.getSession();

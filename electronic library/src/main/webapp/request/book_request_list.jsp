@@ -13,20 +13,22 @@
 	
 	<table border="1">
 		<thead>
-			<th>글 번호</th>
-			<th>제목</th>
-			<th>요청 도서명</th>
-			<th>작성자</th>
-			<th>신청 상태</th>
-			<th>작성일</th>
-			<th>수정일</th>
-			<th>조회수</th>
+			<tr>
+				<th>글 번호</th>
+				<th>제목</th>
+				<th>요청 도서명</th>
+				<th>작성자</th>
+				<th>신청 상태</th>
+				<th>작성일</th>
+				<th>수정일</th>
+				<th>조회수</th>
+			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="request" items="${allRequestList}">
 				<tr>
 					<td>${request.reqNum}</td>
-					<td><a href="http://localhost:8181/electronic_library/requestDetail.do?reqNum=${request.reqNum}">${request.reqTitle}</a></td>
+					<td><a href="http://localhost:8181/electronic_library/requestDetail.do?reqnum=${request.reqNum}">${request.reqTitle}</a></td>
 					<td>${request.bName}</td>
 					<td>${request.reqId}</td>
 					<td> <!-- 신청상태가 0 : 대기중 / 신청상태 1 : 구매완료 -->

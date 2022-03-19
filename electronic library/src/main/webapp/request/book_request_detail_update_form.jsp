@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!-- 다른 사람이 작성한 수정폼에 들어오면 해당 리뷰 디테일로 리다이렉트 
+	 주소창에 /requestUpdateForm.do 만 쳐서 들어오는 경우도 커버됨. -->
+<c:if test="${sId ne requestDetail.reqId}">
+	<c:redirect url="http://localhost:8181/electronic_library/requestList.do"/>
+</c:if>
 <!DOCTYPE html>
 <html>
 <head>
