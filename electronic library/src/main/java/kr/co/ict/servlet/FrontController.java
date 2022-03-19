@@ -83,10 +83,10 @@ public class FrontController extends HttpServlet {
 			// 인터페이스 - 리뷰 ●
 			IReviewService rs = null;
 			
-			// 인터페이스 - 렌탈
+			// 인터페이스 - 렌탈 ♣
 			IRentalService rts = null;
 			
-			// 인터페이스 - 북
+			// 인터페이스 - 북 ■
 			IBookService bs = null;
 			
 			// 인터페이스 - 리퀘스트 ▲
@@ -156,35 +156,35 @@ public class FrontController extends HttpServlet {
 			bs.execute(request, response);
 			ui = "/book/book_detail.jsp";
 			
-		// ■ 대여 버튼 클릭 시 대여 체크
-		}else if(uri.equals("/electronic_library/rentCheck.do")) {
-			rts = new RentCheckService();
-			rts.execute(request, response);
-			ui = "/book/book_detail.jsp";
-			
-		// ■ 마이페이지에서 대여 정보 조회	
-		}else if(uri.equals("/electronic_library/rentInfo.do")) {
-			rts = new RentInfoService();
-			rts.execute(request, response);
-			ui = "/users/book_return.jsp";
-			
-		// ■ 대여 정보 조회에서 반납 버튼 클릭 시
-		}else if(uri.equals("/electronic_library/returnBook.do")) {
-			rts = new ReturnBookService();
-			rts.execute(request, response);
-			ui = "/users/book_return.jsp";
-			
-		// ■ 관리자 페이지에서 대여 리스트 조회
-		}else if(uri.equals("/electronic_library/bookRentList.do")) {
-			rts = new BookRentListService();
-			rts.execute(request, response);
-			ui = "/master/book_rent_list.jsp";
-			
 		// ■ 관리자 페이지에서 북 리스트 조회
 		}else if(uri.equals("/electronic_library/bookList.do")) {
 			bs = new BookListService();
 			bs.execute(request, response);
 			ui = "/master/book_list.jsp";
+			
+		// ♣ 대여 버튼 클릭 시 대여 체크
+		}else if(uri.equals("/electronic_library/rentCheck.do")) {
+			rts = new RentCheckService();
+			rts.execute(request, response);
+			ui = "/book/book_detail.jsp";
+			
+		// ♣ 마이페이지에서 대여 정보 조회	
+		}else if(uri.equals("/electronic_library/rentInfo.do")) {
+			rts = new RentInfoService();
+			rts.execute(request, response);
+			ui = "/users/book_return.jsp";
+			
+		// ♣ 대여 정보 조회에서 반납 버튼 클릭 시
+		}else if(uri.equals("/electronic_library/returnBook.do")) {
+			rts = new ReturnBookService();
+			rts.execute(request, response);
+			ui = "/users/book_return.jsp";
+			
+		// ♣ 관리자 페이지에서 대여 리스트 조회
+		}else if(uri.equals("/electronic_library/bookRentList.do")) {
+			rts = new BookRentListService();
+			rts.execute(request, response);
+			ui = "/master/book_rent_list.jsp";
 		
 		// ▲ 도서 요청 폼으로 이동
 		}else if(uri.equals("/electronic_library/insertRequestForm.do")) {
