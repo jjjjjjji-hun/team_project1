@@ -53,7 +53,7 @@
 		<form action="http://localhost:8181/electronic_library/requestPermission.do" method="post">
 			<input type="hidden" name="reqnum" value="${requestDetail.reqNum}"/>
 			<input type="hidden" name="reqstatus" value="${reqStatus}"/>
-			<input type="hidden" name="bname" value="${requestDetail.reqTitle}"/>
+			<input type="hidden" name="bname" value="${requestDetail.bName}"/>
 			<input type="hidden" name="bwriter" value="${requestDetail.bWriter}"/>
 			<input type="hidden" name="bpub" value="${requestDetail.bPub}"/>
 			<input type="hidden" name="bcategory" value="${requestDetail.bCategory}"/>
