@@ -43,6 +43,7 @@ public class MemberOutServlet extends HttpServlet {
 		
 	    HttpSession session = request.getSession();
 	    String sId = (String)session.getAttribute("sId");
+	    
 	    System.out.println("삭제 서블릿에서 발급된 세션 아이디 -> " + sId);	    
 	    
 	    // 회원탈퇴 완료창 (확인 / 취소 누르기도 전에 밑에 코드를 실행해버림)
@@ -53,13 +54,13 @@ public class MemberOutServlet extends HttpServlet {
 //	 	out.println("<script> if(!result){location.href='http://localhost:8181/electronic_library/utypecheck';}</script>");
 //	 	out.flush();
 	 		
-	    // 다오 생성
-        UserDAO dao = UserDAO.getInstance();
-        dao.deleteUser(sId);
-        System.out.println("회원 탈퇴 : DB 삭제 완료");
-
-        session.invalidate();
-        System.out.println("회원 탈퇴 : 세션 만료");
+	 	// 다오 생성	
+		UserDAO dao = UserDAO.getInstance();
+		dao.deleteUser(sId);
+		System.out.println("회원 탈퇴 : DB 삭제 완료");
+		
+		session.invalidate();
+		System.out.println("회원 탈퇴 : 세션 만료");
 	
 		// 탈퇴 후 알림창
 		response.setContentType("text/html; charset=UTF-8"); 

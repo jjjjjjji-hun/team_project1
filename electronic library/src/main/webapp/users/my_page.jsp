@@ -1,6 +1,3 @@
-.<!-- 아직 작업중) 회원 대여 정보 구현 아직-->
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
