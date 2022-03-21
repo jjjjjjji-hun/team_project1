@@ -39,7 +39,7 @@ public class ReviewDAO {
 	
 	// 전체 리뷰 리스트
 	
-	public List<ReviewVO> getAllReviewList(){
+	public List<ReviewVO> getAllReviewList(int pageNum){
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -49,10 +49,11 @@ public class ReviewDAO {
 		try {
 			
 			con = ds.getConnection();
-			
-			String sql = "SELECT * FROM review";
+			int limitNum = ((pageNum-1) * 10);
+			String sql = "SELECT * FROM review ORDER BY revnum DESC limit ?, 10";
 			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, limitNum);
 			rs = pstmt.executeQuery();
 			
 			
@@ -404,6 +405,35 @@ public class ReviewDAO {
 				return reviewList;
 			}
 			
-	
+	// 페이징 처리를 위해 리뷰글 전체 개수를 구하기
+	// 쿼리문은 SELECT COUNT(*) FROM review;
+	public int getPageNum() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int pageNum = 0;
+		try {
+			con = ds.getConnection();
+					
+			String sql = "SELECT COUNT(*) FROM review";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pageNum = rs.getInt(1);		
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
+		}	
+		return pageNum;
+	}
 	
 }
