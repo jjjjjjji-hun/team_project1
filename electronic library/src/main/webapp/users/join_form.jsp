@@ -4,19 +4,47 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/joinForm.css">
+
 <title>Insert title here</title>
 </head>
 <body>
 
-	<h1>회원 가입 페이지</h1>
-		<form action ="http://localhost:8181/electronic_library/ServletJoin" method="post">
-			아이디 : <input type="text" name="fid" required/><br/>
-			비밀번호 : <input type="password" name="fpw" required/><br/>
-			이름 : <input type="text" name="fname" required/><br/>
-			전화번호 : <input type="text" name="fpnum" required/><br/>
-			이메일 : <input type="email" name="femail" required/><br/>
-			<input type="submit" value="회원가입"/>&nbsp;&nbsp;&nbsp;
-			<input type="reset" value="초기화"/>
+	
+	<div class = "joinForm">
+	
+		<form action ="http://localhost:8181/electronic_library/ServletJoin"  method="post">
+			<h1>회원 가입 페이지</h1>
+			<hr/>
+			<div class="textForm">
+				<input type="text" name="fid" class="text" placeholder="아이디"  required /><br/>
+			</div>
+			
+			<div class="textForm">
+				<input type="password" name="fpw" class="text" placeholder="비밀번호" required/><br/>
+			</div>
+			
+			<div class="textForm">
+				<input type="text" name="fname" class="text" placeholder="이름" required/><br/>
+			</div>
+			
+			<div class="textForm">
+				<input type="text" name="fpnum" class="text" placeholder="전화번호" required/><br/>
+			</div>
+			
+			<div class="textForm">
+			<input type="email" name="femail" class="text" placeholder="이메일" required/><br/>
+			</div>
+			
+
+			
+			
+			
+			
+			<input type="submit" class= "btn" value="회원가입"/>
+			<input type="reset" class= "btn"value="초기화"/>
 		</form>
+		
+	</div>
 </body>
 </html>
