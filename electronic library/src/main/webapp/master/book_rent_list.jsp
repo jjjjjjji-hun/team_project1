@@ -17,17 +17,19 @@
 <body>
 
 	<table border="1">
-		<theader>
-			<th>대여 번호</th>
-			<th>대출일</th>
-			<th>반납일</th>
-			<th>반납 예정일</th>
-			<th>책 번호</th>
-			<th>책 이름</th>
-			<th>아이디</th>
-			<th>대출 여부</th>
-			<th>연체 여부</th>
-		</theader>
+		<thead>
+			<tr>
+				<th>대여 번호</th>
+				<th>대출일</th>
+				<th>반납일</th>
+				<th>반납 예정일</th>
+				<th>책 번호</th>
+				<th>책 이름</th>
+				<th>아이디</th>
+				<th>대출 여부</th>
+				<th>연체 여부</th>
+			</tr>
+		</thead>
 		<tbody>
 			<c:forEach var="list" items="${allRentalBookList}">
 				<tr>
@@ -62,8 +64,8 @@
 	
 	</table><br/>
 	
-		<!-- 관리 페이지 이동 버튼 (추후 프론트 컨트롤러로 변경할 것) -->
-		<button><a href="http://localhost:8181/electronic_library/users/admin_page.jsp">관리 페이지로 이동</a></button>
+		<!-- 관리 페이지 이동 버튼-->
+		<a href="http://localhost:8181/electronic_library/uTypeCheck1.do"><button>관리 페이지로 이동</button></a>
 
 </body>
 </html>

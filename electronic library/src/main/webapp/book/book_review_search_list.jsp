@@ -21,12 +21,14 @@
 	
 	<table border="1">
 		<thead>
-			<th>리뷰 번호</th>
-			<th>책 이름</th>
-			<th>제목</th>
-			<th>아이디</th>
-			<th>작성일</th>
-			<th>수정일</th>
+			<tr>
+				<th>리뷰 번호</th>
+				<th>책 이름</th>
+				<th>제목</th>
+				<th>아이디</th>
+				<th>작성일</th>
+				<th>수정일</th>
+			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="review" items="${reviewList}">		
@@ -42,8 +44,8 @@
 		</tbody>
 	</table><br/>
 	
-	<button><a href="http://localhost:8181/electronic_library/reviewList.do">뒤로 가기</a></button>
-	<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">책 검색하기</a></button><br/><br/>
+	<a href="http://localhost:8181/electronic_library/reviewList.do"><button>뒤로 가기</button></a>
+	<a href="http://localhost:8181/electronic_library/book/book_search.jsp"><button>도서 검색</button></a>
 	
 
 </body>

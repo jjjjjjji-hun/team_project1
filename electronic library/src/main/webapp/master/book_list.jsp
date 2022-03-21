@@ -21,13 +21,14 @@
    	 		<table border="1">
 		
 			<thead>
-				<th>도서 번호</th>
-				<th>도서명</th>
-				<th>저자</th>
-				<th>출판사</th>
-				<th>카테고리</th>
-				<th>대여 상태</th>
-				
+				<tr>
+					<th>도서 번호</th>
+					<th>도서명</th>
+					<th>저자</th>
+					<th>출판사</th>
+					<th>카테고리</th>
+					<th>대여 상태</th>
+				</tr>
 			</thead>
 			<tbody> <!-- end값 조정해야 함. length 쓸 수 있게 -->
 				<c:forEach var="bookList" items="${allBookList}">
@@ -52,8 +53,8 @@
 		
 			</table><br/>
 			
-			<!-- 관리 페이지 이동 버튼 (추후 프론트 컨트롤러로 변경할 것) -->
-			<button><a href="http://localhost:8181/electronic_library/users/admin_page.jsp">관리 페이지로 이동</a></button>
+			<!-- 관리 페이지 이동 버튼-->
+			<a href="http://localhost:8181/electronic_library/uTypeCheck1.do"><button>관리 페이지로 이동</button></a>
 
 </body>
 </html>

@@ -16,22 +16,20 @@
 	<c:if test="${userInfo.counting <= 0}">
 	<h2>빌린 도서가 없습니다.</h2>
 	</c:if>
-   	 		<table border="1">
-		<theader>
-			<th>대여 번호</th>
-			<th>대출일</th>
-			<th>반납일</th>
-			<th>반납 예정일</th>
-			<th>책 번호</th>
-			<th>책 이름</th>
-			<!-- <th>아이디</th>  -->
-			<th>대출 여부</th>
-			<th>반납하기</th>
-			<!-- 03.15 추가사항 -->
-			<th>리뷰 작성</th>
-			
-			<!-- <th>연체 여부</th> 굳이 필요 없을것 같아서 주석처리했습니다. -->
-		</theader>
+   	 	<table border="1">
+		<thead>
+			<tr>
+				<th>대여 번호</th>
+				<th>대출일</th>
+				<th>반납일</th>
+				<th>반납 예정일</th>
+				<th>책 번호</th>
+				<th>책 이름</th>
+				<th>대출 여부</th>
+				<th>반납하기</th>
+				<th>리뷰 작성</th>
+			</tr>
+		</thead>
 		<tbody>
 			<c:forEach var="list" items="${rentInfoList}">
 
@@ -42,7 +40,6 @@
 					<td>${list.returnSchedule}</td>
 					<td>${list.bNum}</td>
 					<td>${list.bName}</td>
-					<!-- <td>${list.uId}</td>  없어도 될 것 같아서 주석처리 했어요 -다은- -->
 					<td>
 						<c:choose>
 							<c:when test="${list.checkOut eq true}">
@@ -53,7 +50,6 @@
 							</c:otherwise> 
 						</c:choose>
 					</td>
-					<!-- <td>${list.overdue}</td> -->
 					<td>
 						<c:choose>
 							<c:when test="${list.checkOut eq true}">
@@ -88,8 +84,9 @@
 			</c:forEach>
 		</tbody>
 	
-	</table>
-			<button><a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a></button>
-			<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a></button>
+	</table><br/>
+			<a href="http://localhost:8181/electronic_library/uTypeCheck0.do"><button>마이페이지</button></a>
+			<a href="http://localhost:8181/electronic_library/book/book_search.jsp"><button>도서 검색</button></a>
+			<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 페이지로 이동</button></a>
 </body>
 </html>

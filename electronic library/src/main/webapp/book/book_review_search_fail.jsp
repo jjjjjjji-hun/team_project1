@@ -11,9 +11,8 @@
 	<h1> 리뷰 검색 실패 페이지 </h1>
 	
 	<a href="http://localhost:8181/electronic_library/reviewList.do"><button>뒤로 가기</button></a>
-	<!-- 이거 지훈님이 만든 .jsp 파일 썼습니다 -->
-	<a href="http://localhost:8181/electronic_library/book/book_search.jsp"><button>책 검색하기</button></a><br/><br/>
-	<a href="http://localhost:8181/electronic_library/"><button>메인 화면으로 이동</button></a>
+	<a href="http://localhost:8181/electronic_library/book/book_search.jsp"><button>도서 검색</button></a>
+	<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 화면으로 이동</button></a>
 	
 
 

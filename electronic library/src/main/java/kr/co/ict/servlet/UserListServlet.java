@@ -43,7 +43,7 @@ public class UserListServlet extends HttpServlet {
 			pNum = Integer.parseInt(strpNum);
 		}catch(Exception e) {// 페이지 번호를 입력하지 않으면 자동으로 1페이지로
 			pNum = 1;
-	}
+		}
 		
 		// dao
 		UserDAO dao = UserDAO.getInstance();

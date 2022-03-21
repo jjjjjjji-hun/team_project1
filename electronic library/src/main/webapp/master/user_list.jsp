@@ -19,13 +19,15 @@
    	 		<table border="1">
 		
 			<thead>
-				<th>아이디</th>
-				<th>비밀번호</th>
-				<th>이름</th>
-				<th>전화번호</th>
-				<th>이메일</th>
-				<th>유저 타입</th>
-				<th>대여한 도서 수</th>
+				<tr>
+					<th>아이디</th>
+					<th>비밀번호</th>
+					<th>이름</th>
+					<th>전화번호</th>
+					<th>이메일</th>
+					<th>유저 타입</th>
+					<th>대여한 도서 수</th>
+				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="userList" items="${allUserList}">
@@ -51,8 +53,8 @@
 		
 			</table><br/>
 			
-		<!-- 관리 페이지 이동 버튼 (추후 프론트 컨트롤러로 변경할 것) -->
-		<button><a href="http://localhost:8181/electronic_library/users/admin_page.jsp">관리 페이지로 이동</a></button>			
+		<!-- 관리 페이지 이동 버튼 -->
+		<a href="http://localhost:8181/electronic_library/uTypeCheck1.do"><button>관리 페이지로 이동</button></a>	
 			
 </body>
 </html>

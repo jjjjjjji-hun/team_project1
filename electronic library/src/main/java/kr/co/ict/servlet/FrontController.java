@@ -37,8 +37,10 @@ import kr.co.ict.servlet.service.review.ReviewSearchService;
 import kr.co.ict.servlet.service.review.ReviewUpdateFormService;
 import kr.co.ict.servlet.service.review.ReviewUpdateService;
 import kr.co.ict.servlet.service.user.IUserService;
+import kr.co.ict.servlet.service.user.MainPageService;
 import kr.co.ict.servlet.service.user.UserInfoUpdateForm;
 import kr.co.ict.servlet.service.user.UserJoinService;
+import kr.co.ict.servlet.service.user.UserListService;
 import kr.co.ict.servlet.service.user.UserLoginService;
 import kr.co.ict.servlet.service.user.UserMyInfoService;
 import kr.co.ict.servlet.service.user.UserMyInfoUpdateToDB;
@@ -255,7 +257,7 @@ public class FrontController extends HttpServlet {
 		}else if(uri.equals("/electronic_library/userLogin.do")) {
 			us = new UserLoginService();
 			us.execute(request, response);
-			ui ="/";
+			ui ="/mainPage.do";
 		
 		// ◆ 관리자 페이지로 이동
 		}else if(uri.equals("/electronic_library/uTypeCheck1.do")) {
@@ -287,9 +289,21 @@ public class FrontController extends HttpServlet {
 			us.execute(request, response);
 			ui="/users/user_out_script.jsp";
 			
+		// ◆ 관리페이지 - 회원 리스트
+		}else if(uri.equals("/electronic_library/userList.do")){
+			us = new UserListService();
+			us.execute(request, response);
+			ui="/master/user_list.jsp";
+			
+		// 메인 페이지 (경로 이동시에만 실행 가능)
+		}else if(uri.equals("/electronic_library/mainPage.do")) {
+			us = new MainPageService();
+			us.execute(request, response);
+			ui = "/";
+			
 		// 그 외	
 		}else {
-			ui = "/";
+			ui = "/mainPage.do";
 		}
 		
 		

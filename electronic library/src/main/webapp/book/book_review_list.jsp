@@ -10,13 +10,15 @@
 <body>
 	
 	<table border="1">
-		<thead> <!-- 책번호 나중에 책 이름으로 바꿔야-->
-			<th>리뷰 번호</th>
-			<th>책 이름</th>
-			<th>제목</th>
-			<th>아이디</th>
-			<th>작성일</th>
-			<th>수정일</th>
+		<thead>
+			<tr>
+				<th>리뷰 번호</th>
+				<th>책 이름</th>
+				<th>제목</th>
+				<th>아이디</th>
+				<th>작성일</th>
+				<th>수정일</th>
+			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="review" items="${allReviewList}">			
@@ -32,19 +34,8 @@
 		</tbody>
 	</table><br/>
 
-	<!-- 임시 버튼(대여리스트에 구현할까 생각중) -> 구현 (책 반납을 완료한 사람만 리뷰 작성할 수 있게)
-	<button><a href="/electronic_library/insertReviewForm.do">리뷰 쓰기</a></button>
-	 -->
-	 
-	 <!-- 03.17 리뷰 검색창 추가
-
-	<form action="http://localhost:8181/electronic_library/reviewSearch.do" method="post">
-		<input type="text" name="keyword" placeholder="검색할 리뷰 제목을 입력하세요" size=40 />
-		<input type="submit" value="검색">
-	</form> <br/><br/>
-	 -->
 	
-	<!-- 리뷰창 고도화 (안되면 삭제할 것) -->
+	<!-- 리뷰창 고도화 -->
 	
 	<form action="http://localhost:8181/electronic_library/reviewSearch.do" method="post">
 		<fieldset>
@@ -65,11 +56,11 @@
 	 
 	 <!-- 리뷰쓰기는 마이페이지 대여목록에서만 가능하도록, 리뷰쓰기를 누르면 대여 목록으로 이동, 로그인 사용자만 리뷰쓰기 버튼 보임 -->
 	 <c:if test="${sId ne null}">
-	 	<a href="http://localhost:8181/electronic_library/rentinfo"><button>리뷰 쓰기</button></a>
+	 	<a href="http://localhost:8181/electronic_library/rentInfo.do"><button>리뷰 쓰기</button></a>
 	 </c:if>
 	 
 	 <!-- 메인 페이지로 이동 -->
-	 <a href="http://localhost:8181/electronic_library/"><button>메인 페이지로 이동</button></a>
+	 <a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 페이지로 이동</button></a>
 	 
 	 
 

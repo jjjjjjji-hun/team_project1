@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,7 @@
 		</fieldset>
 	</form><br/>
 	
-	<button><a href="http://localhost:8181/electronic_library/"> 메인 화면으로 </a></button>
+	<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 화면으로</button></a>
 	
 	
 		<!-- 

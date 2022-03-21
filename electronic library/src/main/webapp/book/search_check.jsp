@@ -36,7 +36,7 @@
 		
 	</table><br/>
 	
-	<button><a href="http://localhost:8181/electronic_library/">뒤로가기</a></button>
+	<a href="http://localhost:8181/electronic_library/"><button>뒤로가기</button></a>
 	
 </body>
 </html>

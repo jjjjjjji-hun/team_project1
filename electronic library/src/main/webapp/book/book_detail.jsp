@@ -14,15 +14,15 @@
    	 		<table class="table table-hover">
 		
 			<thead>
-				<th>도서 번호</th>
-				<th>도서명</th>
-				<th>저자</th>
-				<th>출판사</th>
-				<th>카테고리</th>
-				<th>대여 상태</th>
-				<th>대여하기</th>
-				
-				
+				<tr>
+					<th>도서 번호</th>
+					<th>도서명</th>
+					<th>저자</th>
+					<th>출판사</th>
+					<th>카테고리</th>
+					<th>대여 상태</th>
+					<th>대여하기</th>
+				</tr>
 			</thead>
 			<tbody>
 					<tr>
@@ -60,7 +60,7 @@
 					</tr>
 			</tbody>
 			</table><br/>
-			<button><a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a></button>
-			<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a></button>
+			<a href="http://localhost:8181/electronic_library/uTypeCheck0.do"><button>마이페이지</button></a>
+			<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 페이지로 이동</button></a>
 </body>
 </html>
