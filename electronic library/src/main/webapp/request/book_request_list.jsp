@@ -48,7 +48,7 @@
 		</tbody>
 	
 	</table><br/>
-	
+
 	<a href="http://localhost:8181/electronic_library/insertRequestForm.do"><button>희망 도서 요청</button></a>
 	<button><a href="http://localhost:8181/electronic_library/">메인 화면으로</a></button>
 

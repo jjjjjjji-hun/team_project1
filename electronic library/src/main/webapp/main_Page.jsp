@@ -83,7 +83,7 @@
 		<!-- 대여 여부가 가능인 책 목록 표현 -->
 		<h2>바로 대여 가능</h2>
 		<c:forEach var="bookList" items="${allBookList}">
-			<c:if test="${bookList.checkOut eq true}">
+			<c:if test="${bookList.checkOut eq false}">
 				<a href="http://localhost:8181/electronic_library/book/bookDetail.do">
 				${bookList.bName}
 				</a>	
