@@ -33,13 +33,10 @@
 			</div>
 			
 			<div class="textForm">
-			<input type="email" name="femail" class="text" placeholder="이메일" required/><br/>
+				<input type="email" name="femail" class="text" placeholder="이메일" required/><br/>
 			</div>
 			
 
-			
-			
-			
 			
 			<input type="submit" class= "btn" value="회원가입"/>
 			<input type="reset" class= "btn"value="초기화"/>
