@@ -8,17 +8,16 @@
 <html>
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/searchCheck.css">
+
 <meta charset="UTF-8">
-<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/book_detail.css">
-
-
 <title>Insert title here</title>
 </head>
 <body>
-	<div class = "menu">
+
+	<div class ="searchCheck">
 		<!-- 검색한 도서 정보 -->
 		<h1>검색된 도서명</h1>
-		<hr/>
 		<table class="table table-hover">
 			
 				<thead>
@@ -33,13 +32,17 @@
 					<c:forEach var="SearchList" items="${BookList}">
 						<tr>
 							<td>${SearchList.bNum}</td>
-							<td><a href="http://localhost:8181/electronic_library/BookDetailServlet?bName=${SearchList.bName }">${SearchList.bName }</a></td>
+							<td><a href="http://localhost:8181/electronic_library/bookDetail.do?bName=${SearchList.bName }">${SearchList.bName }</a></td>
 							<td>${SearchList.bCategory}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			
-				</table>
+		</table><br/>
+		
+		<a href="http://localhost:8181/electronic_library/" class = "item"> 
+	        <div class="text">뒤로가기</span> </div>
+		</a>
 	</div>
 </body>
 </html>

@@ -139,7 +139,7 @@ private DataSource ds = null;
 			
 			con = ds.getConnection();
 			
-			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, bname, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL -1 DAY), ?, ?, ?, true)";
+			String sql = "INSERT INTO rental(rentdate, returnschedule, bnum, bname, uid, check_out) VALUES (now(), DATE_ADD(NOW(), INTERVAL 14 DAY), ?, ?, ?, true)";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, bnum);
@@ -269,6 +269,60 @@ private DataSource ds = null;
 			}
 			return book;
 		}
+		
+		
+	
+		// 사용자가 본인이 대여-반납하지 않은 책을 쓰려고 리뷰 insert 폼으로 이동하지 못하게하는 메서드
+	
+		public RentalVO checkRentalExistence(int bnum, String sId) {
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			RentalVO rental = null;
+			
+			try {
+				
+				con = ds.getConnection();
+				String sql = "SELECT * FROM rental WHERE uid=? AND bnum=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, sId);
+				pstmt.setInt(2, bnum);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					int rentNum = rs.getInt("rentnum");
+					Date rentDate = rs.getDate("rentdate");
+					Date returnDate = rs.getDate("returndate");
+					Date returnschedule = rs.getDate("returnschedule");
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getNString("bname");
+					String uId = rs.getString("uid");
+					boolean checkOut = rs.getBoolean("check_out");
+					boolean overdue = rs.getBoolean("overdue");
+					
+					rental = new RentalVO(rentNum, rentDate, returnDate, returnschedule, bNum, bName, uId, checkOut, overdue);
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+			
+			
+			return rental;
+		}
+		
+		
 		
 		
 		/*public RentalVO getReturnDateData(int b_Num) {

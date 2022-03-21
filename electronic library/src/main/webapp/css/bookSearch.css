@@ -1,24 +1,20 @@
 @charset "UTF-8";
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family:sans-serif;
 
+}
 
-body{
-  padding: 0;
-  margin: 0;
+body {
   background-color: skyblue;
-  
-  
 }
 
-h1 {
-  text-align: center;
-    margin: 30px;
-  
-}
-
-.menu{
+.bookSearch {
   position:absolute;
   width:600px;
-  height:300px;
+  height:400px;
   padding: 30px, 20px;
   background-color:#FFFFFF;
   text-align:center;
@@ -28,67 +24,42 @@ h1 {
   border-radius: 15px;
 }
 
-.title{
-	text-align: center;
-	width : 60px;
-	margin-left : 40px
-	
+h1 {
+  text-align: center;
+   margin: 30px;
+   font-weight: bold ;
 }
 
-.title_icon{
-	width : 30px;
-	margin-right : 10px
-	
+.search{
+	margin :10px;
+	width:580px;
+	height:100px;
 }
-
 
 .item{  
-  width:600px;
-	
-	  display: flex;
-	  align-items: center;
-	  padding: 16px;
-	  color: black;
-	  text-decoration: none;  
-	  height: 56px;
-	  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  color: black;
+  text-decoration: none;  
+  height: 56px;
+  box-sizing: border-box;
 }
 
-
-.textForm {
-  width : 330px;
-  margin: 10px;
-  padding: 10px 10px;
-  background-color: #ffffff;
-  border :none;
-  outline:none;
-  border-bottom: 2px solid #adadad;
-  text-align : center;
-  
-  
-}
-
-
-
-
-.btn {
-  margin :30px;
-  position:relative;
-  left:40%;
-  transform: translateX(-50%);
-  width:80%;
-  height:40px;
+.text{
+  line-height : 40px ;
   background-color: skyblue;
-  background-position: left;
-  background-size: 200%;
-  color:white;
+  color:white; 
   font-weight: bold;
-  border:none;
-  cursor:pointer;
-  transition: 0.4s;
   display:inline;
+  transform: translateX(-50%);
+  left:50%;
+  border:none;
+  font-size: 16px;
+  width : 400px;
+  height :40px;
+  position: relative;
+  text-align:center;
+  
 }
 
-.btn:hover {
-  background-position: right;
-}

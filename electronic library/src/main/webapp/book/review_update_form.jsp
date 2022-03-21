@@ -2,43 +2,93 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${sId ne reviewDetail.uId}">
+	<% response.sendRedirect("http://localhost:8181/electronic_library/reviewList.do"); %>
+</c:if>
+	
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/reviewUpdateForm.css">
 
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- /electronic_library/reviewUpdate -->
 	
-	<!-- 디버깅용 
-	<c:out value="(.jsp)review_update_form.jsp의 sId = ${sId} , 리뷰 아이디는 ${reviewDetail.uId}"/>
-	true면 같은 것 -> ${reviewDetail.uId eq sId}
-	-->
-	
-	<div class ="menu">
-		
+	<div class = "bookReviewDetail">
 		<h1>리뷰 ${reviewDetail.revNum}번 수정 페이지</h1>
-	
+		<hr/>
 		<form action="http://localhost:8181/electronic_library/updateReview.do" method="post">
-			리뷰 번호 <input type="number" name="revnum" value="${reviewDetail.revNum}" readonly>	&nbsp;&nbsp;
-			책 번호 <input type="number" name="booknum" value="${reviewDetail.bNum}" readonly>&nbsp;&nbsp;
-			작성일 <input type="text" value="${reviewDetail.revDate}" readonly>
-			수정일 <input type="text" value="${reviewDetail.revMDate}" readonly><br/><br/><br/>
+		
+			<div class = "auto">
+				<div class = "item">
+					<div class = "title"> 리뷰 번호  </div>
+					<div class = "title_icon">:</div>
+					<div class = "main">
+						<input type="number" name="revnum" value="${reviewDetail.revNum}" readonly>	
+								
+					</div>
+				</div>
 				
-			제목 <textarea rows="1" cols="50" name="title">${reviewDetail.revTitle}</textarea> &nbsp;&nbsp;
-			아이디 <input type="text" value="${reviewDetail.uId}" readonly><br/><br/> <br/>
-			<textarea rows="15" cols="100" name="content">${reviewDetail.revContent}</textarea> <br/><br/>
-			<input type="reset" value="초기화"/>
+				<div class = "item">
+					<div class = "title"> 책 번호  </div>
+					<div class = "title_icon">:</div>
+					<div class = "main">
+						<input type="number" name="booknum" value="${reviewDetail.bNum}" readonly>			
+					</div>
+				</div>
+				
+				<div class = "item">
+					<div class = "title"> 작성일  </div>
+					<div class = "title_icon">:</div>
+					<div class = "main">
+						<input type="text" value="${reviewDetail.revDate}" readonly>			
+					</div>
+				</div>
+				
+				<div class = "item">
+					<div class = "title"> 수정일  </div>
+					<div class = "title_icon">:</div>
+					<div class = "main">
+						<input type="text" value="${reviewDetail.revMDate}" readonly>	
+					</div>
+				</div>
 			
-			<!-- 03.16 추가 -->
-			<c:if test="${reviewDetail.uId eq sId}">
-				<input type="submit" value="수정 완료"/>
-			</c:if>
+				
+			</div>
+			<br/><br/>
+			
+			<div class = "auto2">
+				<div class = "item">
+					<div class = "title"> 제목  </div>
+					<div class = "title_icon">:</div>
+					<div class = "main">
+						<textarea rows="3" cols="30" name="title">${reviewDetail.revTitle}</textarea>
+					</div>
+				</div>
+				
+				<div class = "item">
+					<div class = "title"> 아이디  </div>
+					<div class = "title_icon">:</div>
+					<div class = "main">
+						<input type="text" name="fid" value="${reviewDetail.uId}" readonly>
+					</div>
+				</div>
+				<hr/>
+				<textarea rows="15" cols="100" name="content">${reviewDetail.revContent}</textarea>
+			</div>
+			<input type="reset" value="초기화" class = "btn"/>
+			<input type="submit" value="수정 완료" class = "btn"/>
+		
 		</form>
 	</div>
+	
+	
+
+
+
 </body>
 </html>

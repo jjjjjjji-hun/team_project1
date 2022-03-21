@@ -36,6 +36,43 @@ public class BookDAO {
 	}
 	
 	/* 책 정보 관련 메서드*/
+	
+	public void insertBookData2(String bName, String bWriter,
+	 		String bPub, String bCategory) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = ds.getConnection();
+			
+			String sql = "INSERT INTO book(bname, bwriter, bpub, bcategory) VALUES(?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, bName);
+			pstmt.setString(2, bWriter);
+			pstmt.setString(3, bPub);
+			pstmt.setString(4, bCategory);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+				con.close();
+				pstmt.close();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	
 	// DB에 책 정보 적재
 	public void insertBookData(int bNum, String bName, String bWriter,
 			 		String bPub, String bCategory, boolean checkOut) {
@@ -109,7 +146,7 @@ public class BookDAO {
 
 	// DB 내 모든 책 정보 조회 
 
-	public List<BookVO> getAllBookList(){
+	public List<BookVO> getAllBookList(int pageNum){
 			
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -118,10 +155,10 @@ public class BookDAO {
 		List<BookVO> BookList = new ArrayList<>();
 		try {
 			con = ds.getConnection();
-				
-			String sql = "SELECT * FROM book";
+			int limitNum = ((pageNum-1) * 10);
+			String sql = "SELECT * FROM book ORDER BY bnum DESC limit ?, 10";
 			pstmt = con.prepareStatement(sql);
-
+			pstmt.setInt(1, limitNum);
 			rs = pstmt.executeQuery();
 		
 				
@@ -193,7 +230,7 @@ public class BookDAO {
 
 		// 도서 검색할 때 사용
 		// booksearch 할때도 사용
-		public List<BookVO> getSearchBookList(String b_Name){
+		/*public List<BookVO> getSearchBookList(String b_Name){
 			
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -232,7 +269,61 @@ public class BookDAO {
 				}
 			}
 			return BookList;
+		}*/
+		// 도서 검색할 때 사용
+		// booksearch 할때도 사용
+	// 03.17 새로운 검색창과 연결되는 메서드	
+		
+		public List<BookVO> getSearchBookList2(String option, String searchKeyword){
+			System.out.println("(메서드) getSearchBookList2()로 " + option +", " +searchKeyword+ "를 가지고 진입");
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			List<BookVO> BookList = new ArrayList<>();
+			
+			String sql = "SELECT * FROM book WHERE " + option.trim();
+			
+			try {
+				con = ds.getConnection();
+				
+				if(searchKeyword != null && !searchKeyword.equals("")) {
+					sql += " LIKE '%" + searchKeyword.trim() + "%'";
+				}
+
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+			
+					
+				while(rs.next()) {
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getString("bname");
+					String bWriter = rs.getString("bwriter");
+					String bPub = rs.getString("bpub");
+					String bCategory = rs.getString("bcategory");
+					boolean checkOut = rs.getBoolean("check_out");
+						
+					BookVO BookData = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
+					BookList.add(BookData);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return BookList;
 		}
+		
+		
+		
 		
 		
 	/* 책 대여 및 반납 시 메서드*/
@@ -285,6 +376,34 @@ public class BookDAO {
 					}
 				}
 				
-	// 
+		// 페이징 처리를 위해 게시글 전체 개수를 구하기
+		// 쿼리문은 SELECT COUNT(*) FROM review;
+			public int getPageNum() {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				int pageNum = 0;
+				try {
+					con = ds.getConnection();
+									
+					String sql = "SELECT COUNT(*) FROM book";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();						
+					if(rs.next()) {
+						pageNum = rs.getInt(1);		
+				}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						con.close();
+						pstmt.close();
+						rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+					}
+				}	
+				return pageNum;
+			}
 }
 

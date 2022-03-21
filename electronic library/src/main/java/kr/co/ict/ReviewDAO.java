@@ -39,7 +39,7 @@ public class ReviewDAO {
 	
 	// 전체 리뷰 리스트
 	
-	public List<ReviewVO> getAllReviewList(){
+	public List<ReviewVO> getAllReviewList(int pageNum){
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -49,10 +49,11 @@ public class ReviewDAO {
 		try {
 			
 			con = ds.getConnection();
-			
-			String sql = "SELECT * FROM review";
+			int limitNum = ((pageNum-1) * 10);
+			String sql = "SELECT * FROM review ORDER BY revnum DESC limit ?, 10";
 			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, limitNum);
 			rs = pstmt.executeQuery();
 			
 			
@@ -302,7 +303,137 @@ public class ReviewDAO {
 			}
 	
 	
-	
-	
+			
+		// 03.17 	
+		
+			public List<ReviewVO> getSearchReviewList(String searchTitle){
+				System.out.println("(메서드) getSearchReviewList()로 " + searchTitle + "를 가지고 진입");
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+
+				List<ReviewVO> reviewList = new ArrayList<>();
+				try {
+					con = ds.getConnection();
+						
+					String sql = "SELECT * FROM review WHERE revtitle like ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, ("%" + searchTitle + "%"));
+					rs = pstmt.executeQuery();
+				
+						
+					while(rs.next()) {
+						int revNum = rs.getInt("revnum");
+						int bNum = rs.getInt("bnum");
+						String bName = rs.getString("bname");
+						String uId = rs.getString("uid");
+						String revTitle = rs.getString("revtitle");
+						String revContent = rs.getString("revcontent");
+						Date revDate = rs.getDate("revdate");
+						Date revMDate = rs.getDate("revmdate");
+							
+						ReviewVO review = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
+						reviewList.add(review);
+					}
+					
+					System.out.println("(메서드) getSearchReviewList() 안에서 찾은 리스트 ->" + reviewList);
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						con.close();
+						pstmt.close();
+						rs.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				return reviewList;
+			}
+			
+			
+			public List<ReviewVO> getSearchReviewList(String option, String searchKeyword){
+				System.out.println("(메서드) getSearchReviewList2()로 " + option +", " +searchKeyword+ "를 가지고 진입");
+				
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+
+				List<ReviewVO> reviewList = new ArrayList<>();
+				String sql = "SELECT * FROM review WHERE " + option.trim();
+				try {
+					con = ds.getConnection();
+					
+					if(searchKeyword != null && !searchKeyword.equals("")) {
+						sql += " LIKE '%" + searchKeyword.trim() + "%'";
+					}
+					
+					pstmt = con.prepareStatement(sql);
+					//pstmt.setString(1, searchKeyword);
+					//pstmt.setString(1, option);
+					//pstmt.setString(2, ("%" + searchKeyword + "%"));
+					rs = pstmt.executeQuery();
+				
+						
+					while(rs.next()) {
+						int revNum = rs.getInt("revnum");
+						int bNum = rs.getInt("bnum");
+						String bName = rs.getString("bname");
+						String uId = rs.getString("uid");
+						String revTitle = rs.getString("revtitle");
+						String revContent = rs.getString("revcontent");
+						Date revDate = rs.getDate("revdate");
+						Date revMDate = rs.getDate("revmdate");
+							
+						ReviewVO review = new ReviewVO(revNum, bNum, bName, uId, revTitle, revContent, revDate, revMDate);
+						reviewList.add(review);
+					}
+				
+					System.out.println("(메서드) getSearchReviewList2() 안에서 찾은 리스트 ->" + reviewList);
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						con.close();
+						pstmt.close();
+						rs.close();
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+				return reviewList;
+			}
+			
+	// 페이징 처리를 위해 리뷰글 전체 개수를 구하기
+	// 쿼리문은 SELECT COUNT(*) FROM review;
+	public int getPageNum() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int pageNum = 0;
+		try {
+			con = ds.getConnection();
+					
+			String sql = "SELECT COUNT(*) FROM review";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pageNum = rs.getInt(1);		
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+				pstmt.close();
+				rs.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
+		}	
+		return pageNum;
+	}
 	
 }

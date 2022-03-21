@@ -93,15 +93,9 @@
 				<input type="submit" value="대여 정보"/>
 			</form>-->
 			
-			<!-- 
-			<form action="http://localhost:8181/electronic_library/rentinfo" method="post" class ="item">
-				<input type="submit" class="text" value="주문 목록"/></span>
-			</form>
-			
-			 -->
-			 
-			<a href="http://localhost:8181/electronic_library/rentinfo" class = "item"> 
-		        <div class="text">주문목록</span> </div>
+	
+			<a href="http://localhost:8181/electronic_library/rentInfo.do" class = "item"> 
+		        <div class="text">대여정보</span> </div>
 			</a>
 			
 			<!-- 탈퇴하기 -->
@@ -109,14 +103,11 @@
 				<input type="submit" class = "text" value="탈퇴하기"/>
 			</form>
 			
-			<form action="http://localhost:8181/electronic_library/main_Page.jsp" method="post" class = "item">
+			<form action="http://localhost:8181/electronic_library/mainPage" method="post" class = "item">
 				<input type="submit" class = "text" value="메인화면으로"/>
 			</form>
 			
-			<!-- 
-			<button><a href="http://localhost:8181/electronic_library/main_Page.jsp"> 메인 화면으로 </a></button>
-			 -->
-			
+
 		</div>
 		
 	</div>

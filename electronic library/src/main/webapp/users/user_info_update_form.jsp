@@ -6,19 +6,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/updateForm.css">
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/userInfoUpdate.css">
 
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 
-	<div class = "menu">
+	<div class = "userinfoUpdateForm">
 	
-		<form action ="http://localhost:8181/electronic_library/userinfoupdate" class = "updateForm" method="post">
-			<h1>${user.uId}님</h1>
-			<h3>회원 정보 수정</h3>
-			
+		<form action ="http://localhost:8181/electronic_library/userinfoupdate"  method="post">
+			<h1> ${user.uId}님 회원 정보 수정</h1> <br/>
+
 			<hr/>
 			<div class="item">
 				<div class = "title"> 아이디  </div>
@@ -59,7 +59,8 @@
 		</form>
 		
 	</div>
-
-
 </body>
 </html>
+
+
+
