@@ -33,7 +33,7 @@
 				<c:forEach var="bookList" items="${allBookList}">
 					<tr>
 						<td>${bookList.bNum}</td>
-						<td>${bookList.bName}</td>
+						<td><a href="http://localhost:8181/electronic_library/bookDetail.do?bName=${bookList.bName}">${bookList.bName}</a></td>
 						<td>${bookList.bWriter}</td>
 						<td>${bookList.bPub}</td>
 						<td>${bookList.bCategory}</td>

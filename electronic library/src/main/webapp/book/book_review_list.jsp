@@ -65,11 +65,11 @@
 	 
 	 <!-- 리뷰쓰기는 마이페이지 대여목록에서만 가능하도록, 리뷰쓰기를 누르면 대여 목록으로 이동, 로그인 사용자만 리뷰쓰기 버튼 보임 -->
 	 <c:if test="${sId ne null}">
-	 	<button><a href="http://localhost:8181/electronic_library/rentinfo">리뷰 쓰기</a></button>
+	 	<a href="http://localhost:8181/electronic_library/rentinfo"><button>리뷰 쓰기</button></a>
 	 </c:if>
 	 
 	 <!-- 메인 페이지로 이동 -->
-	 <button><a href="http://localhost:8181/electronic_library/">메인 페이지로 이동</a></button>
+	 <a href="http://localhost:8181/electronic_library/"><button>메인 페이지로 이동</button></a>
 	 
 	 
 

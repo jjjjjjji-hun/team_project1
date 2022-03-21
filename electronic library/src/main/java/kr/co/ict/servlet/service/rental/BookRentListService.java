@@ -1,4 +1,4 @@
-package kr.co.ict.servlet.service;
+package kr.co.ict.servlet.service.rental;
 
 import java.util.List;
 
@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.ict.RentalDAO;
 import kr.co.ict.RentalVO;
+import kr.co.ict.servlet.service.review.IReviewService;
 
-public class BookRentListService implements IReviewService{
+public class BookRentListService implements IRentalService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

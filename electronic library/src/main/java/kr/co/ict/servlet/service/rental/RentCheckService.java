@@ -1,4 +1,4 @@
-package kr.co.ict.servlet.service;
+package kr.co.ict.servlet.service.rental;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,8 +8,9 @@ import kr.co.ict.BookDAO;
 import kr.co.ict.BookVO;
 import kr.co.ict.RentalDAO;
 import kr.co.ict.UserDAO;
+import kr.co.ict.servlet.service.review.IReviewService;
 
-public class RentCheckService implements IReviewService{
+public class RentCheckService implements IRentalService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

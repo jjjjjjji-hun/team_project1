@@ -1,4 +1,4 @@
-package kr.co.ict.servlet.service;
+package kr.co.ict.servlet.service.review;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -55,26 +55,14 @@ public class ReviewInsertFormService implements IReviewService {
 				}
 			}
 		
-		/* 작업중(미완)
+		// 작업중(미완)
 		// ■ case2) 렌트한 적 없는 책을 쓰는 경우
 			// http://localhost:8181/electronic_library/insertReviewForm.do?fbnum=7&fbname=책6
 			// 위와 같은 주소로 들어오는 것을 방지하기 위해(빌리지 않은 책 리뷰를 작성할 수 있음)
 			
 			RentalDAO dao2 = RentalDAO.getInstance();
-			List<RentalVO> myRentList = dao2.getAllRentalInfoBookList(sId);
-			
-			for(RentalVO myRent : myRentList) {
-				if(myRent.getbNum() != bNum) {
-					
-					RequestDispatcher dp = request.getRequestDispatcher("/reviewList.do");
-					dp.forward(request, response);	
-					
-				}
-			}
-		*/	
-		
-		
-		
+			RentalVO check = dao2.checkRentalExistence(bNum, sId);
+			System.out.println("(서비스)ReviewInsertFormService에서 받은 case2 데이터 => " + check);
 		
 		System.out.println("book_return.jsp에서 받은 데이터 -> " + bNum +", " + bName );
 		System.out.println("리뷰인서트폼서비스에서 받은 세션 아이디 -> " + sId);
@@ -83,6 +71,8 @@ public class ReviewInsertFormService implements IReviewService {
 		request.setAttribute("bNum", bNum);
 		request.setAttribute("bName", bName);
 		request.setAttribute("uId", sId);
+		request.setAttribute("rentalCheck", check);
+		
 		
 		
 		

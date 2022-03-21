@@ -43,7 +43,11 @@
 			</a>
 
 		</div>	
-	</div>
+	</div><br/>
+	
+	<a href="http://localhost:8181/electronic_library/requestList.do"><button>희망 도서 리스트</button></a>
+	<a href="http://localhost:8181/electronic_library/reviewList.do"><button>회원 리뷰 리스트</button></a><br/><br/>
+	<!-- 
 	<div id="searchBar">
 		<div class="search">
 			<form action="http://localhost:8181/electronic_library/bookSearch.do" method="post">

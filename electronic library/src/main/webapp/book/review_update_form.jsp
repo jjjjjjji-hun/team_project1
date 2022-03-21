@@ -2,7 +2,12 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${sId ne reviewDetail.uId}">
+	<% response.sendRedirect("http://localhost:8181/electronic_library/reviewList.do"); %>
+</c:if>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +15,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- /electronic_library/reviewUpdate -->
 	
-	<!-- 디버깅용 
-	<c:out value="(.jsp)review_update_form.jsp의 sId = ${sId} , 리뷰 아이디는 ${reviewDetail.uId}"/>
-	true면 같은 것 -> ${reviewDetail.uId eq sId}
-	-->
+	
 	
 	<h1>리뷰 ${reviewDetail.revNum}번 수정 페이지</h1>
 
@@ -26,14 +27,10 @@
 		수정일 <input type="text" value="${reviewDetail.revMDate}" readonly><br/><br/><br/>
 			
 		제목 <textarea rows="1" cols="50" name="title">${reviewDetail.revTitle}</textarea> &nbsp;&nbsp;
-		아이디 <input type="text" value="${reviewDetail.uId}" readonly><br/><br/> <br/>
+		아이디 <input type="text" name="fid" value="${reviewDetail.uId}" readonly><br/><br/> <br/>
 		<textarea rows="15" cols="100" name="content">${reviewDetail.revContent}</textarea> <br/><br/>
 		<input type="reset" value="초기화"/>
-		
-		<!-- 03.16 추가 -->
-		<c:if test="${reviewDetail.uId eq sId}">
-			<input type="submit" value="수정 완료"/>
-		</c:if>
+		<input type="submit" value="수정 완료"/>
 	</form>
 
 </body>

@@ -8,14 +8,12 @@
 </head>
 <body>
 
-	<h1> (여기는 리뷰 검색 실패 페이지) </h1>
-
-	<h3>해당 키워드로 작성된 리뷰가 없습니다.</h3>
+	<h1> 리뷰 검색 실패 페이지 </h1>
 	
-	<button><a href="http://localhost:8181/electronic_library/reviewList.do">뒤로 가기</a></button>
+	<a href="http://localhost:8181/electronic_library/reviewList.do"><button>뒤로 가기</button></a>
 	<!-- 이거 지훈님이 만든 .jsp 파일 썼습니다 -->
-	<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">책 검색하기</a></button><br/><br/>
-	<button><a href="http://localhost:8181/electronic_library/">메인 화면으로 이동</a></button>
+	<a href="http://localhost:8181/electronic_library/book/book_search.jsp"><button>책 검색하기</button></a><br/><br/>
+	<a href="http://localhost:8181/electronic_library/"><button>메인 화면으로 이동</button></a>
 	
 
 
