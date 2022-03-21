@@ -36,6 +36,14 @@ import kr.co.ict.servlet.service.review.ReviewListService;
 import kr.co.ict.servlet.service.review.ReviewSearchService;
 import kr.co.ict.servlet.service.review.ReviewUpdateFormService;
 import kr.co.ict.servlet.service.review.ReviewUpdateService;
+import kr.co.ict.servlet.service.user.IUserService;
+import kr.co.ict.servlet.service.user.UserInfoUpdateForm;
+import kr.co.ict.servlet.service.user.UserJoinService;
+import kr.co.ict.servlet.service.user.UserLoginService;
+import kr.co.ict.servlet.service.user.UserMyInfoService;
+import kr.co.ict.servlet.service.user.UserMyInfoUpdateToDB;
+import kr.co.ict.servlet.service.user.UserOutService;
+import kr.co.ict.servlet.service.user.UserType1PageService;
 
 /**
  * Servlet implementation class FrontController
@@ -91,6 +99,9 @@ public class FrontController extends HttpServlet {
 			
 			// 인터페이스 - 리퀘스트 ▲
 			IRequestService rqs = null;
+			
+			// 인터페이스 - 유저 ◆
+			IUserService us = null;
 			
 			System.out.println("현재 주소창에 입력된 .do 패턴 -> " + uri);
 		
@@ -233,8 +244,50 @@ public class FrontController extends HttpServlet {
 			rqs = new RequestPermissionService();
 			rqs.execute(request, response);
 			ui ="/requestDetail.do?reqNum=" + request.getParameter("reqnum");
+		
+		// ◆ 사용자 회원가입
+		}else if(uri.equals("/electronic_library/userJoin.do")) {
+			us = new UserJoinService();
+			us.execute(request, response);
+			ui ="/users/login_form.jsp";
 			
-		// ■ 그 외	
+		// ◆ 사용자 로그인
+		}else if(uri.equals("/electronic_library/userLogin.do")) {
+			us = new UserLoginService();
+			us.execute(request, response);
+			ui ="/";
+		
+		// ◆ 관리자 페이지로 이동
+		}else if(uri.equals("/electronic_library/uTypeCheck1.do")) {
+			us = new UserType1PageService();
+			us.execute(request, response);
+			ui="/users/admin_page.jsp";
+		
+		// ◆ 마이 페이지로 이동
+		}else if(uri.equals("/electronic_library/uTypeCheck0.do")) {
+			us = new UserMyInfoService();
+			us.execute(request, response);
+			ui="/users/my_page.jsp";
+			
+		// ◆ 마이 페이지 - 정보 수정 (폼으로 이동)
+		}else if(uri.equals("/electronic_library/userInfoUpdateForm.do")) {
+			us = new UserInfoUpdateForm();
+			us.execute(request, response);
+			ui="/users/user_info_update_form.jsp";
+		
+		// ◆ 마이페이지 - 정보 수정 (DB에 UPDATE)
+		}else if(uri.equals("/electronic_library/userInfoUpdateToDB.do")) {
+			us = new UserMyInfoUpdateToDB();
+			us.execute(request, response);
+			ui="/uTypeCheck0.do";
+		
+		// ◆ 마이페이지 - 회원 탈퇴
+		}else if(uri.equals("/electronic_library/userOut.do")){
+			us = new UserOutService();
+			us.execute(request, response);
+			ui="/users/user_out_script.jsp";
+			
+		// 그 외	
 		}else {
 			ui = "/";
 		}

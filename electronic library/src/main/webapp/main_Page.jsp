@@ -4,11 +4,13 @@
 <%
 	
 	String sId = (String)session.getAttribute("sId");
+
 	Boolean sUtype = (Boolean)session.getAttribute("sUtype");
 	System.out.println("발급된 세션 아이디 : " + sId);
 	System.out.println("발급된 세션 유저 타입 : " + sUtype);
 
-%>    
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +18,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div id="header">
 		<h1>전자도서광</h1>
 		<div class="log">
@@ -32,18 +35,18 @@
 					<input type="button" value="로그아웃">
 				</a>
 			</c:if>
-
-			<a href="http://localhost:8181/electronic_library/utypecheck">
-				<c:if test="${sUtype == true }">
-					<input type="button" value="관리 페이지">
-				</c:if>	
-				<c:if test="${sUtype == false }">
-					<input type="button" value="마이 페이지">
-				</c:if>	
-			</a>
+			<br/>
 
 		</div>	
 	</div><br/>
+
+	<!-- 관리자 페이지/ 마이 페이지 버튼 따로 만듦 -->
+	<c:if test="${sUtype eq true}">
+		<a href="http://localhost:8181/electronic_library/uTypeCheck1.do"><button>관리자 페이지</button></a>
+	</c:if>	
+	<c:if test="${sUtype eq false}">
+		<a href="http://localhost:8181/electronic_library/uTypeCheck0.do"><button>마이 페이지</button></a>
+	</c:if>	
 	
 	<a href="http://localhost:8181/electronic_library/requestList.do"><button>희망 도서 리스트</button></a>
 	<a href="http://localhost:8181/electronic_library/reviewList.do"><button>회원 리뷰 리스트</button></a><br/><br/>

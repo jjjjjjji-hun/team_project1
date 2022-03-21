@@ -15,7 +15,7 @@
 	
 	<h3> ${user.uId}님의 회원 정보 수정 페이지</h3> <br/>
 	
-	<form action="http://localhost:8181/electronic_library/userinfoupdate" method="post">
+	<form action="http://localhost:8181/electronic_library/userInfoUpdateToDB.do" method="post">
 		아이디 : <input type="text" name="fuid" value="${user.uId}" readonly><br/>
 		비밀번호 : <input type="text" name="fupw" value="${user.uPw}"><br/>
 		이름 : <input type="text" name="funame" value="${user.uName}"><br/>

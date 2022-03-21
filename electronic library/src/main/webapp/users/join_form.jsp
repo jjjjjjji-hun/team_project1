@@ -9,7 +9,7 @@
 <body>
 
 	<h1>회원 가입 페이지</h1>
-		<form action ="http://localhost:8181/electronic_library/ServletJoin" method="post">
+		<form action ="http://localhost:8181/electronic_library/userJoin.do" method="post">
 			아이디 : <input type="text" name="fid" required/><br/>
 			비밀번호 : <input type="password" name="fpw" required/><br/>
 			이름 : <input type="text" name="fname" required/><br/>

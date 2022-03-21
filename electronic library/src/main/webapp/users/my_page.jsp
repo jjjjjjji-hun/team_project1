@@ -26,7 +26,7 @@
 	<!-- 대여 중인 도서 수 : <input type="number" value="${user.counting}" readonly> <br/><br/> 대여 정보로 옮김-->
 	
 	<!-- 정보 수정하기 -->
-	<form action="http://localhost:8181/electronic_library/userupdateform" method="post">
+	<form action="http://localhost:8181/electronic_library/userInfoUpdateForm.do" method="post">
 		<input type="hidden" name="fid" value="${user.uId}"/>
 		<input type="submit" value="정보 수정"/>
 	</form>
@@ -39,7 +39,7 @@
 	<button><a href="http://localhost:8181/electronic_library/rentInfo.do"> 대여 정보 </a></button>
 	
 	<!-- 탈퇴하기 -->
-	<form action="http://localhost:8181/electronic_library/memberout" method="post">
+	<form action="http://localhost:8181/electronic_library/userOut.do" method="post">
 		<input type="submit" value="탈퇴하기"/>
 	</form>
 	
