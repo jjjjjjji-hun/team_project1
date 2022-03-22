@@ -406,4 +406,3 @@ public class BookDAO {
 				return pageNum;
 			}
 }
-
