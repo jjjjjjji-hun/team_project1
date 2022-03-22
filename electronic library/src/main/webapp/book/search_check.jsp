@@ -40,7 +40,7 @@
 			
 		</table><br/>
 		
-		<a href="http://localhost:8181/electronic_library/" class = "item"> 
+		<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item"> 
 	        <div class="text">뒤로가기</span> </div>
 		</a>
 	</div>

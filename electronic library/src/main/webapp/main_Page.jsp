@@ -39,12 +39,14 @@
 						</a>
 					</c:if>
 					<c:if test="${sUtype eq true}">
-					<a href="http://localhost:8181/electronic_library/uTypeCheck1.do" class = "item"></a>
+					<a href="http://localhost:8181/electronic_library/uTypeCheck1.do" class = "item">
 							<div class="text">관리페이지</div>
+					</a>
 					</c:if>
 					<c:if test="${sUtype eq false}">
-					<a href="http://localhost:8181/electronic_library/uTypeCheck0.do" class = "item"></a>
+					<a href="http://localhost:8181/electronic_library/uTypeCheck0.do" class = "item">
 							<div class="text">마이페이지 </div>
+					</a>
 					</c:if>
 				</div>
 				
