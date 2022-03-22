@@ -53,8 +53,13 @@
 		
 			</table><br/>
 			
+<<<<<<< HEAD
 			<!-- 관리 페이지 이동 버튼-->
 			<a href="http://localhost:8181/electronic_library/uTypeCheck1.do"><button>관리 페이지로 이동</button></a>
+=======
+			<!-- 관리 페이지 이동 버튼 (추후 프론트 컨트롤러로 변경할 것) -->
+			<button><a href="http://localhost:8181/electronic_library/users/admin_page.jsp">관리 페이지로 이동</a></button>
+>>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d
 
 </body>
 </html>

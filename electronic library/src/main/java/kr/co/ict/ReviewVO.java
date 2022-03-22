@@ -153,4 +153,8 @@ public class ReviewVO {
 			return "ReviewVO [revNum=" + revNum + ", bNum=" + bNum + ", bName=" + bName + ", uId=" + uId + ", revTitle="
 					+ revTitle + ", revContent=" + revContent + ", revDate=" + revDate + ", revMDate=" + revMDate + "]";
 		}	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d
