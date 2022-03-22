@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,8 +48,10 @@
 		</tbody>
 	
 	</table><br/>
-
-	<a href="http://localhost:8181/electronic_library/insertRequestForm.do"><button>희망 도서 요청</button></a>
+	
+	<c:if test="${sessionScope.sUtype eq false}">
+		<a href="http://localhost:8181/electronic_library/insertRequestForm.do"><button>희망 도서 요청</button></a>
+	</c:if>
 	<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 화면으로</button></a>
 
 </body>

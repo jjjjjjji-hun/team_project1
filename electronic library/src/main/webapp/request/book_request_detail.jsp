@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,18 +67,19 @@
 	<a href="http://localhost:8181/electronic_library/requestList.do"><button>뒤로가기</button></a>
 	<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 화면으로</button></a><br/><br/>
 	
-	<c:if test="${sUtype eq true}">
-		<form action="http://localhost:8181/electronic_library/requestPermission.do" method="post">
-			<input type="hidden" name="reqnum" value="${requestDetail.reqNum}"/>
-			<input type="hidden" name="reqstatus" value="${reqStatus}"/>
-			<input type="hidden" name="bname" value="${requestDetail.bName}"/>
-			<input type="hidden" name="bwriter" value="${requestDetail.bWriter}"/>
-			<input type="hidden" name="bpub" value="${requestDetail.bPub}"/>
-			<input type="hidden" name="bcategory" value="${requestDetail.bCategory}"/>
-			<input type="submit" value="구매 허가"/>
-		</form>
+	<c:if test="${requestDetail.reqStatus eq false}">
+		<c:if test="${sUtype eq true}">
+			<form action="http://localhost:8181/electronic_library/requestPermission.do" method="post">
+				<input type="hidden" name="reqnum" value="${requestDetail.reqNum}"/>
+				<input type="hidden" name="reqstatus" value="${reqStatus}"/>
+				<input type="hidden" name="bname" value="${requestDetail.bName}"/>
+				<input type="hidden" name="bwriter" value="${requestDetail.bWriter}"/>
+				<input type="hidden" name="bpub" value="${requestDetail.bPub}"/>
+				<input type="hidden" name="bcategory" value="${requestDetail.bCategory}"/>
+				<input type="submit" value="구매 허가"/>
+			</form>
+		</c:if>
 	</c:if>
-	
 
 </body>
 </html>
