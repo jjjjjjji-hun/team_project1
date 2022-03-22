@@ -405,6 +405,7 @@ public class ReviewDAO {
 				return reviewList;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			
 	// 페이징 처리를 위해 리뷰글 전체 개수를 구하기
 	// 쿼리문은 SELECT COUNT(*) FROM review;
@@ -442,3 +443,9 @@ public class ReviewDAO {
 }
 
 
+=======
+			
+	
+	
+}
+>>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d

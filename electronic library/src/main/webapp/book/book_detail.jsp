@@ -79,10 +79,15 @@
 					</tr>
 			</tbody>
 			</table><br/>
+<<<<<<< HEAD
 		<a href="javascript:history.back();" class = "item">
 		<div class="text">뒤로가기</span> </div>
 		</a>
 	</div>
 
+=======
+			<button><a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a></button>
+			<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a></button>
+>>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d
 </body>
 </html>
