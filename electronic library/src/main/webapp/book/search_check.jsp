@@ -40,8 +40,8 @@
 			
 		</table><br/>
 		
-		<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item"> 
-	        <div class="text">뒤로가기</span> </div>
+		<a href="javascript:history.back();" class = "item">
+		<div class="text">뒤로가기</span> </div>
 		</a>
 	</div>
 </body>

@@ -79,7 +79,9 @@
 					</tr>
 			</tbody>
 			</table><br/>
-
+		<a href="javascript:history.back();" class = "item">
+		<div class="text">뒤로가기</span> </div>
+		</a>
 	</div>
 
 </body>
