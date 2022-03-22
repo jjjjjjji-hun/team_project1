@@ -101,10 +101,10 @@
 				<input type="submit" class = "text" value="메인화면으로"/>
 			</form>
 			
-
 		</div>
 		
 	</div>
+
 
 </body>
 </html>

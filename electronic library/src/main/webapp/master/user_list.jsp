@@ -33,7 +33,12 @@
 				<c:forEach var="userList" items="${allUserList}">
 					<tr>
 						<!-- <td>${userList.uId}</td>  -->
-						<td><a href="http://localhost:8181/electronic_library/UseRentInfoCheckServlet?uId=${userList.uId}">${userList.uId}</a></td>
+						<c:if test="${userList.uType eq false}">
+							<td><a href="http://localhost:8181/electronic_library/UseRentInfoCheckServlet?uId=${userList.uId}">${userList.uId}</a></td>
+						</c:if>
+						<c:if test="${userList.uType eq true}">
+							<td>${userList.uId}</td>
+						</c:if>						
 						<td>${userList.uPw}</td>
 						<td>${userList.uName}</td>
 						<td>${userList.uPnum}</td>
