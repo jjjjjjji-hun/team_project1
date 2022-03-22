@@ -31,7 +31,7 @@
 			</c:if>
 				<!-- 로그아웃용 서블릿 만들어서 구현해야함. -->
 				<c:if test="${sId != null }">
-				<a href="http://localhost:8181/electronic_library/logout">
+				<a href="http://localhost:8181/electronic_library/userLogout.do">
 					<input type="button" value="로그아웃">
 				</a>
 			</c:if>
