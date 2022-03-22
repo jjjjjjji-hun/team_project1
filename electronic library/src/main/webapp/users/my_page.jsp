@@ -9,41 +9,108 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
+
+
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<div class ="menu">
+		<h1>Mypage</h1>
+		<h3>${user.uId}님의 회원 정보</h3>
+		<hr/>
+	
+		
+		
+		
+		<div class ="listContainer">
+			
+			<div class = "item">
+				<div class = "title"> 이름  </div>
+				<div class = "title_icon">:</div>
+				<div class = "main">
+					${user.uName}
+				</div>
+			</div>
+			
+		
+			<div class = "item">
+				<div class = "title"> 아이디 </div>
+				<div class = "title_icon">:</div>
+				<div class = "main">
+					${user.uId}
+				</div>
+			</div>
+			
+			<div class = "item">
+				<div class = "title"> 비밀번호  </div>
+				<div class = "title_icon">:</div>
+				<div class = "main">
+					${user.uPw}
+				</div>
+			</div>
+			
+			
+			<div class = "item">
+				<div class = "title"> 전화번호  </div>
+				<div class = "title_icon">:</div>
+				<div class = "main">
+					${user.uPnum}
+				</div>
+			</div>
+			
+			
+			<div class = "item">
+				<div class = "title"> 이메일  </div>
+				<div class = "title_icon">:</div>
+				<div class = "main">
+					${user.uEmail}
+				</div>
+			</div>
+			
+			
+			<!-- 대여 중인 도서 수 : <input type="number" value="${user.counting}" readonly> <br/><br/> 대여 정보로 옮김-->
+			
+		</div>
+		
+		
+		<br/>
+		<hr/>
+		
+		<h4>회원 메뉴</h4>
+		<div class="listContainer">
+			<!-- 정보 수정하기 -->
+			<form action="http://localhost:8181/electronic_library/userInfoUpdateForm.do" method="post" class ="item">
+				<input type="hidden" name="fid" value="${user.uId}"/>
+				<input type="submit" class="text" value="정보 수정"/></span>
+			</form>
+			
+			<!-- 대여정보 구현 아직 -->
+			<!-- <form action="http://localhost:8181/electronic_library/rentinfo" method="post">
+				<input type="hidden" name="sid" value="${sessionScope.sId}"/>
+				<input type="submit" value="대여 정보"/>
+			</form>-->
+			
+	
+			<a href="http://localhost:8181/electronic_library/rentInfo.do" class = "item"> 
+		        <div class="text">대여정보</span> </div>
+			</a>
+			
+			<!-- 탈퇴하기 -->
+			<form action="http://localhost:8181/electronic_library/userOut.do" method="post" class = "item">
+				<input type="submit" class = "text" value="탈퇴하기"/>
+			</form>
+			
+			<form action="http://localhost:8181/electronic_library/mainPage.do" method="post" class = "item">
+				<input type="submit" class = "text" value="메인화면으로"/>
+			</form>
+			
 
-	<h1>유저 페이지</h1>
-	
-	<h3> ${user.uId}님의 회원 정보</h3> <br/>
-	
-	
-	아이디 : <input type="text" value="${user.uId}" readonly><br/>
-	비밀번호 : <input type="text" value="${user.uPw}" readonly><br/>
-	이름 : <input type="text" value="${user.uName}" readonly><br/>
-	전화번호 : <input type="text" value="${user.uPnum}" readonly> <br/>
-	이메일 : <input type="text" value="${user.uEmail}" readonly> <br/>	<br/>
-	<!-- 대여 중인 도서 수 : <input type="number" value="${user.counting}" readonly> <br/><br/> 대여 정보로 옮김-->
-	
-	<!-- 정보 수정하기 -->
-	<form action="http://localhost:8181/electronic_library/userInfoUpdateForm.do" method="post">
-		<input type="hidden" name="fid" value="${user.uId}"/>
-		<input type="submit" value="정보 수정"/>
-	</form>
-	
-	<!-- 대여정보 구현 아직 -->
-	<!-- <form action="http://localhost:8181/electronic_library/rentinfo" method="post">
-		<input type="hidden" name="sid" value="${sessionScope.sId}"/>
-		<input type="submit" value="대여 정보"/>
-	</form>-->
-	<a href="http://localhost:8181/electronic_library/rentInfo.do"><button>대여 정보</button></a>
-	
-	<!-- 탈퇴하기 -->
-	<form action="http://localhost:8181/electronic_library/userOut.do" method="post">
-		<input type="submit" value="탈퇴하기"/>
-	</form>
-	
-	<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 화면으로</button></a>
+		</div>
+		
+	</div>
 
 </body>
 </html>

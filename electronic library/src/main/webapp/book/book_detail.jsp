@@ -5,12 +5,31 @@
 <html>
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookDetail.css">
+
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<div class= "bookDetail">
 	<!-- 검색된 도서 최종 확인 페이지 -->
-	<h1>'${bName.bName }' 책 검색 결과</h1>
+	
+		<div class = "header">
+			<h1>'${bName.bName }' 책 검색 결과</h1>
+		
+			<div class = "right">
+				<div class = "listContainer">
+					<a href="http://localhost:8181/electronic_library/usermyinfo" class = "item">
+						<div class="text">마이페이지</div>
+					</a>
+					<a href="http://localhost:8181/electronic_library/book/book_search.jsp" class = "item">
+							<div class="text">검색창으로</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<hr/>
    	 		<table class="table table-hover">
 		
 			<thead>
@@ -60,7 +79,12 @@
 					</tr>
 			</tbody>
 			</table><br/>
+<<<<<<< HEAD
 			<a href="http://localhost:8181/electronic_library/uTypeCheck0.do"><button>마이페이지</button></a>
 			<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 페이지로 이동</button></a>
+=======
+
+	</div>
+>>>>>>> 1153cfaea22875b09c018422397887e82d2053bf
 </body>
 </html>
