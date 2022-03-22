@@ -38,13 +38,15 @@
 							<div class="text">로그아웃</div>
 						</a>
 					</c:if>
-		
+					<c:if test="${sUtype eq true}">
 					<a href="http://localhost:8181/electronic_library/uTypeCheck1.do" class = "item"></a>
 							<div class="text">관리페이지</div>
+					</c:if>
+					<c:if test="${sUtype eq false}">
 					<a href="http://localhost:8181/electronic_library/uTypeCheck0.do" class = "item"></a>
 							<div class="text">마이페이지 </div>
+					</c:if>
 				</div>
-
 				
 				<div class = "listContainer2">	
 					<a href="http://localhost:8181/electronic_library/requestList.do" class = "item">
@@ -98,7 +100,7 @@
 			<!-- 대여 여부가 가능인 책 목록 표현 -->
 			<c:forEach var="bookList" items="${allBookList}">
 				<c:if test="${bookList.checkOut eq false}">
-					<a class = "item2" href="http://localhost:8181/electronic_library/book/bookDetail.do">
+					<a class = "item2" href="http://localhost:8181/electronic_library/bookDetail.do?bName=${bookList.bName}">
 						<div class="text">${bookList.bName}</div>
 					</a>	
 				</c:if>
@@ -112,12 +114,11 @@
 
 		<div id="BookList">
 			<c:forEach var="bookList" items="${allBookList}">
-				<div class = "item2">
-					<div class = "text"> <td>${bookList.bName}</td> </div>
-				</div>
-			</c:forEach>
+					<a class = "item2" href="http://localhost:8181/electronic_library/bookDetail.do?bName=${bookList.bName}">
+						<div class="text">${bookList.bName}</div>
+					</a>	
+			</c:forEach>			
 		</div>
-	</div>
 		
 </body>
 </html>

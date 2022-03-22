@@ -42,6 +42,7 @@ import kr.co.ict.servlet.service.user.UserInfoUpdateForm;
 import kr.co.ict.servlet.service.user.UserJoinService;
 import kr.co.ict.servlet.service.user.UserListService;
 import kr.co.ict.servlet.service.user.UserLoginService;
+import kr.co.ict.servlet.service.user.UserLogoutService;
 import kr.co.ict.servlet.service.user.UserMyInfoService;
 import kr.co.ict.servlet.service.user.UserMyInfoUpdateToDB;
 import kr.co.ict.servlet.service.user.UserOutService;
@@ -258,6 +259,12 @@ public class FrontController extends HttpServlet {
 			us = new UserLoginService();
 			us.execute(request, response);
 			ui ="/mainPage.do";
+		
+		// ◆ 사용자 로그아웃
+		}else if(uri.equals("/electronic_library/userLogout.do")) {
+			us = new UserLogoutService();
+			us.execute(request, response);
+			ui="/users/login_form.jsp";
 		
 		// ◆ 관리자 페이지로 이동
 		}else if(uri.equals("/electronic_library/uTypeCheck1.do")) {

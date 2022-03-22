@@ -24,10 +24,10 @@
 			</div>
 			
 			<div class = "item">
-				<div class = "title"> 책 번호  </div>
+				<div class = "title"> 책 이름  </div>
 				<div class = "title_icon">:</div>
 				<div class = "main">
-					<input type="text" value="${reviewDetail.bNum}" readonly> 			
+					<input type="text" value="${reviewDetail.bName}" readonly> 			
 				</div>
 			</div>
 			
