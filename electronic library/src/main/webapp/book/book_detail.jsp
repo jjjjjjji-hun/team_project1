@@ -79,12 +79,8 @@
 					</tr>
 			</tbody>
 			</table><br/>
-<<<<<<< HEAD
-			<a href="http://localhost:8181/electronic_library/uTypeCheck0.do"><button>마이페이지</button></a>
-			<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 페이지로 이동</button></a>
-=======
 
 	</div>
->>>>>>> 1153cfaea22875b09c018422397887e82d2053bf
+
 </body>
 </html>

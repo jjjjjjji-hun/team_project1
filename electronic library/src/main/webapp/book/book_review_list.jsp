@@ -25,7 +25,7 @@
 							<div class="text">리뷰 쓰기</div>
 						</a>
 					</c:if>
-					<a href="http://localhost:8181/electronic_library/" class = "item">
+					<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item">
 						<div class="text">메인 페이지</div>
 					</a>
 				</div>

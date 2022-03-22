@@ -9,8 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	 
-	잘 들어왔나 확인 => ${requestDetail} <hr/>
 	<!-- 주소창에 그냥 requestDetail.do 쳤을때 커버하는 코드 -->
 	<c:if test="${requestDetail eq null}">
 		<c:redirect url="http://localhost:8181/electronic_library/requestList.do"/>
@@ -67,7 +65,7 @@
 
 	 
 	<a href="http://localhost:8181/electronic_library/requestList.do"><button>뒤로가기</button></a>
-	<a href="http://localhost:8181/electronic_library/"><button>메인 화면으로</button></a><br/><br/>
+	<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 화면으로</button></a><br/><br/>
 	
 	<c:if test="${sUtype eq true}">
 		<form action="http://localhost:8181/electronic_library/requestPermission.do" method="post">

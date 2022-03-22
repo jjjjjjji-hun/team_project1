@@ -18,9 +18,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	잘 들어왔나 확인
-	${requestDetail}
-	
 	<h1>도서 요청 디테일 수정 폼</h1>
 	
 	<fieldset>

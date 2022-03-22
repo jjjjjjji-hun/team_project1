@@ -36,7 +36,7 @@
 				<div class="text">대출 도서 관리</span> </div>
 			</a>
 			
-			<a href="http://localhost:8181/electronic_library/" class = "item">
+			<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item">
 				<div class="text">메인 페이지 이동</span> </div>
 			</a>
 			
