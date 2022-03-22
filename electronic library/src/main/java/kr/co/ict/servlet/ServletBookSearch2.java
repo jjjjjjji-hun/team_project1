@@ -67,8 +67,4 @@ public class ServletBookSearch2 extends HttpServlet {
 		
 	}
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d

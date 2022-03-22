@@ -15,7 +15,6 @@
 </head>
 <body>
 	
-<<<<<<< HEAD
 	<div class = "adminForm">
 		<h1>관리자 페이지</h1>
 		<hr/>
@@ -44,14 +43,6 @@
 			
 		</div>
 	</div>
-=======
-	<button><a href="http://localhost:8181/electronic_library/userlist"> 회원 관리 </a></button>
-	<button><a href="http://localhost:8181/electronic_library/bookList.do"> 도서 관리 </a></button>
-	<button><a href="http://localhost:8181/electronic_library/bookRentList.do"> 대출 도서 관리 </a></button> <br/><br/>
-
-	<!-- 메인 페이지로 이동 -->
-	 <button><a href="http://localhost:8181/electronic_library/">메인 페이지로 이동</a></button>
->>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d
 
 </body>
 </html>

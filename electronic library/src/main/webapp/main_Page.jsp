@@ -61,8 +61,6 @@
 			</div>	
 		</div>
 		
-
-<<<<<<< HEAD
 		<!-- 
 		<div id="searchBar">
 			<div class="search">
@@ -113,62 +111,6 @@
 		<br/>
 		<hr/>
 
-=======
-			<a href="http://localhost:8181/electronic_library/utypecheck">
-				<c:if test="${sUtype == true }">
-					<input type="button" value="관리 페이지">
-				</c:if>	
-				<c:if test="${sUtype == false }">
-					<input type="button" value="마이 페이지">
-				</c:if>	
-			</a>
-
-		</div>	
-	</div>
-	<div id="searchBar">
-		<div class="search">
-			<form action="http://localhost:8181/electronic_library/bookSearch.do" method="post">
-				<h2>도서 검색</h2>
-				<input type="text" name="fbname" placeholder="도서검색">
-				<input type="submit" value="검색">
-			</form>
-		</div>	
-	</div>
-	 -->
-	 
-	<!-- 03.17 안되면 삭제 -->
-	
-		<form action="http://localhost:8181/electronic_library/ServletBookSearch2" method="post">
-		<fieldset>
-			<legend>도서 검색</legend>
-			<label>검색 항목</label>
-			<select name= "option">
-				<option value="bname">도서명</option>
-				<option value="bwriter">저자</option>
-				<option value="bpub">출판사</option>
-				
-			</select>
-			<label>검색어
-				<input type="text" name="keyword" placeholder="검색하기" size=40 />
-				<input type="submit" value="검색">
-			</label>
-		</fieldset>
-	</form><br/>
-	
-	
-	<div id="category">
-		<!-- 대여 여부가 가능인 책 목록 표현 -->
-		<h2>바로 대여 가능</h2>
-		<c:forEach var="bookList" items="${allBookList}">
-			<c:if test="${bookList.checkOut eq true}">
-				<a href="http://localhost:8181/electronic_library/book/bookDetail.do">
-				${bookList.bName}
-				</a>	
-			</c:if>
-		</c:forEach>			
-	</div>
-	<div id="BookList">
->>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d
 		<h2>도서 목록</h2>
 
 		<div id="BookList">

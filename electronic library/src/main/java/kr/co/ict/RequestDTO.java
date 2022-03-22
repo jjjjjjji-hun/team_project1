@@ -74,13 +74,18 @@ public class RequestDTO {
 	}
 	
 	// 해당 페이지 그룹의 시작페이지
-	public int getStartPAge() {
+	public int getStartPage() {
 		return startPage;
 	}
 	
 	// 해당 페이지 그룹의 끝페이지
 	public int getEndPage() {
 		return endPage;
+	}
+	
+	// 현재 페이지
+	public int getCurrentPage() {
+		return currentPage;
 	}
 
 	// 디버깅을 위한 toString

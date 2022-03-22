@@ -29,7 +29,7 @@
 				<div class="text">책 검색하기</span> </div>
 			</a>
 			
-			<a href="http://localhost:8181/electronic_library/" class = "item">
+			<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item">
 				<div class="text">메인 페이지 이동</span> </div>
 			</a>
 			

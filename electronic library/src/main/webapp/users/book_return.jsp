@@ -4,18 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookReturn.css">
-
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
->>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -128,64 +118,6 @@
 			</table>
 
 	</div>
-		
-=======
-				<tr>
-					<td>${list.rentNum }</td>
-					<td>${list.rentDate}</td>
-					<td>${list.returnDate}</td>
-					<td>${list.returnSchedule}</td>
-					<td>${list.bNum}</td>
-					<td>${list.bName}</td>
-					<!-- <td>${list.uId}</td>  없어도 될 것 같아서 주석처리 했어요 -다은- -->
-					<td>
-						<c:choose>
-							<c:when test="${list.checkOut eq true}">
-									대여 중
-							</c:when>
-							<c:otherwise>
-									반납 완료
-							</c:otherwise> 
-						</c:choose>
-					</td>
-					<!-- <td>${list.overdue}</td> -->
-					<td>
-						<c:choose>
-							<c:when test="${list.checkOut eq true}">
-								<form action="http://localhost:8181/electronic_library/returnBook.do?rentNum=${list.rentNum }" method="post">
-									<input type="hidden" value="${list.rentNum }" name="rentnum"/>
-									<input type="hidden" value="${list.bNum }" name="bnum"/>
-									<input type="hidden" value="${list.returnDate}" name="returndate"/>
-									<input type="hidden" value="${list.returnSchedule }" name="returnschedule"/>
-									<input type="hidden" value="${list.overdue }" name="overdue"/>
-							    	<input type="submit" value="반납">
-								</form>
-							</c:when>
-							<c:otherwise>
-							
-							</c:otherwise>
-						</c:choose>
-					</td>
-					<td><!-- 03.15 추가 리뷰작성 -->
-						<c:choose>
-							<c:when test="${list.checkOut eq false}">
-								<form action="/electronic_library/insertReviewForm.do" method="post">
-									<input type="hidden" value="${list.bNum}" name="fbnum"/>
-									<input type="hidden" value="${list.bName}" name="fbname"/> 
-									<!-- <input type="hidden" value="${list.uId}" name="fid"/> 03.16 세션 아이디로 변경 -->
-									
-							    	<input type="submit" value="리뷰 쓰기">
-								</form>
-							</c:when>
-						</c:choose>
-					</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	
-	</table>
-			<button><a href="http://localhost:8181/electronic_library/usermyinfo">마이페이지</a></button>
-			<button><a href="http://localhost:8181/electronic_library/book/book_search.jsp">검색창으로</a></button>
->>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d
+
 </body>
 </html>

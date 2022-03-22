@@ -15,7 +15,6 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 	<div class ="searchCheck">
 		<!-- 검색한 도서 정보 -->
 		<h1>검색된 도서명</h1>
@@ -45,24 +44,6 @@
 		<div class="text">뒤로가기</span> </div>
 		</a>
 	</div>
-=======
-				
-			</thead>
-			<tbody>
-			<!-- 사용자가 검색한 단어를 포함하는 책 리스트 보여주기 코드 찾는중 -->
-				<c:forEach var="SearchList" items="${BookList}">
-					<tr>
-						<td>${SearchList.bNum}</td>
-						<td><a href="http://localhost:8181/electronic_library/bookDetail.do?bName=${SearchList.bName }">${SearchList.bName }</a></td>
-						<td>${SearchList.bCategory}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		
-	</table><br/>
-	
-	<button><a href="http://localhost:8181/electronic_library/">뒤로가기</a></button>
-	
->>>>>>> 8a649c60fb48f263cea505ae9c9e43c82800b75d
+
 </body>
 </html>
