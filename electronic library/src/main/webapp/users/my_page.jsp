@@ -31,11 +31,6 @@
 		<input type="submit" value="정보 수정"/>
 	</form>
 	
-	<!-- 대여정보 구현 아직 -->
-	<!-- <form action="http://localhost:8181/electronic_library/rentinfo" method="post">
-		<input type="hidden" name="sid" value="${sessionScope.sId}"/>
-		<input type="submit" value="대여 정보"/>
-	</form>-->
 	<a href="http://localhost:8181/electronic_library/rentInfo.do"><button>대여 정보</button></a>
 	
 	<!-- 탈퇴하기 -->
