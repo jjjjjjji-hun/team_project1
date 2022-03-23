@@ -52,10 +52,10 @@
 				
 				<div class = "listContainer2">	
 					<a href="http://localhost:8181/electronic_library/requestList.do" class = "item">
-							<div class="text">희망 도서 리스트</div>
+							<div class="text">희망 도서 건의 게시판</div>
 					</a>
 					<a href="http://localhost:8181/electronic_library/reviewList.do" class = "item">
-							<div class="text">회원 리뷰 리스트</div>
+							<div class="text">도서 리뷰 게시판</div>
 					</a>
 				</div>
 			</div>	
