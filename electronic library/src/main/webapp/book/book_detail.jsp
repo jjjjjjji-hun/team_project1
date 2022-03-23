@@ -26,6 +26,11 @@
 					<a href="http://localhost:8181/electronic_library/book/book_search.jsp" class = "item">
 							<div class="text">검색창으로</div>
 					</a>
+					
+					<a href="javascript:history.back();" class = "item">
+						<div class="text">뒤로가기 </div>
+					</a>
+								
 				</div>
 			</div>
 		</div>
@@ -79,9 +84,7 @@
 					</tr>
 			</tbody>
 			</table><br/>
-		<a href="javascript:history.back();" class = "item">
-		<div class="text">뒤로가기</span> </div>
-		</a>
+
 	</div>
 
 </body>
