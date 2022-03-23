@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +24,10 @@
 			</div>
 			
 			<div class = "item">
-				<div class = "title"> 책 번호  </div>
+				<div class = "title"> 책 이름  </div>
 				<div class = "title_icon">:</div>
 				<div class = "main">
-					<input type="text" value="${reviewDetail.bNum}" readonly> 			
+					<input type="text" value="${reviewDetail.bName}" readonly> 			
 				</div>
 			</div>
 			

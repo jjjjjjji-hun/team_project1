@@ -18,8 +18,10 @@ import kr.co.ict.servlet.service.rental.IRentalService;
 import kr.co.ict.servlet.service.rental.RentCheckService;
 import kr.co.ict.servlet.service.rental.RentInfoService;
 import kr.co.ict.servlet.service.rental.ReturnBookService;
+import kr.co.ict.servlet.service.rental.UserRentInfoService;
 import kr.co.ict.servlet.service.request.IRequestService;
 import kr.co.ict.servlet.service.request.RequestDeleteService;
+import kr.co.ict.servlet.service.request.RequestDetail2Service;
 import kr.co.ict.servlet.service.request.RequestDetailService;
 import kr.co.ict.servlet.service.request.RequestDetailUpdateFormService;
 import kr.co.ict.servlet.service.request.RequestDetailUpdateToDBService;
@@ -42,6 +44,7 @@ import kr.co.ict.servlet.service.user.UserInfoUpdateForm;
 import kr.co.ict.servlet.service.user.UserJoinService;
 import kr.co.ict.servlet.service.user.UserListService;
 import kr.co.ict.servlet.service.user.UserLoginService;
+import kr.co.ict.servlet.service.user.UserLogoutService;
 import kr.co.ict.servlet.service.user.UserMyInfoService;
 import kr.co.ict.servlet.service.user.UserMyInfoUpdateToDB;
 import kr.co.ict.servlet.service.user.UserOutService;
@@ -198,6 +201,13 @@ public class FrontController extends HttpServlet {
 			rts = new BookRentListService();
 			rts.execute(request, response);
 			ui = "/master/book_rent_list.jsp";
+			
+		// ♣ 관리자 페이지에서 회원리스트-> 회원별 대여리스트 조회
+		}else if(uri.equals("/electronic_library/bookRentListOneUser.do")) {
+			System.out.println("주소 감지");
+			rts = new UserRentInfoService();
+			rts.execute(request, response);
+			ui = "/master/book_rent_list_one_user.jsp";
 		
 		// ▲ 도서 요청 폼으로 이동
 		}else if(uri.equals("/electronic_library/insertRequestForm.do")) {
@@ -217,12 +227,18 @@ public class FrontController extends HttpServlet {
 			rqs.execute(request, response);
 			ui = "/request/book_request_list.jsp";
 		
-		// ▲ 도서 요청 디테일로 이동
+		// ▲ 도서 요청 디테일로 이동 (조회수 오름)
 		}else if(uri.equals("/electronic_library/requestDetail.do")){
 			rqs = new RequestDetailService();
 			rqs.execute(request, response);
 			ui = "/request/book_request_detail.jsp";
-			
+		
+		// ▲ 도서 요청 디테일로 이동2 (조회수 안 오르는 버전) : 적용이 안됨
+		}else if(uri.equals("/electronic_library/requestDetail22.do")) {
+			rqs = new RequestDetail2Service();
+			rqs.execute(request, response);
+			ui = "/request/book_request_detail.jsp";
+				
 		// ▲ 도서 요청 수정 폼으로 이동
 		}else if(uri.equals("/electronic_library/requestUpdateForm.do")) {
 			rqs = new RequestDetailUpdateFormService();
@@ -233,7 +249,7 @@ public class FrontController extends HttpServlet {
 		}else if(uri.equals("/electronic_library/requestUpdateFormToDB.do")) {
 			rqs = new RequestDetailUpdateToDBService();
 			rqs.execute(request, response);
-			ui ="/requestDetail.do?reqnum=" + request.getParameter("reqnum");
+			ui ="/requestDetail22.do?reqnum=" + request.getParameter("reqnum");
 		
 		// ▲ 도서 요청 삭제
 		}else if(uri.equals("/electronic_library/deleteBookRequest.do")) {
@@ -258,6 +274,12 @@ public class FrontController extends HttpServlet {
 			us = new UserLoginService();
 			us.execute(request, response);
 			ui ="/mainPage.do";
+		
+		// ◆ 사용자 로그아웃
+		}else if(uri.equals("/electronic_library/userLogout.do")) {
+			us = new UserLogoutService();
+			us.execute(request, response);
+			ui="/users/login_form.jsp";
 		
 		// ◆ 관리자 페이지로 이동
 		}else if(uri.equals("/electronic_library/uTypeCheck1.do")) {
@@ -306,7 +328,6 @@ public class FrontController extends HttpServlet {
 			ui = "/mainPage.do";
 		}
 		
-		
 		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
 		dp.forward(request, response);
@@ -319,3 +340,4 @@ public class FrontController extends HttpServlet {
 	
 
 }
+

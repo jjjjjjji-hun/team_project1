@@ -41,6 +41,7 @@ public class LogoutServlet extends HttpServlet {
 		 session.invalidate();
 	     
 	     response.sendRedirect("http://localhost:8181/electronic_library/users/login_form.jsp");
+
 	}
 
 }
