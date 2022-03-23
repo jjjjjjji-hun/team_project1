@@ -188,6 +188,49 @@ public class BookDAO {
 	}
 		
 		
+	// DB 내 모든 책 정보 조회(메인 페이지 용) 
+
+		public List<BookVO> getAllBookListMain(){
+				
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			List<BookVO> BookList = new ArrayList<>();
+			try {
+				con = ds.getConnection();
+				
+				String sql = "SELECT * FROM book ORDER BY RAND() limit 12";
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+			
+					
+				while(rs.next()) {
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getString("bname");
+					String bWriter = rs.getString("bwriter");
+					String bPub = rs.getString("bpub");
+					String bCategory = rs.getString("bcategory");
+					boolean checkOut = rs.getBoolean("check_out");
+						
+					BookVO BookData = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
+					BookList.add(BookData);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return BookList;
+		}
+	
 	// DB 내 특정 책 정보 조회
 	// 메인 페이지에서 카테고리나 모든 도서 목록에서 사용할 때
 		public BookVO getBookData(String b_Name) {
