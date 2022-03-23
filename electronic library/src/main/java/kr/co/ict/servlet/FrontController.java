@@ -320,7 +320,6 @@ public class FrontController extends HttpServlet {
 			ui = "/mainPage.do";
 		}
 		
-		
 		// 포워딩
 		RequestDispatcher dp = request.getRequestDispatcher(ui);
 		dp.forward(request, response);
@@ -333,3 +332,4 @@ public class FrontController extends HttpServlet {
 	
 
 }
+

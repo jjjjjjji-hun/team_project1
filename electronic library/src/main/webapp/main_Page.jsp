@@ -61,7 +61,6 @@
 			</div>	
 		</div>
 		
-
 		<!-- 
 		<div id="searchBar">
 			<div class="search">

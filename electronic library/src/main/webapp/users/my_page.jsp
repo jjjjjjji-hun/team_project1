@@ -1,6 +1,3 @@
-<!-- 아직 작업중) 회원 대여 정보 구현 아직-->
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -87,16 +84,10 @@
 				<input type="submit" class="text" value="정보 수정"/></span>
 			</form>
 			
-			<!-- 대여정보 구현 아직 -->
-			<!-- <form action="http://localhost:8181/electronic_library/rentinfo" method="post">
-				<input type="hidden" name="sid" value="${sessionScope.sId}"/>
-				<input type="submit" value="대여 정보"/>
-			</form>-->
-			
-	
-			<a href="http://localhost:8181/electronic_library/rentInfo.do" class = "item"> 
-		        <div class="text">대여정보</span> </div>
-			</a>
+			<!-- 대여정보 구현  -->
+			<form action="http://localhost:8181/electronic_library/rentInfo.do" method="post" class="item">
+				<input type="submit" class = "text" value="대여 정보"/>
+			</form>
 			
 			<!-- 탈퇴하기 -->
 			<form action="http://localhost:8181/electronic_library/userOut.do" method="post" class = "item">
@@ -110,7 +101,6 @@
 		</div>
 		
 	</div>
-
 
 </body>
 </html>
