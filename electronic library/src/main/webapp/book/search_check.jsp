@@ -16,8 +16,24 @@
 <body>
 
 	<div class ="searchCheck">
+		<div class = "header">
+	
+			<h1>검색된 도서명</h1>
+			<hr/>
+	
+			<div class = "right">
+				<div class = "listContainer">
+					<a href="javascript:history.back();" class = "item">
+						<div class="text">뒤로가기</div>
+					</a>			
+				</div>
+			</div>
+		</div>
+		<h2>예시</h2>
+
 		<!-- 검색한 도서 정보 -->
-		<h1>검색된 도서명</h1>
+		
+		
 		<table class="table table-hover">
 			
 				<thead>
@@ -40,9 +56,7 @@
 			
 		</table><br/>
 		
-		<a href="javascript:history.back();" class = "item">
-		<div class="text">뒤로가기</span> </div>
-		</a>
+
 	</div>
 </body>
 </html>
