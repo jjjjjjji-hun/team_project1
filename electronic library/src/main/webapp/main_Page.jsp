@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	
 	String sId = (String)session.getAttribute("sId");
@@ -52,16 +52,15 @@
 				
 				<div class = "listContainer2">	
 					<a href="http://localhost:8181/electronic_library/requestList.do" class = "item">
-							<div class="text">희망 도서 리스트</div>
+							<div class="text">희망 도서 건의 게시판</div>
 					</a>
 					<a href="http://localhost:8181/electronic_library/reviewList.do" class = "item">
-							<div class="text">회원 리뷰 리스트</div>
+							<div class="text">도서 리뷰 게시판</div>
 					</a>
 				</div>
 			</div>	
 		</div>
 		
-
 		<!-- 
 		<div id="searchBar">
 			<div class="search">

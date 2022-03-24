@@ -1,6 +1,3 @@
-<!-- 아직 작업중) 회원 대여 정보 구현 아직-->
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -101,7 +98,6 @@
 				<input type="submit" class = "text" value="메인화면으로"/>
 			</form>
 			
-
 		</div>
 		
 	</div>

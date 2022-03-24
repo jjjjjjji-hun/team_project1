@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,6 @@
 </head>
 <body>
 
-
 	<div class = "bookSearch">
 		<!-- ServletBookSearch2에서 포워딩된 searchKeyword의 값이 있는 경우(= 없는 검색어, 공백을 입력) -->
 			<c:if test="${searchKeyword ne null}">
@@ -20,7 +19,7 @@
 			<hr/>
 		
 		<!-- 해당 주소로 바로 들어온 경우는 아래만 출력 -->
-		<form action="http://localhost:8181/electronic_library/bookSearch.do" method="post">
+		<form action="http://localhost:8181/electronic_library/ServletBookSearch2" method="post">
 			<fieldset class = "search">
 				<legend>도서 검색</legend><br/>
 				<label>검색 항목</label>
@@ -49,5 +48,6 @@
 		</form>
 		 -->
 	</div>
+
 </body>
 </html>

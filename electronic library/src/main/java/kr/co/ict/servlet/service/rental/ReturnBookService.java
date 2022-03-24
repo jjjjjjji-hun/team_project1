@@ -19,6 +19,13 @@ public class ReturnBookService implements IRentalService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		String strpNum = request.getParameter("pageNum");
+		int pNum = 0;
+		try {// 페이지 번호를 입력하면 해당 페이지로
+			pNum = Integer.parseInt(strpNum);
+		}catch(Exception e) {// 페이지 번호를 입력하지 않으면 자동으로 1페이지로
+			pNum = 1;
+		}
 		//값 받아오기
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				String returnDate = request.getParameter("returndate");
@@ -43,7 +50,7 @@ public class ReturnBookService implements IRentalService{
 				UserDAO dao3 = UserDAO.getInstance();
 				dao1.CheckOutOff(bNum);
 				dao3.countingUpdateDown(sId);
-				List<RentalVO> rentInfoList = dao2.getAllRentalInfoBookList(sId);
+				List<RentalVO> rentInfoList = dao2.getAllRentalInfoBookList(sId,pNum);
 				if(returnDate.equals("")) { // null이 returnSchedule과 비교가 안될까봐 넣어준 것
 					dao2.UpdateOverdue(false, bNum);
 				}else if(returnDate.compareTo(returnSchedule) > 0 ) {
