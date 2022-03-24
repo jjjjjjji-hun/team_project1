@@ -19,12 +19,15 @@ public class MainPageService implements IUserService{
 		BookDAO dao = BookDAO.getInstance();
 		
 		// 여러 UserVO 받아올 리스트 생성
-		List<BookVO> allBookList = dao.getAllBookListMain();
+		List<BookVO> allBookList1 = dao.getAllBookListMain();
+		List<BookVO> allBookList2 = dao.getAllBookList();
 		
-		System.out.println("모든 리스트 목록 : " + allBookList);
+		System.out.println("모든 리스트 목록 : " + allBookList1);
+		System.out.println("모든 리스트 목록 : " + allBookList2);
 		
 		// 바인딩
-		request.setAttribute("allBookList", allBookList);
+		request.setAttribute("allBookList1", allBookList1);
+		request.setAttribute("allBookList2", allBookList2);
 		
 	}
 

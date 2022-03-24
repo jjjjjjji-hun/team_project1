@@ -16,14 +16,14 @@ import kr.co.ict.BookVO;
 /**
  * Servlet implementation class ServletBookSearch2
  */
-@WebServlet("/ServletBookSearch2")
-public class ServletBookSearch2 extends HttpServlet {
+@WebServlet("/ServletBookSearch")
+public class ServletBookSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletBookSearch2() {
+    public ServletBookSearch() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,10 +43,10 @@ public class ServletBookSearch2 extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         
         String searchKeyword = request.getParameter("keyword");
-        System.out.println("(서블릿)서블릿북서치2에 들어온 검색 키워드 -> "+ searchKeyword);
+        System.out.println("(서블릿)서블릿북서치에 들어온 검색 키워드 -> "+ searchKeyword);
         
         String option = request.getParameter("option");
-        System.out.println("(서블릿)서블릿북서치2에 들어온 옵션 키워드 -> "+ option);
+        System.out.println("(서블릿)서블릿북서치에 들어온 옵션 키워드 -> "+ option);
         
         // BookDAO 메서드 호출 (해당하는 옵션, 키워드로 찾아온 책 리스트)
         BookDAO dao = BookDAO.getInstance();
