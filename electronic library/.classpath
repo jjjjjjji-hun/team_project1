@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+<<<<<<< HEAD
+=======
+	<classpathentry excluding="**|main/java/|main/java/" including="kr/" kind="src" path="src"/>
+>>>>>>> 89df5cbee9bf66c043a7a3833e7bb32d55a975b5
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-16">
 		<attributes>
@@ -9,5 +13,9 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0"/>
+<<<<<<< HEAD
 	<classpathentry kind="output" path="build/classes"/>
+=======
+	<classpathentry kind="output" path="bin"/>
+>>>>>>> 89df5cbee9bf66c043a7a3833e7bb32d55a975b5
 </classpath>
