@@ -18,6 +18,7 @@ import kr.co.ict.servlet.service.rental.IRentalService;
 import kr.co.ict.servlet.service.rental.RentCheckService;
 import kr.co.ict.servlet.service.rental.RentInfoService;
 import kr.co.ict.servlet.service.rental.ReturnBookService;
+import kr.co.ict.servlet.service.rental.UserRentInfoService;
 import kr.co.ict.servlet.service.request.IRequestService;
 import kr.co.ict.servlet.service.request.RequestDeleteService;
 import kr.co.ict.servlet.service.request.RequestDetail2Service;
@@ -200,6 +201,13 @@ public class FrontController extends HttpServlet {
 			rts = new BookRentListService();
 			rts.execute(request, response);
 			ui = "/master/book_rent_list.jsp";
+			
+		// ♣ 관리자 페이지에서 회원리스트-> 회원별 대여리스트 조회
+		}else if(uri.equals("/electronic_library/bookRentListOneUser.do")) {
+			System.out.println("주소 감지");
+			rts = new UserRentInfoService();
+			rts.execute(request, response);
+			ui = "/master/book_rent_list_one_user.jsp";
 		
 		// ▲ 도서 요청 폼으로 이동
 		}else if(uri.equals("/electronic_library/insertRequestForm.do")) {

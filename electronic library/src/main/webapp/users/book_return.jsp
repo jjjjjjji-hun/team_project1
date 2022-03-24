@@ -41,8 +41,6 @@
 		</div>
 		<hr/>
 
-<<<<<<< HEAD
-	
    	 		<table  class = "table table-hover">
 				<thead>
 					<th>대여 번호</th>

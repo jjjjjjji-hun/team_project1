@@ -26,7 +26,7 @@
 						</a>
 					</c:if>
 					<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item">
-						<div class="text">메인 페이지</div>
+						<div class="text">메인 화면으로</div>
 					</a>
 				</div>
 			</div>

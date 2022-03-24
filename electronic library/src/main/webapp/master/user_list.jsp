@@ -34,7 +34,7 @@
 					<tr>
 						<!-- <td>${userList.uId}</td>  -->
 						<c:if test="${userList.uType eq false}">
-							<td><a href="http://localhost:8181/electronic_library/UseRentInfoCheckServlet?uId=${userList.uId}">${userList.uId}</a></td>
+							<td><a href="http://localhost:8181/electronic_library/bookRentListOneUser.do?uId=${userList.uId}">${userList.uId}</a></td>
 						</c:if>
 						<c:if test="${userList.uType eq true}">
 							<td>${userList.uId}</td>
