@@ -85,12 +85,6 @@
 			</tbody>
 			</table><br/>
 
-<<<<<<< HEAD
-=======
-		<a href="javascript:history.back();" class = "item">
-		<div class="text">뒤로가기</span> </div>
-		</a>
->>>>>>> upstream/jihun
 	</div>
 
 </body>

@@ -11,7 +11,7 @@ body {
   background-color: skyblue;
 }
 
-.bookRequestDetailUpdateForm {
+.bookRequestDetail {
   position:absolute;
   width:1000px;
   height:820px;
@@ -82,7 +82,7 @@ h1 {
 .auto{
 	transform: translate(50px);
 	width:900px;
- 	height:230px;
+ 	height:250px;
  	line-height : 50px ;
  	border : solid  ;
  	border-color : skyblue;
@@ -99,7 +99,7 @@ h1 {
 	text-decoration: none;  
 	width : 300px;
 	box-sizing: border-box;
-	height  : 50px ;
+	height  : 10px ;
 }
 
 .title{
@@ -127,7 +127,7 @@ h1 {
 }
 
 .bottom {
-	transform: translate(200px);
+	transform: translate(100px);
  	margin : 20px;
 	width:1000px;
  	height:100px;

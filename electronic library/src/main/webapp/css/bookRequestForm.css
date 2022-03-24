@@ -11,7 +11,7 @@ body {
   background-color: skyblue;
 }
 
-.bookRequestDetailUpdateForm {
+.bookRequestForm {
   position:absolute;
   width:1000px;
   height:820px;
@@ -82,7 +82,7 @@ h1 {
 .auto{
 	transform: translate(50px);
 	width:900px;
- 	height:230px;
+ 	height:200px;
  	line-height : 50px ;
  	border : solid  ;
  	border-color : skyblue;
@@ -97,7 +97,7 @@ h1 {
 	padding: 16px;
 	color: black;
 	text-decoration: none;  
-	width : 300px;
+	width : 450px;
 	box-sizing: border-box;
 	height  : 50px ;
 }
@@ -106,7 +106,7 @@ h1 {
 	float :left;
 	
 	text-align: center;
-	width : 80px;
+	width : 120px;
 	
 }
 
