@@ -12,12 +12,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/userList.css">
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 관리 페이지</title>
 </head>
 <body>
-   	 		<table border="1">
-		
+
+
+	<div class = "userList">
+		<div class = "header">
+			<h1>유저 목록</h1>
+			<hr/>
+			<div class = "right">
+				<div class = "listContainer">
+					<a href="http://localhost:8181/electronic_library/uTypeCheck1.do" class = "item">
+						<div class="text">관리페이지 이동</div>
+					</a>
+			</div>
+		</div>
+	</div>
+
+
+
+	<table class="table table-hover">		
 			<thead>
 				<tr>
 					<th>아이디</th>
@@ -60,7 +79,6 @@
 			
 
 		<!-- 관리 페이지 이동 버튼 -->
-		<a href="http://localhost:8181/electronic_library/uTypeCheck1.do"><button>관리 페이지로 이동</button></a>	
 			
 		<nav aria-label="...">
 		 	 <ul class="pagination justify-content-center">

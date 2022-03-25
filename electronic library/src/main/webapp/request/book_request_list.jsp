@@ -4,14 +4,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookRequestList.css">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-	<h1>도서 요청 리스트</h1>
+
+		<div class = "bookList">
+			<div class = "header">
+				<h1>도서 요청 리스트</h1>
+				<hr/>
+				<div class = "right">
+					<div class = "listContainer">
+						<c:if test="${sessionScope.sUtype eq false}">
+							<a href="http://localhost:8181/electronic_library/insertRequestForm.do" class = "item">
+								<div class="text">희망도서 요청</div>
+							</a>
+						</c:if>
+						<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item">
+								<div class="text">메인 화면으로</div>
+						</a>
+				</div>
+			</div>
+		</div>
+
+
+   	 		
+	<table class="table table-hover">
+
 	
-	<table border="1">
 		<thead>
 			<tr>
 				<th>글 번호</th>
@@ -49,10 +74,6 @@
 	
 	</table><br/>
 	
-	<c:if test="${sessionScope.sUtype eq false}">
-		<a href="http://localhost:8181/electronic_library/insertRequestForm.do"><button>희망 도서 요청</button></a>
-	</c:if>
-	<a href="http://localhost:8181/electronic_library/mainPage.do"><button>메인 화면으로</button></a>
 
 		<nav aria-label="...">
 		 	 <ul class="pagination justify-content-center">

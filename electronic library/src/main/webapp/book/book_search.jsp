@@ -7,7 +7,7 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookSearch.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 검색 페이지</title>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 			<hr/>
 		
 		<!-- 해당 주소로 바로 들어온 경우는 아래만 출력 -->
-		<form action="http://localhost:8181/electronic_library/ServletBookSearch2" method="post">
+		<form action="http://localhost:8181/electronic_library/ServletBookSearch" method="post">
 			<fieldset class = "search">
 				<legend>도서 검색</legend><br/>
 				<label>검색 항목</label>

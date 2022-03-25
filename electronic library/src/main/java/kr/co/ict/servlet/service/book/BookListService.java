@@ -26,7 +26,7 @@ public class BookListService implements IBookService{
 		BookDAO dao = BookDAO.getInstance();
 				
 		// 여러 UserVO 받아올 리스트 생성
-		List<BookVO> allBookList = dao.getAllBookList(pNum);
+		List<BookVO> allBookList = dao.getAllBookListPage(pNum);
 		
 		// 페이징 버튼 생성을 위한 게시글 개수 확인하기
 		int bookCount = dao.getPageNum();

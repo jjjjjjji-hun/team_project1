@@ -8,7 +8,7 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookReviewList.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 리뷰 목록</title>
 </head>
 <body>
 	<div class = "bookReviewList">
@@ -27,6 +27,9 @@
 					</c:if>
 					<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item">
 						<div class="text">메인 화면으로</div>
+					</a>
+					<a href="javascript:history.back();" class = "item">
+						<div class="text">뒤로가기 </div>
 					</a>
 				</div>
 			</div>

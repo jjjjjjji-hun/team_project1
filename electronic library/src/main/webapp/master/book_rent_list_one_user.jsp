@@ -10,14 +10,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookRentListOneUser.css">
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원별 대출 도서 현황</title>
 </head>
 <body>
 
-    <h1> ${uId}님의 대여 목록입니다.</h1>
-    
-    <table border="1">
+	<div class = "bookRentListOneUser">
+		<div class = "header">
+			<h1>${uId}님의 대여 목록입니다.</h1>
+			<hr/>
+			<div class = "right">
+				<div class = "listContainer">
+					<a href="javascript:history.back();" class = "item">
+						<div class="text">뒤로가기</div>
+					</a>
+			</div>
+		</div>
+	</div>
+
+	<table class="table table-hover">
         <theader>
             <th>대여 번호</th>
             <th>대출일</th>
@@ -27,7 +41,6 @@
             <th>책 이름</th>
             <th>아이디</th>
             <th>대출 여부</th>
-            <th>연체 여부</th>
         </theader>
         <tbody>
             <c:forEach var="user" items="${rentalList}">
@@ -49,15 +62,6 @@
                             </c:otherwise> 
                         </c:choose>
                     </td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${user.overdue eq true}">
-                                    연체
-                            </c:when>
-                            <c:otherwise>
-                                    미연체
-                            </c:otherwise> 
-                        </c:choose></td>
                 </tr>
             </c:forEach>
         </tbody>
@@ -79,9 +83,7 @@
 		  </ul>
 		</nav>
     
-    <a href="javascript:history.back();" class = "item">
-		<div class="text">뒤로가기</span> </div>
-		</a>
+
  	
 </body>
 </html>

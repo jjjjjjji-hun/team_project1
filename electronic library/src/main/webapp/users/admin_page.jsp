@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/adminPage.css">
 
-<title>Insert title here</title>
+<title>관리자 페이지</title>
 </head>
 <body>
 	
@@ -37,7 +37,7 @@
 			</a>
 			
 			<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item">
-				<div class="text">메인 페이지 이동</span> </div>
+				<div class="text">메인 화면으로</span> </div>
 			</a>
 			
 			

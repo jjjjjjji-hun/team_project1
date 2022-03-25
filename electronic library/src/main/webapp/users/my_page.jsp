@@ -10,7 +10,7 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/myPage.css">
 
 
-<title>Insert title here</title>
+<title>마이 페이지</title>
 </head>
 <body>
 	
