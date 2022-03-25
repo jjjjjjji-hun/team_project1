@@ -34,7 +34,10 @@
 				<textarea rows="15" cols="100" name="fcontent"></textarea> <br/><br/>
 				<input type="reset" value="초기화"/>
 				<input type="submit" value="작성 완료"/>
-			</form>		
+			</form>
+			<a href="javascript:history.back();" class = "item">
+					<div class="text">뒤로가기 </div>
+			</a>		
 	</div>
 </body>
 </html>
