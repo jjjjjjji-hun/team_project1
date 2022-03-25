@@ -145,8 +145,8 @@ public class BookDAO {
 	}
 
 	// DB 내 모든 책 정보 조회 
-
-	public List<BookVO> getAllBookList(){
+	// 관리자페이지 -> 도서 관리 조회 시 
+	public List<BookVO> getAllBookListPage(int pageNum){
 			
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -155,10 +155,10 @@ public class BookDAO {
 		List<BookVO> BookList = new ArrayList<>();
 		try {
 			con = ds.getConnection();
-				
-			String sql = "SELECT * FROM book";
+			int limitNum = ((pageNum-1) * 10);
+			String sql = "SELECT * FROM book ORDER BY bnum DESC limit ?, 10";
 			pstmt = con.prepareStatement(sql);
-
+			pstmt.setInt(1, limitNum);
 			rs = pstmt.executeQuery();
 		
 				
@@ -187,7 +187,92 @@ public class BookDAO {
 		return BookList;
 	}
 		
+	// DB 내 모든 책 정보 조회 
+	// 메인 페이지 바로 대여 가능 조회 시
+		public List<BookVO> getAllBookList(){
+				
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			List<BookVO> BookList = new ArrayList<>();
+			try {
+				con = ds.getConnection();
+				
+				String sql = "SELECT * FROM book";
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+			
+					
+				while(rs.next()) {
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getString("bname");
+					String bWriter = rs.getString("bwriter");
+					String bPub = rs.getString("bpub");
+					String bCategory = rs.getString("bcategory");
+					boolean checkOut = rs.getBoolean("check_out");
+						
+					BookVO BookData = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
+					BookList.add(BookData);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return BookList;
+		}
 		
+	// DB 내 모든 책 정보 조회(메인 페이지 도서목록 용) 
+
+		public List<BookVO> getAllBookListMain(){
+				
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			List<BookVO> BookList = new ArrayList<>();
+			try {
+				con = ds.getConnection();
+				
+				String sql = "SELECT * FROM book ORDER BY RAND() limit 12";
+				pstmt = con.prepareStatement(sql);
+
+				rs = pstmt.executeQuery();
+			
+					
+				while(rs.next()) {
+					int bNum = rs.getInt("bnum");
+					String bName = rs.getString("bname");
+					String bWriter = rs.getString("bwriter");
+					String bPub = rs.getString("bpub");
+					String bCategory = rs.getString("bcategory");
+					boolean checkOut = rs.getBoolean("check_out");
+						
+					BookVO BookData = new BookVO(bNum, bName, bWriter, bPub, bCategory, checkOut);
+					BookList.add(BookData);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+					pstmt.close();
+					rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return BookList;
+		}
+	
 	// DB 내 특정 책 정보 조회
 	// 메인 페이지에서 카테고리나 모든 도서 목록에서 사용할 때
 		public BookVO getBookData(String b_Name) {
@@ -376,5 +461,33 @@ public class BookDAO {
 					}
 				}
 				
-	// 
+		// 페이징 처리를 위해 게시글 전체 개수를 구하기
+		// 쿼리문은 SELECT COUNT(*) FROM review;
+			public int getPageNum() {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				int pageNum = 0;
+				try {
+					con = ds.getConnection();
+									
+					String sql = "SELECT COUNT(*) FROM book";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();						
+					if(rs.next()) {
+						pageNum = rs.getInt(1);		
+				}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						con.close();
+						pstmt.close();
+						rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+					}
+				}	
+				return pageNum;
+			}
 }

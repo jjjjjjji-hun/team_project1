@@ -1,0 +1,80 @@
+@charset "UTF-8";
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family:sans-serif;
+
+}
+
+body {
+  background-color: skyblue;
+}
+
+.bookDetail {
+  position:absolute;
+  width:1000px;
+  height:800px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+}
+
+h1 {
+  text-align: center;
+   margin: 30px;
+   font-weight: bold ;
+}
+
+.header{	
+	width:1000px;
+  	height :100px;
+  	
+}
+.right{
+  	width:1000px;
+  	height :100px;
+  	position:absolute;
+    top : 1%;
+}
+
+.listContainer{
+	padding: 0;
+	float : right;
+}
+
+
+
+.item{  
+  margin : 10px ;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: black;
+  text-decoration: none;  
+  height: 30px;
+  box-sizing: border-box;
+  
+}
+
+.text{
+  line-height : 30px ;
+  background-color: skyblue;
+  color:white; 
+  font-weight: bold;
+  display:inline;
+  transform: translateX(-50%);
+  left:50%;
+  border:none;
+  font-size: 15px;
+  width : 150px;
+  height :30px;
+  position: relative;
+  text-align:center;
+  border-radius : 15px;
+  
+}

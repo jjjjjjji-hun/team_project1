@@ -1,11 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  
 <%
     String sid = (String)session.getAttribute("session_id");
     if(sid != null){
     	response.sendRedirect("http://localhost:8181/electronic_library/mainPage");
     }
 %>
+<!-- 유저조인서비스에서 바인딩 된 UserVO 정보(이미 회원 가입이 된 경우) -->
+<c:if test="${user ne null}">
+	<script>alert('이미 회원가입 된 아이디입니다.'); location.href='http://localhost:8181/electronic_library/users/join_form.jsp';</script>
+</c:if>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -241,7 +249,7 @@ input[type=text]:placeholder {
     </div>
 
     <!-- Login Form -->
-    <form action="http://localhost:8181/electronic_library/userlogin" method="post">   
+    <form action="http://localhost:8181/electronic_library/userLogin.do" method="post">   
       <input type="text" id="login" class="fadeIn second" name="fid" placeholder="login">
       <input type="text" id="password" class="fadeIn third" name="fpw" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">

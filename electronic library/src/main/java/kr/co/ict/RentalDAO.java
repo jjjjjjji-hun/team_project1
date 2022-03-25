@@ -38,7 +38,7 @@ private DataSource ds = null;
 	}
 	
 	// 전체 대여 도서 목록 가져오기
-			public List<RentalVO> getAllRentalBookList(){
+			public List<RentalVO> getAllRentalBookList(int pageNum){
 				
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -48,10 +48,10 @@ private DataSource ds = null;
 				
 				try {
 					con = ds.getConnection();
-					
-					String sql = "SELECT * FROM rental";
+					int limitNum = ((pageNum-1) * 10);
+					String sql = "SELECT * FROM rental ORDER BY rentnum DESC limit ?, 10";
 					pstmt = con.prepareStatement(sql);
-				
+					pstmt.setInt(1, limitNum);
 					rs = pstmt.executeQuery();
 					
 					while(rs.next()) {
@@ -84,7 +84,7 @@ private DataSource ds = null;
 	
 		// 사용자가 대여한 전체 도서 목록 가져오기
 			// sId 세션 아이디
-			public List<RentalVO> getAllRentalInfoBookList(String sId){
+			public List<RentalVO> getAllRentalInfoBookList(String sId, int pageNum){
 							
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -94,10 +94,11 @@ private DataSource ds = null;
 							
 				try {
 					con = ds.getConnection();
-								
-					String sql = "SELECT * FROM rental WHERE uid = ?";
+					int limitNum = ((pageNum-1) * 10);		
+					String sql = "SELECT * FROM rental WHERE uid = ? ORDER BY rentnum DESC limit ?, 10";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, sId);
+					pstmt.setInt(2, limitNum);
 					rs = pstmt.executeQuery();
 								
 					while(rs.next()) {
@@ -323,7 +324,36 @@ private DataSource ds = null;
 		}
 		
 		
-		
+		// 페이징 처리를 위해 게시글 전체 개수를 구하기
+		// 쿼리문은 SELECT COUNT(*) FROM review;
+			public int getPageNum() {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				int pageNum = 0;
+				try {
+					con = ds.getConnection();
+							
+					String sql = "SELECT COUNT(*) FROM rental";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()) {
+						pageNum = rs.getInt(1);		
+					}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						con.close();
+						pstmt.close();
+						rs.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+					}
+				}	
+				return pageNum;
+			}
 		
 		/*public RentalVO getReturnDateData(int b_Num) {
 
