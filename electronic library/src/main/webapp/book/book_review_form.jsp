@@ -19,7 +19,7 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookReviewForm.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 리뷰 작성</title>
 </head>
 <body>
 

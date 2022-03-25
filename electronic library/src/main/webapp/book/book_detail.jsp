@@ -20,7 +20,7 @@
 		
 			<div class = "right">
 				<div class = "listContainer">
-					<a href="http://localhost:8181/electronic_library/usermyinfo" class = "item">
+					<a href="http://localhost:8181/electronic_library/uTypeCheck0.do" class = "item">
 						<div class="text">마이페이지</div>
 					</a>
 					<a href="http://localhost:8181/electronic_library/book/book_search.jsp" class = "item">

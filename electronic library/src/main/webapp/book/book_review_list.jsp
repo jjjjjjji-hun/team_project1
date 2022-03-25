@@ -8,7 +8,7 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookReviewList.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 리뷰 목록</title>
 </head>
 <body>
 	<div class = "bookReviewList">
