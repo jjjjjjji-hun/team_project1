@@ -27,11 +27,7 @@
     <Manager pathname="" />
     -->
     
-<<<<<<< HEAD
 
-          <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="300" maxWait="1000" name="jdbc/mysql" password="mysql" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/test" username="root"/>
+          <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="300" maxWait="1000" name="jdbc/mysql" password="mysql" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/finalproject" username="root"/>
 
-=======
-    	<Resource auth="container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="300" maxWait="1000" name="jdbc/mysql" password="mysql" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/project" username="root"/>
->>>>>>> eaf7d19d67f69a084ba0cd085eb5ae1436c81adc
 </Context>
