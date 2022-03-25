@@ -23,7 +23,7 @@
 
 	<div class = "bookRentList">
 		<div class = "header">
-			<h1>대여 도서 리스트</h1>
+			<h1>대출 도서 목록</h1>
 			<hr/>
 			<div class = "right">
 				<div class = "listContainer">

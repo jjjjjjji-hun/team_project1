@@ -17,7 +17,7 @@
 			<h1>도서 검색 페이지</h1>
 		
 			<c:if test="${searchKeyword ne null}">
-				<h3>다시 검색해주세요</h1>
+				<h3>다시 검색해주세요</h3>
 			</c:if>
 			
 			<hr/>

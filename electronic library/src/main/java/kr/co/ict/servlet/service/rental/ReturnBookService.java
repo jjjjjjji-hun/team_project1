@@ -42,7 +42,7 @@ public class ReturnBookService implements IRentalService{
 				if(returnDate .equals("")) {
 					returnDate = format.format(reDate.getTime());
 				}
-				
+
 				// 다오 생성, 메서드 호출
 				RentalDAO dao2 = RentalDAO.getInstance();
 				dao2.UpdateRentalBookData(rentNum);
