@@ -16,7 +16,7 @@
 <head>
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/mainPage.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인페이지</title>
 </head>
 <body>
 
@@ -52,7 +52,7 @@
 				
 				<div class = "listContainer2">	
 					<a href="http://localhost:8181/electronic_library/requestList.do" class = "item">
-							<div class="text">희망 도서 건의 게시판</div>
+							<div class="text">희망 도서 게시판</div>
 					</a>
 					<a href="http://localhost:8181/electronic_library/reviewList.do" class = "item">
 							<div class="text">도서 리뷰 게시판</div>
@@ -76,7 +76,7 @@
 		 
 		<!-- 03.17 안되면 삭제 -->
 		
-			<form action="http://localhost:8181/electronic_library/ServletBookSearch2" method="post">
+			<form action="http://localhost:8181/electronic_library/ServletBookSearch" method="post">
 				<fieldset>
 					<legend><h2>도서 검색</h2></legend>
 					<label>검색 항목</label>
@@ -99,7 +99,7 @@
 		
 		<div id="category">
 			<!-- 대여 여부가 가능인 책 목록 표현 -->
-			<c:forEach var="bookList" items="${allBookList}">
+			<c:forEach var="bookList" items="${allBookList2}">
 				<c:if test="${bookList.checkOut eq false}">
 					<a class = "item2" href="http://localhost:8181/electronic_library/bookDetail.do?bName=${bookList.bName}">
 						<div class="text">${bookList.bName}</div>
@@ -114,7 +114,7 @@
 		<h2>도서 목록</h2>
 
 		<div id="BookList">
-			<c:forEach var="bookList" items="${allBookList}">
+			<c:forEach var="bookList" items="${allBookList1}">
 					<a class = "item2" href="http://localhost:8181/electronic_library/bookDetail.do?bName=${bookList.bName}">
 						<div class="text">${bookList.bName}</div>
 					</a>	

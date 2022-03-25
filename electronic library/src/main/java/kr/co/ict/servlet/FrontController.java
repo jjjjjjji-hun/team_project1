@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.ict.servlet.service.book.BookDetailService;
 import kr.co.ict.servlet.service.book.BookListService;
 import kr.co.ict.servlet.service.book.IBookService;
-import kr.co.ict.servlet.service.book.SearchBookService;
 import kr.co.ict.servlet.service.rental.BookRentListService;
 import kr.co.ict.servlet.service.rental.IRentalService;
 import kr.co.ict.servlet.service.rental.RentCheckService;
@@ -160,12 +159,6 @@ public class FrontController extends HttpServlet {
 			rs.execute(request, response);
 			ui ="/book/book_review_search_list.jsp";
 			
-		// ■ 도서 검색
-		}else if(uri.equals("/electronic_library/bookSearch.do")) {
-			bs = new SearchBookService();
-			bs.execute(request, response);
-			ui = "/book/search_check.jsp";
-			
 		// ■ 상세 도서 검색
 		}else if(uri.equals("/electronic_library/bookDetail.do")) {
 			bs = new BookDetailService();
@@ -194,7 +187,7 @@ public class FrontController extends HttpServlet {
 		}else if(uri.equals("/electronic_library/returnBook.do")) {
 			rts = new ReturnBookService();
 			rts.execute(request, response);
-			ui = "/users/book_return.jsp";
+			ui = "/rentInfo.do";
 			
 		// ♣ 관리자 페이지에서 대여 리스트 조회
 		}else if(uri.equals("/electronic_library/bookRentList.do")) {

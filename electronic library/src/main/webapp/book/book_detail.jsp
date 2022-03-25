@@ -9,7 +9,7 @@
 
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 상세 페이지</title>
 </head>
 <body>
 	<div class= "bookDetail">
@@ -20,7 +20,7 @@
 		
 			<div class = "right">
 				<div class = "listContainer">
-					<a href="http://localhost:8181/electronic_library/usermyinfo" class = "item">
+					<a href="http://localhost:8181/electronic_library/uTypeCheck0.do" class = "item">
 						<div class="text">마이페이지</div>
 					</a>
 					<a href="http://localhost:8181/electronic_library/book/book_search.jsp" class = "item">
@@ -68,13 +68,15 @@
 						<td>
 							<c:if test="${bName.checkOut eq false}">
 								<c:if test="${user.counting < 5 }">
-	    							<form action="http://localhost:8181/electronic_library/rentCheck.do" method="post">
-	    								<input type="hidden" value="${bName.bNum }" name="bnum"/>
-	    								<input type="hidden" value="${bName.checkOut }" name="checkout"/>
-	    								<input type="hidden" value="${bName.bName }" name="bname"/>
-	    								<!-- <input type="hidden" value="${user.counting }" name="user"/> -->
-	    								<input type="submit" value="대여">
-	    							</form>
+									<c:if test="${user.uType eq false }">
+		    							<form action="http://localhost:8181/electronic_library/rentCheck.do" method="post">
+		    								<input type="hidden" value="${bName.bNum }" name="bnum"/>
+		    								<input type="hidden" value="${bName.checkOut }" name="checkout"/>
+		    								<input type="hidden" value="${bName.bName }" name="bname"/>
+		    								<!-- <input type="hidden" value="${user.counting }" name="user"/> -->
+		    								<input type="submit" value="대여">
+		    							</form>
+	    							</c:if>
 	    						</c:if>
 	    						<c:if test="${user.counting >=5 }">
 	    							대여 횟수 초과

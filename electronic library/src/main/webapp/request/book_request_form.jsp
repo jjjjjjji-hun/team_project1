@@ -95,8 +95,8 @@
 			<br/>
 	
 			제 목  <textarea rows="1" cols="94" name="ftitle" required></textarea><br/><br/>
-			
-			<textarea rows="15" cols="100" name="fcontent" required></textarea> <br/><br/>
+			사 유 
+			<br/> <textarea rows="15" cols="100" name="fcontent" required></textarea> <br/>
 
 	
 			<div class = "bottom">
@@ -104,7 +104,7 @@
 					<input type="reset" value="다시쓰기" class ="text"/>
 				</div>
 				<div class ="item">
-					<input type="reset" value="수정 완료" class ="text"/>
+					<input type="submit" value="신청하기" class ="text"/>
 				</div>
 	
 			</div>		

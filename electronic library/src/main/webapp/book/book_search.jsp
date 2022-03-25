@@ -7,19 +7,32 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookSearch.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 검색 페이지</title>
 </head>
 <body>
 
 	<div class = "bookSearch">
-		<!-- ServletBookSearch2에서 포워딩된 searchKeyword의 값이 있는 경우(= 없는 검색어, 공백을 입력) -->
+	
+		<div class = "header">
+			<h1>도서 검색 페이지</h1>
+		
 			<c:if test="${searchKeyword ne null}">
-				<h1>다시 검색해주세요</h1>
+				<h3>다시 검색해주세요</h1>
 			</c:if>
+			
 			<hr/>
+			<div class = "right">
+				<div class = "listContainer">
+					<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item">
+						<div class="text">메인화면으로</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
 		
 		<!-- 해당 주소로 바로 들어온 경우는 아래만 출력 -->
-		<form action="http://localhost:8181/electronic_library/ServletBookSearch2" method="post">
+		<form action="http://localhost:8181/electronic_library/ServletBookSearch" method="post">
 			<fieldset class = "search">
 				<legend>도서 검색</legend><br/>
 				<label>검색 항목</label>
@@ -37,9 +50,7 @@
 		</form><br/>
 		
 		
-		<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item"> 
-	        <div class="text">메인 화면으로</span> </div>
-		</a>
+
 			<!-- 
 		<h1>책 검색하기</h1>
 		<form action="http://localhost:8181/electronic_library/ServletBookSearch" method="post">

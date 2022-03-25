@@ -16,7 +16,7 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookRentList.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>대출 도서 관리 페이지</title>
 </head>
 <body>
 

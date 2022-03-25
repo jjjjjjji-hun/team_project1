@@ -14,7 +14,7 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookRentListOneUser.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원별 대출 도서 현황</title>
 </head>
 <body>
 
@@ -41,7 +41,6 @@
             <th>책 이름</th>
             <th>아이디</th>
             <th>대출 여부</th>
-            <th>연체 여부</th>
         </theader>
         <tbody>
             <c:forEach var="user" items="${rentalList}">
@@ -63,15 +62,6 @@
                             </c:otherwise> 
                         </c:choose>
                     </td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${user.overdue eq true}">
-                                    연체
-                            </c:when>
-                            <c:otherwise>
-                                    미연체
-                            </c:otherwise> 
-                        </c:choose></td>
                 </tr>
             </c:forEach>
         </tbody>

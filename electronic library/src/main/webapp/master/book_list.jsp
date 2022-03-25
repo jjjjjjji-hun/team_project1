@@ -18,7 +18,7 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookList.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 관리 페이지</title>
 </head>
 <body>
 		<div class = "bookList">

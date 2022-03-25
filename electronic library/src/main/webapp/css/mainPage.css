@@ -11,8 +11,8 @@ body{
 
 .mainForm{
   position:absolute;
-  width:800px;
-  height:700px;
+  width:1000px;
+  height:800px;
   padding: 30px, 20px;
   background-color:#FFFFFF;
   text-align:center;
@@ -30,13 +30,13 @@ h1 {
 }
 
 .header{	
-	width:800px;
+	width:1000px;
   	height :100px;
   	
 }
 
 .log{
-  	width:800px;
+  	width:1000px;
   	height :100px;
   	position:absolute;
     top : 0%;

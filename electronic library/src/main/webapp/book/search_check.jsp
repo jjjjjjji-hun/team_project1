@@ -11,7 +11,7 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/searchCheck.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>검색한 도서 페이지</title>
 </head>
 <body>
 
@@ -29,8 +29,8 @@
 				</div>
 			</div>
 		</div>
-		<h2>예시</h2>
 
+		</br>
 		<!-- 검색한 도서 정보 -->
 		
 		

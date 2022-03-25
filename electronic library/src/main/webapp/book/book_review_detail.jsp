@@ -7,12 +7,21 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookReviewDetail.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 리뷰 상세페이지</title>
 </head>
 <body>
 	<div class = "bookReviewDetail">
-		<h1>리뷰 ${reviewDetail.revNum}번 상세 페이지</h1>
-		<hr/>
+			<div class = "header">
+			<h1>리뷰 ${reviewDetail.revNum}번 상세 페이지</h1>
+			<hr/>
+			<div class = "right">
+				<div class = "listContainer">
+					<a href="javascript:history.back();" class = "item">
+						<div class="text"> 뒤로가기</div>
+					</a>
+				</div>
+			</div>
+		</div>
 		
 		<div class = "auto">
 			<div class = "item">

@@ -8,14 +8,14 @@
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/bookReviewList.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>도서 리뷰 목록</title>
 </head>
 <body>
 	<div class = "bookReviewList">
 		<div class = "header">
 	
 			<h1> 리뷰 페이지</h1>
-			<hr/>
+
 	
  <!-- 리뷰쓰기는 마이페이지 대여목록에서만 가능하도록, 리뷰쓰기를 누르면 대여 목록으로 이동, 로그인 사용자만 리뷰쓰기 버튼 보임 -->
 			<div class = "right">
@@ -28,13 +28,19 @@
 					<a href="http://localhost:8181/electronic_library/mainPage.do" class = "item">
 						<div class="text">메인 화면으로</div>
 					</a>
+					<a href="javascript:history.back();" class = "item">
+						<div class="text">뒤로가기 </div>
+					</a>
 				</div>
 			</div>
+			
 		</div>
 	
 	
 		<form action="http://localhost:8181/electronic_library/reviewSearch.do" method="post">
 			<fieldset>
+							<hr/>
+				
 				<label>검색 항목</label>
 				<select name= "option">
 					<option value="bname">도서명</option>
