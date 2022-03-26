@@ -123,7 +123,7 @@
 					<div class = "title"> 출 판 사  </div>
 					<div class = "title_icon">:</div>
 					<div class = "main">
-						<input type="text"value="${requestDetail.bPub}" readonly/>					
+						<input type="text" name="fbpub" value="${requestDetail.bPub}" readonly/>					
 					</div>
 				</div> 
 				
@@ -131,7 +131,7 @@
 					<div class = "title"> 카테고리  </div>
 					<div class = "title_icon">:</div>
 					<div class = "main">
-						<input type="text"value="${requestDetail.bCategory}"  readonly/>					
+						<input type="text" name="fbcategory" value="${requestDetail.bCategory}"  readonly/>					
 					</div>
 				</div> 
 		
@@ -147,7 +147,7 @@
 					<input type="reset" value="다시 수정하기" class ="text"/>
 				</div>
 				<div class ="item">
-					<input type="reset" value="수정 완료" class ="text"/>
+					<input type="submit" value="수정 완료" class ="text"/>
 				</div>
 	
 			</div>
