@@ -99,7 +99,7 @@
 					<div class = "title"> 신청자  </div>
 					<div class = "title_icon">:</div>
 					<div class = "main">
-						<input type="text" value="${requestDetail.reqmDate}" readonly>				
+						<input type="text" value="${requestDetail.reqId}" readonly>				
 					</div>
 				</div>	
 

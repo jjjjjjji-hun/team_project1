@@ -36,7 +36,7 @@
 				</div>
 			</div>
 		</div>
-	
+
 			<form action="http://localhost:8181/electronic_library/insertReview.do" method="post">
 				책 번호 <input type="number" name="fbnum" value="${bNum}" readonly>&nbsp;&nbsp;
 				책 이름 <input type="text" name="fbname" value="${bName}" readonly>&nbsp;&nbsp;

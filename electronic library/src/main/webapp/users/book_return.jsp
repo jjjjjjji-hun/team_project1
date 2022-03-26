@@ -102,7 +102,7 @@
 										<form action="/electronic_library/insertReviewForm.do" method="post">
 											<input type="hidden" value="${list.bNum}" name="fbnum"/>
 											<input type="hidden" value="${list.bName}" name="fbname"/> 
-											<!-- <input type="hidden" value="${list.uId}" name="fid"/> 03.16 세션 아이디로 변경 -->
+											<input type="hidden" value="${list.uId}" name="fid"/>
 											
 									    	<input type="submit" value="리뷰 쓰기">
 										</form>
