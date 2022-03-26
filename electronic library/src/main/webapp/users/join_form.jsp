@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel= "stylesheet" href="${pageContext.request.contextPath}/css/joinForm.css">
 
-<title>Insert title here</title>
+<title>회원가입</title>
 </head>
 <body>
 
