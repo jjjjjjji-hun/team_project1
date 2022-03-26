@@ -95,8 +95,8 @@
 			<br/>
 	
 			제 목  <textarea rows="1" cols="94" name="ftitle" required></textarea><br/><br/>
-			
-			사 유  <textarea rows="15" cols="100" name="fcontent" required></textarea> <br/><br/>
+			사 유 
+			<br/> <textarea rows="15" cols="100" name="fcontent" required></textarea> <br/>
 
 	
 			<div class = "bottom">

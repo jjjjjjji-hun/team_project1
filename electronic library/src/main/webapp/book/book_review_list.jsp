@@ -15,7 +15,7 @@
 		<div class = "header">
 	
 			<h1> 리뷰 페이지</h1>
-			<hr/>
+
 	
  <!-- 리뷰쓰기는 마이페이지 대여목록에서만 가능하도록, 리뷰쓰기를 누르면 대여 목록으로 이동, 로그인 사용자만 리뷰쓰기 버튼 보임 -->
 			<div class = "right">
@@ -33,11 +33,14 @@
 					</a>
 				</div>
 			</div>
+			
 		</div>
 	
 	
 		<form action="http://localhost:8181/electronic_library/reviewSearch.do" method="post">
 			<fieldset>
+							<hr/>
+				
 				<label>검색 항목</label>
 				<select name= "option">
 					<option value="bname">도서명</option>

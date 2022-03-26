@@ -87,7 +87,7 @@
 											<input type="hidden" value="${list.bNum }" name="bnum"/>
 											<input type="hidden" value="${list.returnDate}" name="returndate"/>
 											<input type="hidden" value="${list.returnSchedule }" name="returnschedule"/>
-											<input type="hidden" value="${list.overdue }" name="overdue"/>
+											<!-- <input type="hidden" value="${list.overdue }" name="overdue"/> -->
 									    	<input type="submit" value="반납">
 										</form>
 									</c:when>

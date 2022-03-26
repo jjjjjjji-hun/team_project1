@@ -11,8 +11,17 @@
 </head>
 <body>
 	<div class = "bookReviewDetail">
-		<h1>리뷰 ${reviewDetail.revNum}번 상세 페이지</h1>
-		<hr/>
+			<div class = "header">
+			<h1>리뷰 ${reviewDetail.revNum}번 상세 페이지</h1>
+			<hr/>
+			<div class = "right">
+				<div class = "listContainer">
+					<a href="javascript:history.back();" class = "item">
+						<div class="text"> 뒤로가기</div>
+					</a>
+				</div>
+			</div>
+		</div>
 		
 		<div class = "auto">
 			<div class = "item">

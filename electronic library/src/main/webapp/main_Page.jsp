@@ -52,7 +52,7 @@
 				
 				<div class = "listContainer2">	
 					<a href="http://localhost:8181/electronic_library/requestList.do" class = "item">
-							<div class="text">희망 도서 건의 게시판</div>
+							<div class="text">희망 도서 게시판</div>
 					</a>
 					<a href="http://localhost:8181/electronic_library/reviewList.do" class = "item">
 							<div class="text">도서 리뷰 게시판</div>
